@@ -1,3 +1,3 @@
-# Projeto_Mobile-Gerenciador_de_Tarefas 
+# Projeto_Mobile-Gestão_de_tarefas_Inteligente
 
 Introdução

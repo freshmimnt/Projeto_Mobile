@@ -1,5 +1,6 @@
-# Projeto_Mobile-Gestão_de_tarefas_Inteligente
+# Projeto_Mobile-Lazuli
 
-**Introdução**
+## Introdução
+A app Lazuli é uma agenda inteligente
 
-**Objetivos**
+## Objetivos

@@ -1,6 +1,7 @@
 # Projeto_Mobile-Lazuli
 
 ## Introdução
-A Lazuli é uma aplicação agenda inteligente
+A Lazuli é uma aplicação
 
 ## Objetivos
+O nosso objectivo

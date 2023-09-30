@@ -29,3 +29,20 @@ Integração com assistentes de voz para adicionar tarefas por comando de voz.
 Recomendações personalizadas com base no histórico de tarefas do usuário.
 Colaboração em projetos, permitindo que os usuários compartilhem tarefas com colegas.
 Sincronização com calendários externos, como Google Calendário ou Outlook.
+
+## Aplicações Parecidas
+- Notion;
+- Obsidian;
+- Agenda Escolar;
+
+## Guião de teste
+O usuário abre a aplicação e vão aparecer duas opções: login ou registar, caso o usuário prima login ele será reencaminhado para uma tela onde ele introduzir o seu email e palavra-passe, mas caso o usuário prima registar ele será reencaminhado para uma tela onde ele deve introduzir os seus dados para fazer o seu cadastro na aplicação. Depois de o usuário ter escolhido login ou registar e ter introduzido os seus dados ele será reencaminhado para a tela principal onde ele terá as opções de criar tarefas ou eventos, poderá comunicar-se com colegas ou professores que também tenham a aplicação, entre outros.
+
+## Plano de Trabalho
+
+## Requisitos funcionais 
+- 
+
+## Requisitos não funcionais
+- A aplicação deve funcionar sem necessidade de internet;
+- 

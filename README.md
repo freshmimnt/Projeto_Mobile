@@ -40,9 +40,26 @@ O usuário abre a aplicação e vão aparecer duas opções: login ou registar, 
 
 ## Plano de Trabalho
 
-## Requisitos funcionais 
-- 
+## Requisitos Funcionais:
+1. Autenticação:
+- A aplicação deve permitir aos usuários realizar o login e o registro.
+- Deve armazenar e gerenciar os dados de login e registro de forma segura.
 
-## Requisitos não funcionais
-- A aplicação deve funcionar sem necessidade de internet;
-- 
+2. Gestão de Tarefas:
+- Os usuários devem poder criar, visualizar, editar e excluir tarefas na agenda.
+- A aplicação deve permitir a criação de eventos recorrentes, como grupos de estudo semanais ou mensais.
+- Deve oferecer a capacidade de priorizar tarefas com base na data de vencimento, importância e urgência.
+- Os usuários devem receber notificações sobre tarefas pendentes, prazos próximos e atualizações de status.
+
+## Requisitos Não Funcionais:
+1. Conectividade e Offline:
+- A aplicação deve funcionar sem necessidade de conexão à internet, permitindo aos usuários acessar e editar suas tarefas offline.
+
+2. Segurança de Dados:
+- Deve garantir a segurança dos dados do usuário, incluindo a criptografia de informações sensíveis.
+
+3. Usabilidade e Acessibilidade:
+- A interface de usuário deve ser intuitiva, de fácil utilização e fornecer suporte para acessibilidade, atendendo aos padrões de acessibilidade.
+
+4. Compatibilidade:
+- A aplicação deve ser compatível com vários dispositivos diferentes, garantindo uma experiência consistente em diferentes plataformas e sistemas operacionais.

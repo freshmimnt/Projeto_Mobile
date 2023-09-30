@@ -38,8 +38,6 @@ Sincronização com calendários externos, como Google Calendário ou Outlook.
 ## Guião de teste
 O usuário abre a aplicação e vão aparecer duas opções: login ou registar, caso o usuário prima login ele será reencaminhado para uma tela onde ele introduzir o seu email e palavra-passe, mas caso o usuário prima registar ele será reencaminhado para uma tela onde ele deve introduzir os seus dados para fazer o seu cadastro na aplicação. Depois de o usuário ter escolhido login ou registar e ter introduzido os seus dados ele será reencaminhado para a tela principal onde ele terá as opções de criar tarefas ou eventos, poderá comunicar-se com colegas ou professores que também tenham a aplicação, entre outros.
 
-## Plano de Trabalho
-
 ## Requisitos Funcionais:
 1. Autenticação:
 - A aplicação deve permitir aos usuários realizar o login e o registro.
@@ -63,5 +61,3 @@ O usuário abre a aplicação e vão aparecer duas opções: login ou registar, 
 
 4. Compatibilidade:
 - A aplicação deve ser compatível com vários dispositivos diferentes, garantindo uma experiência consistente em diferentes plataformas e sistemas operacionais.
-
-## Mockup

@@ -63,3 +63,5 @@ O usuário abre a aplicação e vão aparecer duas opções: login ou registar, 
 
 4. Compatibilidade:
 - A aplicação deve ser compatível com vários dispositivos diferentes, garantindo uma experiência consistente em diferentes plataformas e sistemas operacionais.
+
+## Mockup

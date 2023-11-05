@@ -5,7 +5,7 @@
     android:id="@+id/color"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#031C30"
+    android:background="@color/brand_primary"
     tools:context=".MainActivity">
 
     <ImageView
@@ -22,8 +22,8 @@
 
     <TextView
         android:id="@+id/login_intro"
-        android:layout_width="287dp"
-        android:layout_height="97dp"
+        android:layout_width="346dp"
+        android:layout_height="107dp"
         android:layout_marginTop="60dp"
         android:fontFamily="@font/poppins_bold"
         android:text="@string/signup_text"
@@ -34,21 +34,8 @@
         app:layout_constraintTop_toBottomOf="@+id/logo"
         tools:ignore="TextSizeCheck" />
 
-    <TextView
-        android:id="@+id/curso_text"
-        android:layout_width="319dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/grey_text_background"
-        android:text="Curso"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/uni_text"
-        app:layout_constraintStart_toStartOf="@+id/uni_text"
-        app:layout_constraintTop_toBottomOf="@+id/uni_text" />
-
     <Button
-        android:id="@+id/button_next"
+        android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
@@ -59,12 +46,25 @@
         app:layout_constraintStart_toStartOf="@+id/curso_text" />
 
     <TextView
+        android:id="@+id/curso_text"
+        android:layout_width="319dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/grey_text_background"
+        android:hint="Curso"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/uni_text"
+        app:layout_constraintStart_toStartOf="@+id/uni_text"
+        app:layout_constraintTop_toBottomOf="@+id/uni_text" />
+
+    <TextView
         android:id="@+id/semestre_text"
         android:layout_width="317dp"
         android:layout_height="39dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/grey_text_background"
-        android:text="Semestre"
+        android:hint="Semestre"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/curso_text"
@@ -78,7 +78,7 @@
         android:layout_height="39dp"
         android:layout_marginTop="120dp"
         android:background="@drawable/grey_text_background"
-        android:text="Turma"
+        android:hint="Turma"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/curso_text"
@@ -90,14 +90,24 @@
         android:id="@+id/uni_text"
         android:layout_width="317dp"
         android:layout_height="39dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="104dp"
         android:background="@drawable/grey_text_background"
-        android:text="Universidade"
+        android:hint="Universidade"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/login_intro"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/login_intro"
         app:layout_constraintTop_toBottomOf="@+id/login_intro" />
+
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="300dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

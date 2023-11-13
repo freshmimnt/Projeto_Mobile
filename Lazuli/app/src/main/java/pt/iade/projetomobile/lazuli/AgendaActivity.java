@@ -9,6 +9,6 @@ public class AgendaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agenda2);
+        setContentView(R.layout.activity_agenda);
     }
 }

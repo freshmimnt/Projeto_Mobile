@@ -49,7 +49,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
+    <EditText
         android:id="@+id/curso"
         android:layout_width="273dp"
         android:layout_height="50dp"
@@ -59,14 +59,14 @@
         android:ems="10"
         android:hint="@string/curso_text"
         android:textColorHint="#546E7A"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/uni"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/uni"
         app:layout_constraintTop_toBottomOf="@+id/uni" />
 
-    <TextView
+    <EditText
         android:id="@+id/semestre"
         android:layout_width="273dp"
         android:layout_height="50dp"
@@ -76,14 +76,14 @@
         android:ems="10"
         android:hint="@string/semestre_text"
         android:textColorHint="#546E7A"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/curso"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/curso"
         app:layout_constraintTop_toBottomOf="@+id/curso" />
 
-    <TextView
+    <EditText
         android:id="@+id/turma"
         android:layout_width="273dp"
         android:layout_height="50dp"
@@ -92,14 +92,14 @@
         android:ems="10"
         android:hint="@string/turma_text"
         android:textColorHint="#546E7A"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/semestre"
         app:layout_constraintHorizontal_bias="0.379"
         app:layout_constraintStart_toStartOf="@+id/semestre"
         app:layout_constraintTop_toBottomOf="@+id/semestre" />
 
-    <TextView
+    <EditText
         android:id="@+id/uni"
         android:layout_width="273dp"
         android:layout_height="50dp"
@@ -109,7 +109,7 @@
         android:ems="10"
         android:hint="@string/uni_text"
         android:textColorHint="#546E7A"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/login_intro"
         app:layout_constraintHorizontal_bias="0.0"

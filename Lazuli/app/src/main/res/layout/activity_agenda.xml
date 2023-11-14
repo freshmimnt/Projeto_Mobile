@@ -9,9 +9,9 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/WelcomeIntro"
-        android:layout_width="259dp"
-        android:layout_height="115dp"
+        android:id="@+id/agendaLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_bold"
         android:text="Agenda"
         android:textColor="#26619c"
@@ -20,48 +20,63 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.113"
+        app:layout_constraintVertical_bias="0.047"
         tools:ignore="TextSizeCheck" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/float_button"
-        android:layout_width="57dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="324dp"
-        android:layout_marginBottom="44dp"
-        android:contentDescription="hello"
-        android:src="@drawable/baseline_add_24"
-        android:tooltipText="gfg"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="411dp"
+        android:layout_height="277dp"
+        android:layout_marginBottom="81dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <Button
-        android:id="@+id/tarefa_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Tarefa"
-        app:layout_constraintBottom_toTopOf="@+id/float_button"
-        app:layout_constraintStart_toStartOf="@+id/teste_button" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatButton"
+            android:layout_width="57dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="336dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:contentDescription="expand"
+            android:focusable="true"
+            android:src="@drawable/baseline_add_24"
+            android:tooltipText="gfg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/teste_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="12dp"
-        android:text="Teste"
-        app:layout_constraintBottom_toTopOf="@+id/tarefa_button"
-        app:layout_constraintStart_toStartOf="@+id/lembrete_button" />
+        <Button
+            android:id="@+id/testeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Teste"
+            android:textColor="@color/black"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/tarefaButton"
+            app:layout_constraintEnd_toEndOf="@+id/tarefaButton" />
 
-    <Button
-        android:id="@+id/lembrete_button"
-        android:layout_width="110dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="192dp"
-        android:layout_marginBottom="12dp"
-        android:text="Lembrete"
-        app:layout_constraintBottom_toTopOf="@+id/teste_button"
-        app:layout_constraintStart_toStartOf="@+id/WelcomeIntro" />
+        <Button
+            android:id="@+id/tarefaButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Tarefa"
+            android:textColor="@color/black"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/floatButton"
+            app:layout_constraintEnd_toEndOf="@+id/floatButton" />
+
+        <Button
+            android:id="@+id/lembreteButton"
+            android:layout_width="110dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="16dp"
+            android:text="Lembrete"
+            android:textColor="@color/black"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/testeButton"
+            app:layout_constraintEnd_toEndOf="@+id/testeButton" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,7 @@
             android:name=".TarefaActivity"
             android:exported="false" />
         <activity
-            android:name=".DiscActivity"
+            android:name=".UcActivity"
             android:exported="false" />
         <activity
             android:name=".SignupActivity"

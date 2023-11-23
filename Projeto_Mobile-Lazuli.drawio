@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-11-23T15:42:25.905Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0" etag="csnbc8cdeFxNo0d1PZFe" version="22.1.3" type="github">
+<mxfile host="app.diagrams.net" modified="2023-11-23T15:46:03.042Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0" etag="_EBytw_8YmwYOkyALSAp" version="22.1.3" type="github">
   <diagram name="Página-1" id="cAdCbIKFTUZtztD2IjbC">
-    <mxGraphModel dx="2890" dy="2303" grid="1" gridSize="10" guides="1" tooltips="1" connect="0" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="2890" dy="3130" grid="1" gridSize="10" guides="1" tooltips="1" connect="0" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -935,6 +935,39 @@
         </mxCell>
         <mxCell id="clo_gxIJwNrEaGsPzjzJ-34" value="Alterar Password" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1228.17" y="-1490" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="clo_gxIJwNrEaGsPzjzJ-36" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.996;exitY=0.445;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="clo_gxIJwNrEaGsPzjzJ-33" target="clo_gxIJwNrEaGsPzjzJ-38">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1455.67" y="-1362" as="sourcePoint" />
+            <mxPoint x="1630" y="-1560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="clo_gxIJwNrEaGsPzjzJ-37" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="clo_gxIJwNrEaGsPzjzJ-34" target="clo_gxIJwNrEaGsPzjzJ-39">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1363.17" y="-1481" as="sourcePoint" />
+            <mxPoint x="1600" y="-1360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="clo_gxIJwNrEaGsPzjzJ-38" value="" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.mobile;" vertex="1" parent="1">
+          <mxGeometry x="1659.9999999999998" y="-1760" width="150" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="clo_gxIJwNrEaGsPzjzJ-39" value="" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.mobile;" vertex="1" parent="1">
+          <mxGeometry x="1642.9999999999998" y="-1400" width="150" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="clo_gxIJwNrEaGsPzjzJ-42" value="Guardar" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1713.5" y="-1180" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="clo_gxIJwNrEaGsPzjzJ-43" value="Guardar" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1724.33" y="-1540" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="clo_gxIJwNrEaGsPzjzJ-44" value="Password Antiga" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1662.25" y="-1320" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="clo_gxIJwNrEaGsPzjzJ-45" value="Password Nova" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1662.25" y="-1280" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="clo_gxIJwNrEaGsPzjzJ-46" value="Nome" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1676" y="-1660" width="120" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

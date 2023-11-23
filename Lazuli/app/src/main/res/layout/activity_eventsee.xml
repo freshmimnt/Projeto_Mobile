@@ -2,23 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/viewAgenda"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/brand_primary"
-
-    tools:context=".MainActivity">
+    tools:context=".EventSeeActivity">
 
     <Button
-        android:id="@+id/criarEvent"
-        android:layout_width="299dp"
-        android:layout_height="76dp"
-        android:layout_marginBottom="272dp"
-        android:text="Criar Evento"
-        android:textColor="@color/black"
-        android:textSize="24sp"
+        android:id="@+id/button"
+        android:layout_width="253dp"
+        android:layout_height="77dp"
+        android:layout_marginBottom="228dp"
+        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

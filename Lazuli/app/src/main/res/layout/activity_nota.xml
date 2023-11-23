@@ -2,23 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/viewAgenda"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/brand_primary"
+    tools:context=".NotaActivity">
 
-    tools:context=".MainActivity">
-
-    <Button
-        android:id="@+id/criarEvent"
-        android:layout_width="299dp"
-        android:layout_height="76dp"
-        android:layout_marginBottom="272dp"
-        android:text="Criar Evento"
-        android:textColor="@color/black"
-        android:textSize="24sp"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="272dp"
+        android:layout_marginBottom="104dp"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/baseline_add_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>

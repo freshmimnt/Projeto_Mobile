@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_bold"
-        android:text="Agenda"
+        android:text="@string/agendatxt"
         android:textColor="#26619c"
         android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,9 +24,9 @@
         tools:ignore="TextSizeCheck" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="411dp"
-        android:layout_height="277dp"
-        android:layout_marginBottom="4dp"
+        android:id="@+id/constraintLayout"
+        android:layout_width="413dp"
+        android:layout_height="318dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -36,8 +36,8 @@
             android:id="@+id/floatButton"
             android:layout_width="57dp"
             android:layout_height="55dp"
-            android:layout_marginStart="336dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="320dp"
+            android:layout_marginBottom="48dp"
             android:clickable="true"
             android:contentDescription="expand"
             android:focusable="true"
@@ -48,10 +48,10 @@
 
         <Button
             android:id="@+id/testeButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="134dp"
+            android:layout_height="49dp"
             android:layout_marginBottom="16dp"
-            android:text="Teste"
+            android:text="@string/testetxt"
             android:textColor="@color/black"
             android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@+id/tarefaButton"
@@ -59,10 +59,10 @@
 
         <Button
             android:id="@+id/tarefaButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="131dp"
+            android:layout_height="46dp"
             android:layout_marginBottom="16dp"
-            android:text="Tarefa"
+            android:text="@string/tarefatxt"
             android:textColor="@color/black"
             android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@+id/floatButton"
@@ -70,14 +70,22 @@
 
         <Button
             android:id="@+id/lembreteButton"
-            android:layout_width="110dp"
+            android:layout_width="155dp"
             android:layout_height="52dp"
             android:layout_marginBottom="16dp"
-            android:text="Lembrete"
+            android:text="@string/lembretetxt"
             android:textColor="@color/black"
             android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@+id/testeButton"
             app:layout_constraintEnd_toEndOf="@+id/testeButton" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/toDoList"
+        android:layout_width="409dp"
+        android:layout_height="394dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="202dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

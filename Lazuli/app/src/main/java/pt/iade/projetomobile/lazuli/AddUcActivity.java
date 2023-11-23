@@ -9,47 +9,35 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import java.util.GregorianCalendar;
-import java.util.Date;
+public class AddUcActivity extends AppCompatActivity {
 
-import pt.iade.projetomobile.lazuli.modules.AgendaItem;
-
-public class TarefaActivity extends AppCompatActivity {
-    protected AgendaItem item;
-    protected EditText title;
-    protected EditText description;
-    Button guardar;
     private TextView timeText;
     private TextView hourText;
     private Button date;
     private Button hour;
+    private Button guardar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tarefa);
+        setContentView(R.layout.activity_adduc);
+
         timeText = findViewById(R.id.showTime);
         date = findViewById(R.id.dateButton);
         hourText = findViewById(R.id.showHour);
         hour = findViewById(R.id.hourButton);
         guardar = findViewById(R.id.gButton);
 
-        Intent intent = getIntent();
-        item = (AgendaItem) intent.getSerializableExtra("item");
-
-        setUpComponentes();
-
-        guardar.setOnClickListener(new View.OnClickListener() {
+        date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+
+                showDate();
             }
         });
-
         hour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,11 +45,10 @@ public class TarefaActivity extends AppCompatActivity {
             }
         });
 
-        date.setOnClickListener(new View.OnClickListener() {
+        guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                showDate();
+                finish();
             }
         });
     }
@@ -97,16 +84,4 @@ public class TarefaActivity extends AppCompatActivity {
         }, 06,06, false);
         dialog.show();
     }
-    private void setUpComponentes(){
-        title = (EditText) findViewById(R.id.nomeText);
-        description = (EditText) findViewById(R.id.descText);
-        populateView();
-    }
-
-    protected void populateView(){
-        title.setText(item.getTitle());
-        description.setText(item.getDescription());
-
-    }
-
 }

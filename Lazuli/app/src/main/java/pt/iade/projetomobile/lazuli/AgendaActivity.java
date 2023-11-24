@@ -82,9 +82,7 @@ public class AgendaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AgendaActivity.this, TarefaActivity.class);
-                AgendaItem item = new AgendaItem(1, true,  "massa", new GregorianCalendar(), new Date(), "lingua");
-
-                intent.putExtra("item",item);
+                intent.putExtra("item",new AgendaItem());
                 startActivity(intent);
             }
         });

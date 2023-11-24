@@ -48,33 +48,36 @@
 
         <Button
             android:id="@+id/testeButton"
-            android:layout_width="134dp"
-            android:layout_height="49dp"
+            android:layout_width="172dp"
+            android:layout_height="50dp"
             android:layout_marginBottom="16dp"
             android:text="@string/testetxt"
             android:textColor="@color/black"
+            android:textSize="24sp"
             android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@+id/tarefaButton"
             app:layout_constraintEnd_toEndOf="@+id/tarefaButton" />
 
         <Button
             android:id="@+id/tarefaButton"
-            android:layout_width="131dp"
-            android:layout_height="46dp"
+            android:layout_width="172dp"
+            android:layout_height="49dp"
             android:layout_marginBottom="16dp"
             android:text="@string/tarefatxt"
             android:textColor="@color/black"
+            android:textSize="24sp"
             android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@+id/floatButton"
             app:layout_constraintEnd_toEndOf="@+id/floatButton" />
 
         <Button
             android:id="@+id/lembreteButton"
-            android:layout_width="155dp"
-            android:layout_height="52dp"
+            android:layout_width="172dp"
+            android:layout_height="49dp"
             android:layout_marginBottom="16dp"
             android:text="@string/lembretetxt"
             android:textColor="@color/black"
+            android:textSize="24sp"
             android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@+id/testeButton"
             app:layout_constraintEnd_toEndOf="@+id/testeButton" />
@@ -84,8 +87,8 @@
         android:id="@+id/toDoList"
         android:layout_width="409dp"
         android:layout_height="394dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="202dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

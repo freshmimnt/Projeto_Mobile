@@ -70,8 +70,18 @@ public class TarefaActivity extends AppCompatActivity {
         DatePickerDialog dialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
-
-                timeText.setText(String.valueOf(day)+"/"+String.valueOf(month+1)+"/"+String.valueOf(year));
+                if ((day < 10) && (month < 10)) {
+                    timeText.setText("0"+String.valueOf(day)+"/"+"0"+String.valueOf(month+1)+"/"+String.valueOf(year));
+                }
+                else if(day < 10){
+                    timeText.setText("0"+String.valueOf(day)+"/"+String.valueOf(month+1)+"/"+String.valueOf(year));
+                }
+                else if(month < 10){
+                    timeText.setText(String.valueOf(day)+"/"+"0"+String.valueOf(month+1)+"/"+String.valueOf(year));
+                }
+                else{
+                    timeText.setText(String.valueOf(day)+"/"+String.valueOf(month+1)+"/"+String.valueOf(year));
+                }
             }
         }, 2023, 0, 01);
         dialog.show();

@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-11-24T13:43:32.545Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0" etag="dqyvpKaJAcP6sSCulUdS" version="22.1.3" type="github">
+<mxfile host="app.diagrams.net" modified="2023-11-24T13:51:08.505Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0" etag="LXyyLJVBQ-VDM4j3hunn" version="22.1.3" type="github">
   <diagram name="Página-1" id="cAdCbIKFTUZtztD2IjbC">
     <mxGraphModel dx="1721" dy="3130" grid="1" gridSize="10" guides="1" tooltips="1" connect="0" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -845,9 +845,6 @@
         </mxCell>
         <mxCell id="clo_gxIJwNrEaGsPzjzJ-61" value="Data" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="460" y="561" width="120" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="clo_gxIJwNrEaGsPzjzJ-62" value="Prioridade" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="1375.67" y="-802.5" width="80" height="20" as="geometry" />
         </mxCell>
         <mxCell id="clo_gxIJwNrEaGsPzjzJ-63" value="Alterar Curso" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1230" y="-1450" width="120" height="20" as="geometry" />

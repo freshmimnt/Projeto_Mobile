@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-11-25T14:39:19.587Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0" etag="x6w5uFLeC9iNo7Uq-Kp_" version="22.1.3" type="github">
+<mxfile host="app.diagrams.net" modified="2023-11-25T19:12:51.176Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0" etag="Cyj1KL8r1ZeRLuOY0hrU" version="22.1.3" type="github">
   <diagram name="Página-1" id="cAdCbIKFTUZtztD2IjbC">
     <mxGraphModel dx="2636" dy="3644" grid="1" gridSize="10" guides="1" tooltips="1" connect="0" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -412,12 +412,6 @@
         </mxCell>
         <mxCell id="m-_DFbzXISbO1GzNLeAH-121" value="Sala" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1153.17" y="146" width="120" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="m-_DFbzXISbO1GzNLeAH-122" value="Horário" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1153.5" y="176" width="120" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="m-_DFbzXISbO1GzNLeAH-123" value="Descrição" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1153.17" y="206" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="m-_DFbzXISbO1GzNLeAH-124" value="Horário&amp;nbsp;" style="shape=table;childLayout=tableLayout;startSize=40;collapsible=0;recursiveResize=0;expand=0;fontSize=16;rounded=1;sketch=1;fillWeight=4;hachureGap=8;hachureAngle=45;strokeColor=#10739e;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fillColor=#b1ddf0;html=1;" parent="1" vertex="1">
           <mxGeometry x="760.25" y="140" width="180" height="205" as="geometry" />

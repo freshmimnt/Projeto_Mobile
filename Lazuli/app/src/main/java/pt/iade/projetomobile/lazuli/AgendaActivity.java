@@ -1,5 +1,6 @@
 package pt.iade.projetomobile.lazuli;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -19,9 +21,32 @@ import pt.iade.projetomobile.lazuli.adapters.TarefaItemRowAdapter;
 import pt.iade.projetomobile.lazuli.models.TarefaItem;
 
 public class AgendaActivity extends AppCompatActivity {
+
+    protected static final int EDITOR_ACTIVITY_RETURN_ID = 2;
     protected RecyclerView TodoList;
     protected TarefaItemRowAdapter tarefaRowAdapter;
     protected ArrayList<TarefaItem> tarefaList;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == EDITOR_ACTIVITY_RETURN_ID){
+            if(resultCode == AppCompatActivity.RESULT_OK){
+                int position = data.getIntExtra("position", -1);
+                TarefaItem updateItem = (TarefaItem) data.getSerializableExtra("item");
+
+                if(position == -1) {
+                    tarefaList.add(updateItem);
+                    tarefaRowAdapter.notifyItemInserted(tarefaList.size() - 1);
+                } else{
+
+                    tarefaList.set(position, updateItem);
+                    tarefaRowAdapter.notifyItemChanged(position);
+                }
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +61,11 @@ public class AgendaActivity extends AppCompatActivity {
             @Override
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(AgendaActivity.this, TarefaActivity.class);
+                intent.putExtra("position", position);
                 intent.putExtra("item", tarefaList.get(position));
-                startActivity(intent);
+                //startActivity(intent);
+
+                startActivityForResult(intent, EDITOR_ACTIVITY_RETURN_ID);
             }
         });
 
@@ -102,8 +130,10 @@ public class AgendaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AgendaActivity.this, TarefaActivity.class);
+                intent.putExtra("position", -1);
                 intent.putExtra("item",new TarefaItem());
-                startActivity(intent);
+
+                startActivityForResult(intent, EDITOR_ACTIVITY_RETURN_ID);
             }
         });
 

@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.Date;
 
@@ -70,18 +71,10 @@ public class TarefaActivity extends AppCompatActivity {
         DatePickerDialog dialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
-                if ((day < 10) && (month < 10)) {
-                    timeText.setText("0"+String.valueOf(day)+"/"+"0"+String.valueOf(month+1)+"/"+String.valueOf(year));
-                }
-                else if(day < 10){
-                    timeText.setText("0"+String.valueOf(day)+"/"+String.valueOf(month+1)+"/"+String.valueOf(year));
-                }
-                else if(month < 10){
-                    timeText.setText(String.valueOf(day)+"/"+"0"+String.valueOf(month+1)+"/"+String.valueOf(year));
-                }
-                else{
-                    timeText.setText(String.valueOf(day)+"/"+String.valueOf(month+1)+"/"+String.valueOf(year));
-                }
+                GregorianCalendar calendar = new GregorianCalendar(year, month, day);
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+
+                timeText.setText(format.format(calendar.getTime()));
             }
         }, 2023, 0, 01);
         dialog.show();

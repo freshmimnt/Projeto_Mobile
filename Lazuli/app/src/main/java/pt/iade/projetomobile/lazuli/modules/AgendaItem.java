@@ -3,6 +3,7 @@ package pt.iade.projetomobile.lazuli.modules;
 import java.io.Serializable;
 import java.sql.Time;
 import java.time.Clock;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -25,6 +26,18 @@ public class AgendaItem implements Serializable {
         this.date = date;
         this.time = time;
         this.description = description;
+    }
+
+    public static ArrayList<AgendaItem> List(){
+        ArrayList<AgendaItem> items = new ArrayList<>();
+        items.add(new AgendaItem(1, true, "First", new GregorianCalendar(), new Date(), "Second"));
+
+        return items;
+    }
+
+    public static AgendaItem GetById(int id){
+
+        return new AgendaItem(id, true, "Fondue", new GregorianCalendar(), new Date(), "Slow");
     }
 
     public int getId() {

@@ -1,6 +1,8 @@
 package pt.iade.projetomobile.lazuli;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,19 +15,25 @@ import android.widget.Button;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 import pt.iade.projetomobile.lazuli.modules.AgendaItem;
 
 public class AgendaActivity extends AppCompatActivity {
-
+    protected RecyclerView TodoList;
+    protected ArrayList<AgendaItem> itemsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agenda);
 
+        TodoList = (RecyclerView) findViewById(R.id.toDoList);
+        TodoList.setLayoutManager(new LinearLayoutManager(this));
+
+        itemsList = AgendaItem.List();
 
         Animation rotateOpen = AnimationUtils.loadAnimation(this, R.anim.rotate_open_anim);
         Animation rotateClose = AnimationUtils.loadAnimation(this, R.anim.rotate_close_anim);

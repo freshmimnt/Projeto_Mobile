@@ -15,7 +15,7 @@ Notificações Inteligentes: Os usuários recebem notificações com lembretes d
 
 Gráficos e Estatísticas: O aplicativo fornece gráficos e estatísticas que mostram o desempenho do usuário na conclusão de tarefas ao longo do tempo, permitindo que eles visualizem o seu progresso e façam ajustes conforme necessário.
 
-Comunicação ativa: O aplicativo fornece meios para se comunicar com colegas ou professores, tendo 'grupos de estudos' e meios de enviar ou fazer atividades das matérias.
+Eventos: O aplicativo fornece meios para criar eventos como 'grupos de estudos' entre outros.
 
 Aprendizagem ativa: O aplicativo se comunica com a google ou outros meios de pesquisa e busca sempre mostrar ao utilizador novos meios de aprendizagem ou assuntos relacionados a cada matéria para otimizar o aprendizado do aluno.
 
@@ -36,7 +36,7 @@ Sincronização com calendários externos, como Google Calendário ou Outlook.
 - Agenda Escolar;
 
 ## Guião de teste
-O usuário abre a aplicação e vão aparecer duas opções: login ou registar, caso o usuário prima login ele será reencaminhado para uma tela onde ele introduzir o seu email e palavra-passe, mas caso o usuário prima registar ele será reencaminhado para uma tela onde ele deve introduzir os seus dados para fazer o seu cadastro na aplicação. Depois de o usuário ter escolhido login ou registar e ter introduzido os seus dados ele será reencaminhado para a tela principal onde ele terá as opções de criar tarefas ou eventos, poderá comunicar-se com colegas ou professores que também tenham a aplicação, entre outros.
+O usuário abre a aplicação e vão aparecer duas opções: login ou registar, caso o usuário prima login ele será reencaminhado para uma tela onde ele introduzir o seu email e palavra-passe, mas caso o usuário prima registar ele será reencaminhado para uma tela onde ele deve introduzir os seus dados para fazer o seu cadastro na aplicação. Depois de o usuário ter escolhido login ou registar e ter introduzido os seus dados ele será reencaminhado para a tela principal onde ele terá as opções de adicionar tarefas, testes ou lembretes a sua agenda, criar eventos ou entrar em eventos ativos, ver as suas notas, ver o seu horário, entre outras coisas.
 
 ## Requisitos Funcionais:
 1. Autenticação:

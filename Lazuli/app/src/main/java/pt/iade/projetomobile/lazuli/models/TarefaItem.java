@@ -6,17 +6,17 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class AgendaItem implements Serializable {
+public class TarefaItem implements Serializable {
     private int id;
     private boolean done;
     private String title;
     private Calendar date;
     private Date time;
     private String description;
-    public AgendaItem(){
+    public TarefaItem(){
         this(0, false, "", new GregorianCalendar(),new Date() ,"");
     }
-    public AgendaItem(int id, boolean done, String title, Calendar date, Date time, String description){
+    public TarefaItem(int id, boolean done, String title, Calendar date, Date time, String description){
         this.id = id;
         this.done = done;
         this.title = title;
@@ -25,17 +25,17 @@ public class AgendaItem implements Serializable {
         this.description = description;
     }
 
-    public static ArrayList<AgendaItem> List(){
-        ArrayList<AgendaItem> items = new ArrayList<>();
-        items.add(new AgendaItem(1, true, "First", new GregorianCalendar(), new Date(), "Second"));
-        items.add(new AgendaItem(1, false, "Firt", new GregorianCalendar(), new Date(), "Secnd"));
+    public static ArrayList<TarefaItem> List(){
+        ArrayList<TarefaItem> items = new ArrayList<>();
+        items.add(new TarefaItem(1, true, "First", new GregorianCalendar(), new Date(), "Second"));
+        items.add(new TarefaItem(1, false, "Firt", new GregorianCalendar(), new Date(), "Secnd"));
 
         return items;
     }
 
-    public static AgendaItem GetById(int id){
+    public static TarefaItem GetById(int id){
 
-        return new AgendaItem(id, false, "Fondue", new GregorianCalendar(), new Date(), "Slow");
+        return new TarefaItem(id, false, "Fondue", new GregorianCalendar(), new Date(), "Slow");
     }
 
     public int getId() {

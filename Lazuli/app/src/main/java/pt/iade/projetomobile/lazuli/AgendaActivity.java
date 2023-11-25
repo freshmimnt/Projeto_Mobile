@@ -15,26 +15,35 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-import pt.iade.projetomobile.lazuli.adapters.AgendaItemRowAdapter;
-import pt.iade.projetomobile.lazuli.models.AgendaItem;
+import pt.iade.projetomobile.lazuli.adapters.TarefaItemRowAdapter;
+import pt.iade.projetomobile.lazuli.models.TarefaItem;
 
 public class AgendaActivity extends AppCompatActivity {
     protected RecyclerView TodoList;
-    protected AgendaItemRowAdapter itemRowAdapter;
-    protected ArrayList<AgendaItem> itemsList;
+    protected TarefaItemRowAdapter tarefaRowAdapter;
+    protected ArrayList<TarefaItem> tarefaList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agenda);
 
-        itemsList = AgendaItem.List();
+        tarefaList = TarefaItem.List();
 
-        itemRowAdapter = new AgendaItemRowAdapter(this, itemsList);
+        tarefaRowAdapter = new TarefaItemRowAdapter(this, tarefaList);
+
+        tarefaRowAdapter.setOnClickListener(new TarefaItemRowAdapter.ItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(AgendaActivity.this, TarefaActivity.class);
+                intent.putExtra("item", tarefaList.get(position));
+                startActivity(intent);
+            }
+        });
 
         TodoList = (RecyclerView) findViewById(R.id.toDoList);
         TodoList.setLayoutManager(new LinearLayoutManager(this));
-        TodoList.setAdapter(itemRowAdapter);
+        TodoList.setAdapter(tarefaRowAdapter);
 
 
 
@@ -93,7 +102,7 @@ public class AgendaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AgendaActivity.this, TarefaActivity.class);
-                intent.putExtra("item",new AgendaItem());
+                intent.putExtra("item",new TarefaItem());
                 startActivity(intent);
             }
         });

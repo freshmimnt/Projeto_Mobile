@@ -17,10 +17,10 @@ import android.widget.TimePicker;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
-import pt.iade.projetomobile.lazuli.models.AgendaItem;
+import pt.iade.projetomobile.lazuli.models.TarefaItem;
 
 public class TarefaActivity extends AppCompatActivity {
-    protected AgendaItem item;
+    protected TarefaItem item;
     protected EditText title;
     protected EditText description;
     Button guardar;
@@ -42,7 +42,7 @@ public class TarefaActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        item = (AgendaItem) intent.getSerializableExtra("item");
+        item = (TarefaItem) intent.getSerializableExtra("item");
 
         setUpComponentes();
 

@@ -1,4 +1,4 @@
-package pt.iade.projetomobile.lazuli.modules;
+package pt.iade.projetomobile.lazuli.models;
 
 import java.io.Serializable;
 

@@ -8,21 +8,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
-import pt.iade.projetomobile.lazuli.modules.AgendaItem;
+import pt.iade.projetomobile.lazuli.adapters.AgendaItemRowAdapter;
+import pt.iade.projetomobile.lazuli.models.AgendaItem;
 
 public class AgendaActivity extends AppCompatActivity {
     protected RecyclerView TodoList;
+    protected AgendaItemRowAdapter itemRowAdapter;
     protected ArrayList<AgendaItem> itemsList;
 
     @Override
@@ -30,8 +28,11 @@ public class AgendaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agenda);
 
+        itemRowAdapter = new AgendaItemRowAdapter(this, itemsList);
+
         TodoList = (RecyclerView) findViewById(R.id.toDoList);
         TodoList.setLayoutManager(new LinearLayoutManager(this));
+        TodoList.setAdapter(itemRowAdapter);
 
         itemsList = AgendaItem.List();
 

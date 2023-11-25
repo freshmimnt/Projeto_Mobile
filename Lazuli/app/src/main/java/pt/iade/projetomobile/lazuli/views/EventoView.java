@@ -2,7 +2,6 @@ package pt.iade.projetomobile.lazuli.views;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -10,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import pt.iade.projetomobile.lazuli.R;
-import pt.iade.projetomobile.lazuli.modules.Evento;
+import pt.iade.projetomobile.lazuli.models.Evento;
 
 public class EventoView extends LinearLayout {
     protected Evento evento;

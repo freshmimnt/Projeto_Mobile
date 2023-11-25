@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,9 +16,8 @@ import android.widget.TimePicker;
 
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
-import java.util.Date;
 
-import pt.iade.projetomobile.lazuli.modules.AgendaItem;
+import pt.iade.projetomobile.lazuli.models.AgendaItem;
 
 public class TarefaActivity extends AppCompatActivity {
     protected AgendaItem item;
@@ -28,6 +28,7 @@ public class TarefaActivity extends AppCompatActivity {
     private TextView hourText;
     private Button date;
     private Button hour;
+    protected CheckBox check;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,8 @@ public class TarefaActivity extends AppCompatActivity {
         hourText = findViewById(R.id.showHour);
         hour = findViewById(R.id.hourButton);
         guardar = findViewById(R.id.gButton);
+        check = findViewById(R.id.checkBox);
+
 
         Intent intent = getIntent();
         item = (AgendaItem) intent.getSerializableExtra("item");
@@ -103,6 +106,7 @@ public class TarefaActivity extends AppCompatActivity {
     private void setUpComponentes(){
         title = (EditText) findViewById(R.id.nomeText);
         description = (EditText) findViewById(R.id.descText);
+
         populateView();
     }
 

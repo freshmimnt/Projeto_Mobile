@@ -28,13 +28,15 @@ public class AgendaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agenda);
 
+        itemsList = AgendaItem.List();
+
         itemRowAdapter = new AgendaItemRowAdapter(this, itemsList);
 
         TodoList = (RecyclerView) findViewById(R.id.toDoList);
         TodoList.setLayoutManager(new LinearLayoutManager(this));
         TodoList.setAdapter(itemRowAdapter);
 
-        itemsList = AgendaItem.List();
+
 
         Animation rotateOpen = AnimationUtils.loadAnimation(this, R.anim.rotate_open_anim);
         Animation rotateClose = AnimationUtils.loadAnimation(this, R.anim.rotate_close_anim);

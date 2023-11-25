@@ -27,7 +27,8 @@ public class AgendaItem implements Serializable {
 
     public static ArrayList<AgendaItem> List(){
         ArrayList<AgendaItem> items = new ArrayList<>();
-        items.add(new AgendaItem(1, false, "First", new GregorianCalendar(), new Date(), "Second"));
+        items.add(new AgendaItem(1, true, "First", new GregorianCalendar(), new Date(), "Second"));
+        items.add(new AgendaItem(1, false, "Firt", new GregorianCalendar(), new Date(), "Secnd"));
 
         return items;
     }

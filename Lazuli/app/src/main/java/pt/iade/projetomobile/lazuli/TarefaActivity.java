@@ -39,7 +39,6 @@ public class TarefaActivity extends AppCompatActivity {
         hourText = findViewById(R.id.showHour);
         hour = findViewById(R.id.hourButton);
         guardar = findViewById(R.id.gButton);
-        check = findViewById(R.id.checkBox);
 
 
         Intent intent = getIntent();
@@ -106,6 +105,7 @@ public class TarefaActivity extends AppCompatActivity {
     private void setUpComponentes(){
         title = (EditText) findViewById(R.id.nomeText);
         description = (EditText) findViewById(R.id.descText);
+        check = (CheckBox) findViewById(R.id.checkBox);
 
         populateView();
     }
@@ -113,7 +113,7 @@ public class TarefaActivity extends AppCompatActivity {
     protected void populateView(){
         title.setText(item.getTitle());
         description.setText(item.getDescription());
-
+        check.setChecked(item.isDone());
     }
 
 }

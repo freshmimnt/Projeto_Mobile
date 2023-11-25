@@ -22,7 +22,7 @@ public class AgendaItemRowAdapter extends RecyclerView.Adapter<AgendaItemRowAdap
     public AgendaItemRowAdapter(Context context, ArrayList<AgendaItem> items) {
         inflater = LayoutInflater.from(context);
         this.items = items;
-        //clickListener = null;
+        clickListener = null;
     }
 
 
@@ -43,6 +43,7 @@ public class AgendaItemRowAdapter extends RecyclerView.Adapter<AgendaItemRowAdap
        AgendaItem item = items.get(position);
         holder.titleLabel.setText(item.getTitle());
         holder.notesLabel.setText(item.getDescription());
+        holder.doneCheck.setChecked(item.isDone());
     }
 
     /**

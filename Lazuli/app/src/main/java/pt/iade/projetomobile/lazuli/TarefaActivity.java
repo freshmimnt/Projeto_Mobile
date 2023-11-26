@@ -24,6 +24,7 @@ import java.util.Locale;
 import pt.iade.projetomobile.lazuli.models.TarefaItem;
 
 public class TarefaActivity extends AppCompatActivity {
+
     protected TarefaItem item;
     protected EditText title;
     protected EditText description;
@@ -99,7 +100,7 @@ public class TarefaActivity extends AppCompatActivity {
                 String timeStr = String.format(Locale.getDefault(), "%02d:%02d", hour, minute);
                 hourText.setText(timeStr);
             }
-        }, 06, 06, false);
+        }, 00, 00, false);
         dialog.show();
     }
 

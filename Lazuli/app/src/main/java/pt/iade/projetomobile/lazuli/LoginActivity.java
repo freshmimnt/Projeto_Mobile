@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (isValidInput(email.getText().toString(), password.getText().toString())) {
-                    Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Bem Vindo", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, IntroActivity.class);
                     startActivity(intent);
                     finish();

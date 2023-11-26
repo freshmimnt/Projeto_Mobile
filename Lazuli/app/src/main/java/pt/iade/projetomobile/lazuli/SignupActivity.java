@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.content.SharedPreferences;
+
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -27,6 +29,7 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (validateSignup()) {
+                        saveNameToSharedPreferences();
                     Intent intent = new Intent(SignupActivity.this, Signup2Activity.class);
                     startActivity(intent);
                 } else {
@@ -41,7 +44,13 @@ public class SignupActivity extends AppCompatActivity {
         String email = emailEditText.getText().toString().trim();
         String password = passEditText.getText().toString().trim();
         String repPassword = repPassEditText.getText().toString().trim();
-
         return !nome.isEmpty() && !email.isEmpty() && !password.isEmpty() && password.equals(repPassword);
+    }
+    private void saveNameToSharedPreferences() {
+        String nome = nomeEditText.getText().toString().trim();
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("nome", nome);
+        editor.apply();
     }
 }

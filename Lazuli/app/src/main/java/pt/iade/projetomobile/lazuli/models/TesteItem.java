@@ -7,18 +7,21 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Random;
 
-public class TarefaItem implements Serializable {
+public class TesteItem implements Serializable {
+
     private int id;
     private boolean done;
     private String title;
     private Calendar date;
     private Date time;
     private String description;
-    public TarefaItem(){
+
+    public TesteItem(){
 
         this(0, false, "", new GregorianCalendar(),new Date() ,"");
     }
-    public TarefaItem(int id, boolean done, String title, Calendar date, Date time, String description){
+
+    public TesteItem(int id, boolean done, String title, Calendar date, Date time, String description){
         this.id = id;
         this.done = done;
         this.title = title;
@@ -27,18 +30,17 @@ public class TarefaItem implements Serializable {
         this.description = description;
     }
 
-    public static ArrayList<TarefaItem> List(){
-        ArrayList<TarefaItem> items = new ArrayList<>();
-        items.add(new TarefaItem(1, true, "First", new GregorianCalendar(), new Date(), "Second"));
+    public static ArrayList<TesteItem> List(){
+        ArrayList<TesteItem> items = new ArrayList<>();
+        items.add(new TesteItem(1, false, "F", new GregorianCalendar(), new Date(), "S"));
 
         return items;
     }
 
-    public static TarefaItem GetById(int id){
+    public static TesteItem GetById(int id){
+        return new TesteItem(id,false, "Fan", new GregorianCalendar(), new Date(), "SlowMow");
 
-        return new TarefaItem(id, false, "Fondue", new GregorianCalendar(), new Date(), "Slow");
     }
-
     public void save() {
         // TODO: Send the object's data to our web server and update the database there.
 
@@ -94,4 +96,5 @@ public class TarefaItem implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }

@@ -10,13 +10,13 @@
 
     <Button
         android:id="@+id/gButton"
-        android:layout_width="153dp"
+        android:layout_width="150dp"
         android:layout_height="65dp"
-        android:layout_marginStart="240dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginBottom="60dp"
         android:text="@string/guardar_text"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -35,13 +35,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/hourButton"
+        android:layout_width="274dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="464dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/baseline_access_time_24"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
     <TextView
         android:id="@+id/showTime"
         android:layout_width="140dp"
         android:layout_height="30dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="544dp"
+        android:layout_marginBottom="568dp"
         android:text="@string/datatxt"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -58,7 +74,7 @@
         android:layout_height="30dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="464dp"
+        android:layout_marginBottom="488dp"
         android:text="@string/horatxt"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -70,28 +86,12 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/hourButton"
-        android:layout_width="274dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="440dp"
-        android:background="@android:color/transparent"
-        android:drawableLeft="@drawable/baseline_access_time_24"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Button
         android:id="@+id/dateButton"
         android:layout_width="274dp"
         android:layout_height="76dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="520dp"
+        android:layout_marginBottom="544dp"
         android:background="@android:color/transparent"
         android:drawableLeft="@drawable/baseline_calendar_month_24"
         android:textAlignment="center"

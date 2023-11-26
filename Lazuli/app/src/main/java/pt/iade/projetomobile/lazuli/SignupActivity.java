@@ -32,7 +32,12 @@ public class SignupActivity extends AppCompatActivity {
                         saveNameToSharedPreferences();
                     Intent intent = new Intent(SignupActivity.this, Signup2Activity.class);
                     startActivity(intent);
-                } else {
+                }
+                else if (passEditText != repPassEditText){
+                    Toast.makeText(SignupActivity.this, "Password diferente de Repeat Password", Toast.LENGTH_SHORT).show();
+                }
+
+                else {
                     Toast.makeText(SignupActivity.this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
                 }
             }

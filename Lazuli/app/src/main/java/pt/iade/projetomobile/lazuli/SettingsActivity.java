@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.content.SharedPreferences;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ public class SettingsActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private ImageView profileImage;
     private TextView nome;
+    private Button alterar, relatorio;
 
 
     @Override
@@ -29,6 +31,23 @@ public class SettingsActivity extends AppCompatActivity {
         String salvarNome = getSavedName();
         nome = (TextView) findViewById(R.id.nameView);
         nome.setText(salvarNome);
+        alterar = (Button) findViewById(R.id.altButton);
+        relatorio = (Button) findViewById(R.id.relatorioButton);
+
+        alterar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SettingsActivity.this, AlterarDadosActivity.class);
+                startActivity(intent);
+            }
+        });
+        relatorio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SettingsActivity.this, RelatorioActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void selectImage(View view) {
@@ -54,10 +73,8 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
     private String getSavedName() {
-        // Obtém um objeto SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
-        // Obtém o nome das SharedPreferences, se não houver, retorna uma string vazia
         return sharedPreferences.getString("nome", "");
     }
 }

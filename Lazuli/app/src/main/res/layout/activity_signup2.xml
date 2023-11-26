@@ -89,7 +89,7 @@
         app:layout_constraintTop_toBottomOf="@+id/semestre" />
 
     <EditText
-        android:id="@+id/curso"
+        android:id="@+id/oldpassword"
         android:layout_width="273dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -119,9 +119,9 @@
         android:textColorHint="#546E7A"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/curso"
+        app:layout_constraintEnd_toEndOf="@+id/oldpassword"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/curso"
-        app:layout_constraintTop_toBottomOf="@+id/curso" />
+        app:layout_constraintStart_toStartOf="@+id/oldpassword"
+        app:layout_constraintTop_toBottomOf="@+id/oldpassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

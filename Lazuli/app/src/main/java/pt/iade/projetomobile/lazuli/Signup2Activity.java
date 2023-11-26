@@ -17,7 +17,7 @@ public class Signup2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup2);
 
-        cursoEditText = findViewById(R.id.curso);
+        cursoEditText = findViewById(R.id.oldpassword);
         semestreEditText = findViewById(R.id.semestre);
         turmaEditText = findViewById(R.id.turma);
 

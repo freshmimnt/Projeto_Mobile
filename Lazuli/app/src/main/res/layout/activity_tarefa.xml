@@ -131,6 +131,7 @@
             android:hint="Escreva uma descrição aqui ..."
             android:inputType="textMultiLine"
             android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:textSize="20sp" />
     </LinearLayout>
 

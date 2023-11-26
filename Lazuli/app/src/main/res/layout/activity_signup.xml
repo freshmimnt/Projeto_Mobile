@@ -65,7 +65,7 @@
         app:layout_constraintTop_toBottomOf="@+id/loginIntro" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/reppassText"
         android:layout_width="273dp"
         android:layout_height="50dp"
         android:layout_marginTop="28dp"
@@ -76,13 +76,13 @@
         android:textColorHint="#546E7A"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="@+id/pass_Text"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintStart_toStartOf="@+id/pass_Text"
+        app:layout_constraintTop_toBottomOf="@+id/pass_Text" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/pass_Text"
         android:layout_width="273dp"
         android:layout_height="50dp"
         android:layout_marginTop="36dp"

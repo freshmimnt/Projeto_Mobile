@@ -12,21 +12,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import pt.iade.projetomobile.lazuli.R;
-import pt.iade.projetomobile.lazuli.models.AgendaItem;
+import pt.iade.projetomobile.lazuli.models.TarefaItem;
 
-public class AgendaItemRowAdapter extends RecyclerView.Adapter<AgendaItemRowAdapter.ViewHolder> {
-    private ArrayList<AgendaItem> items;
+public class TarefaItemRowAdapter extends RecyclerView.Adapter<TarefaItemRowAdapter.ViewHolder> {
+    private ArrayList<TarefaItem> items;
     private LayoutInflater inflater;
     private ItemClickListener clickListener;
 
-    public AgendaItemRowAdapter(Context context, ArrayList<AgendaItem> items) {
+    public TarefaItemRowAdapter(Context context, ArrayList<TarefaItem> items) {
         inflater = LayoutInflater.from(context);
         this.items = items;
-        //clickListener = null;
+        clickListener = null;
     }
 
 
     public void setOnClickListener(ItemClickListener listener) {
+
         clickListener = listener;
     }
 
@@ -40,9 +41,10 @@ public class AgendaItemRowAdapter extends RecyclerView.Adapter<AgendaItemRowAdap
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-       AgendaItem item = items.get(position);
+       TarefaItem item = items.get(position);
         holder.titleLabel.setText(item.getTitle());
         holder.notesLabel.setText(item.getDescription());
+        holder.doneCheck.setChecked(item.isDone());
     }
 
     /**

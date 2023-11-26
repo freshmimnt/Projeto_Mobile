@@ -9,12 +9,16 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Button signup;
+    private Button loggin;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button loggin = (Button)findViewById(R.id.loginButton);
+        loggin = (Button)findViewById(R.id.loginButton);
         loggin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -23,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button signup = (Button)findViewById(R.id.signupButton);
+        signup = (Button)findViewById(R.id.signupButton);
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

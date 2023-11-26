@@ -37,7 +37,7 @@
             android:layout_width="57dp"
             android:layout_height="55dp"
             android:layout_marginStart="320dp"
-            android:layout_marginBottom="48dp"
+            android:layout_marginBottom="60dp"
             android:clickable="true"
             android:contentDescription="expand"
             android:focusable="true"
@@ -85,8 +85,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/toDoList"
-        android:layout_width="409dp"
-        android:layout_height="394dp"
+        android:layout_width="407dp"
+        android:layout_height="330dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

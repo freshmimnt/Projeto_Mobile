@@ -87,7 +87,7 @@ even_date datetime not null,
 even_participante int not null,
 even_desc varchar(500),
 even_user_id int,
-is_checked BOOLEAN not null,
+is_finished BOOLEAN not null,
 primary key (even_id)
 );
 
@@ -99,13 +99,11 @@ primary key (UE_id)
 );
 
 create table Horario(
-    hor_id INT AUTO_INCREMENT,
-    hor_data DATE NOT NULL,
-    hor_hora_inicio TIME NOT NULL,
-    hor_hora_fim TIME NOT NULL,
-    hor_descricao VARCHAR(255),
-    hor_UC_id int,
-    primary key (hor_id)
+hor_id INT AUTO_INCREMENT,
+hor_data datetime NOT NULL,
+hor_descricao VARCHAR(255),
+hor_UC_id int,
+primary key (hor_id)
 );
 
 create table PAmizade(
@@ -117,7 +115,7 @@ primary key (PA_id)
 
 create table Estado(
 stat_id int not null auto_increment,
-is_checked BOOLEAN not null,
+is_accepted BOOLEAN not null,
 primary key (stat_id)
 );
 

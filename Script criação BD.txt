@@ -100,7 +100,9 @@ primary key (UE_id)
 
 create table Horario(
 hor_id INT AUTO_INCREMENT,
-hor_data datetime NOT NULL,
+hor_data DATE NOT NULL,
+hor_hora_inicio TIME NOT NULL,
+hor_hora_fim TIME NOT NULL,
 hor_descricao VARCHAR(255),
 hor_UC_id int,
 primary key (hor_id)

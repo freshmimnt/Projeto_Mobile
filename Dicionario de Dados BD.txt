@@ -92,7 +92,9 @@ primary key: UE_id
 
 Tabela: Horario
 hor_id: identificador único do horário (INT)
-hor_data: data do horário (datetime)
+hor_data: data do horário (DATE)
+hor_hora_inicio: hora de início do horário (TIME)
+hor_hora_fim: hora de término do horário (TIME)
 hor_descricao: descrição do horário (VARCHAR(255))
 hor_UC_id: identificador da unidade curricular associada ao horário (int)
 primary key: hor_id

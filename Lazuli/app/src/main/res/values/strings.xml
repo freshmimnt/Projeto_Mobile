@@ -32,4 +32,10 @@
     <string name="horatxt">Hora</string>
     <string name="datatxt">Data</string>
     <string name="desctxt">Descrição</string>
+    <string-array name="Cursos">
+        <item>Engenharia Informática</item>
+        <item>Informática de Gestão</item>
+        <item>EI e IG</item>
+        <item>Creative Technologies</item>
+    </string-array>
 </resources>

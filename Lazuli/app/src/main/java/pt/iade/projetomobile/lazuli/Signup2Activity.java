@@ -4,20 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-public class Signup2Activity extends AppCompatActivity {
+public class Signup2Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private EditText cursoEditText, semestreEditText, turmaEditText;
+    private EditText semestreEditText, turmaEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup2);
-
-        cursoEditText = findViewById(R.id.oldpassword);
+        Spinner spinner = findViewById(R.id.curso);
         semestreEditText = findViewById(R.id.semestre);
         turmaEditText = findViewById(R.id.turma);
 
@@ -34,13 +36,30 @@ public class Signup2Activity extends AppCompatActivity {
                 }
             }
         });
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.Cursos, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+
+    }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        Toast.makeText(parent.getContext(),text, Toast.LENGTH_SHORT);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
     private boolean validateSignup2() {
-        String curso = cursoEditText.getText().toString().trim();
         String semestre = semestreEditText.getText().toString().trim();
         String turma = turmaEditText.getText().toString().trim();
 
-        return !curso.isEmpty() && !semestre.isEmpty() && !turma.isEmpty();
+        return !semestre.isEmpty() && !turma.isEmpty();
     }
 }

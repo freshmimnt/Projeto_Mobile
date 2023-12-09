@@ -8,8 +8,12 @@ import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class UcActivity extends AppCompatActivity {
+import java.util.ArrayList;
 
+import pt.iade.projetomobile.lazuli.models.UCItem;
+
+public class UcActivity extends AppCompatActivity {
+    ArrayList<UCItem> itemsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +26,12 @@ public class UcActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UcActivity.this, AddUcActivity.class);
+                
+                intent.putExtra("item",new UCItem());
+
                 startActivity(intent);
             }
         });
     }
+
 }

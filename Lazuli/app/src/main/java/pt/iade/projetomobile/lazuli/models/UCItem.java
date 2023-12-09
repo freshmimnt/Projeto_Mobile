@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class UCItem{
+public class UCItem implements Serializable{
 
     private int id;
     private String nome;

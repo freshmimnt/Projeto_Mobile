@@ -27,7 +27,8 @@ public class AddUcActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adduc);
 
-        item = new UCItem(1, "Coraçau", "Happy","Birthday","Today is not my birthday");
+        Intent intent = getIntent();
+        item = (UCItem) intent.getSerializableExtra("item");
 
         guardar = findViewById(R.id.gButton);
         nome = findViewById(R.id.nomeText);

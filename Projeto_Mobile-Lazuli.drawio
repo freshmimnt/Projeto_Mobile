@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-12-07T15:13:40.824Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 OPR/104.0.0.0" etag="VwuEEseIQh4tUtiL5FOC" version="22.1.5" type="github">
+<mxfile host="app.diagrams.net" modified="2023-12-09T15:52:47.489Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 OPR/104.0.0.0" etag="fHbF49tzrjk2LUl_-UfI" version="22.1.7" type="github">
   <diagram name="Página-1" id="cAdCbIKFTUZtztD2IjbC">
-    <mxGraphModel dx="1205" dy="2935" grid="1" gridSize="10" guides="1" tooltips="1" connect="0" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1845" dy="3295" grid="1" gridSize="10" guides="1" tooltips="1" connect="0" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -452,9 +452,6 @@
         <mxCell id="m-_DFbzXISbO1GzNLeAH-160" value="Peso" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="461.24999999999994" y="600" width="120" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="m-_DFbzXISbO1GzNLeAH-162" value="Descrição" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="461.24999999999994" y="630" width="120" height="35" as="geometry" />
-        </mxCell>
         <mxCell id="m-_DFbzXISbO1GzNLeAH-163" value="E um parâmetro usado onde vamos calcular a media ponderada. Se o valor não for especificado, será considerado apenas a média aritmética (soma das avaliações/ número de avaliações)" style="text;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=0;" parent="1" vertex="1">
           <mxGeometry x="525" y="800" width="151.83" height="172.5" as="geometry" />
         </mxCell>
@@ -893,7 +890,7 @@
         <mxCell id="hIlGaYzakrmFdpd4rHQf-1" value="Hora_Fim" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="791.5799999999999" y="672" width="120" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="38bksFKyxm7Crh1W8dBd-1" value="Descrição" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="38bksFKyxm7Crh1W8dBd-1" value="Descrição" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1128.8300000000004" y="-134" width="120" height="40" as="geometry" />
         </mxCell>
       </root>

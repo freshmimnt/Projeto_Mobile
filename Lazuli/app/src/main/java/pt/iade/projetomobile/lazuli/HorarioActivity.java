@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,14 +14,13 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import pt.iade.projetomobile.lazuli.adapters.HorarioAdapter;
+import pt.iade.projetomobile.lazuli.adapters.CalendarioAdapter;
 
-public class HorarioActivity extends AppCompatActivity implements HorarioAdapter.OnItemListener{
+public class HorarioActivity extends AppCompatActivity implements CalendarioAdapter.OnItemListener{
     private FloatingActionButton fab;
     private TextView month;
     private RecyclerView horarioRecyclerView;
@@ -68,10 +66,10 @@ public class HorarioActivity extends AppCompatActivity implements HorarioAdapter
         month.setText(monthOfYear(selectDate));
         ArrayList<String> daysInMonth = daysInMonthArray(selectDate);
 
-        HorarioAdapter horarioAdapter = new HorarioAdapter(daysInMonth, this);
+        CalendarioAdapter calendarioAdapter = new CalendarioAdapter(daysInMonth, this);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
         horarioRecyclerView.setLayoutManager(layoutManager);
-        horarioRecyclerView.setAdapter(horarioAdapter);
+        horarioRecyclerView.setAdapter(calendarioAdapter);
     }
 
     private ArrayList<String> daysInMonthArray(LocalDate date) {

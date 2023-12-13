@@ -58,7 +58,7 @@ public class UCAdapter extends RecyclerView.Adapter<UCAdapter.ViewHolder> {
         public ViewHolder(View itemView){
             super(itemView);
 
-            ucName = itemView.findViewById(R.id.ucView);
+            ucName = itemView.findViewById(R.id.ucText);
 
             itemView.setOnClickListener(this);
         }

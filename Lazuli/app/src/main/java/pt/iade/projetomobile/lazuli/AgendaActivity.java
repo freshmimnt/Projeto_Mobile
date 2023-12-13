@@ -26,8 +26,7 @@ public class AgendaActivity extends AppCompatActivity {
     protected static final int EDITOR_ACTIVITY_RETURN_ID = 1;
     protected RecyclerView TodoList;
     protected AgendaAdapter agendaAdapter;
-    protected ArrayList<TarefaItem> tarefaList;
-    protected ArrayList<TesteItem> testeList;
+    protected ArrayList<Object> combinedList = new ArrayList<>();
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -43,21 +42,21 @@ public class AgendaActivity extends AppCompatActivity {
                     TarefaItem updateItem = (TarefaItem) itemSerializable;
 
                     if (position == -1) {
-                        tarefaList.add(updateItem);
-                        agendaAdapter.notifyItemInserted(tarefaList.size() - 1);
+                        combinedList.add(updateItem);
+                        agendaAdapter.notifyItemInserted(combinedList.size() - 1);
                     } else {
-                        tarefaList.set(position, updateItem);
+                        combinedList.set(position, updateItem);
                         agendaAdapter.notifyItemChanged(position);
                     }
                 } else if (itemSerializable instanceof TesteItem) {
                     TesteItem updateItem = (TesteItem) itemSerializable;
 
                     if(position == -1){
-                        testeList.add(updateItem);
-                        agendaAdapter.notifyItemInserted(testeList.size()-1);
+                        combinedList.add(updateItem);
+                        agendaAdapter.notifyItemInserted(combinedList.size()-1);
 
                     }else{
-                        testeList.set(position, updateItem);
+                        combinedList.set(position, updateItem);
                         agendaAdapter.notifyItemChanged(position);
                     }
 
@@ -71,12 +70,8 @@ public class AgendaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agenda);
 
-        tarefaList = TarefaItem.List();
-        testeList = TesteItem.List();
-
-        ArrayList<Object> combinedList = new ArrayList<>();
-        combinedList.addAll(tarefaList);
-        combinedList.addAll(testeList);
+        combinedList.addAll(TarefaItem.List());
+        combinedList.addAll(TesteItem.List());
         agendaAdapter = new AgendaAdapter(this, combinedList);
 
         agendaAdapter.setOnClickListener(new AgendaAdapter.ItemClickListener() {

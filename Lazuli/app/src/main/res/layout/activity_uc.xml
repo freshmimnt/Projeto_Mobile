@@ -39,12 +39,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ucView"
-        android:layout_width="412dp"
-        android:layout_height="566dp"
-        android:layout_marginBottom="156dp"
+        android:layout_width="408dp"
+        android:layout_height="501dp"
+        android:layout_marginBottom="192dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ucLogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

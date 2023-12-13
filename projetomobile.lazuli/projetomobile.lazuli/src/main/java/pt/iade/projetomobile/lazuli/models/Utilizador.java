@@ -1,4 +1,7 @@
 package pt.iade.projetomobile.lazuli.models;
+
+import jakarta.persistence.*;
+
 @Entity
 @Table(name = "Utilizador")
 public class Utilizador {
@@ -6,7 +9,7 @@ public class Utilizador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private Long id;
+    private int id;
 
     @Column(name = "user_name", nullable = false)
     private String name;

@@ -9,30 +9,30 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import pt.iade.projetomobile.lazuli.R;
-import pt.iade.projetomobile.lazuli.views.HorarioViewHolder;
+import pt.iade.projetomobile.lazuli.views.CalendarioViewHolder;
 
-public class HorarioAdapter extends RecyclerView.Adapter<HorarioViewHolder> {
+public class CalendarioAdapter extends RecyclerView.Adapter<CalendarioViewHolder> {
     private OnItemListener onItemListener;
     private final ArrayList<String> daysOfMonth;
 
-    public HorarioAdapter(ArrayList<String> daysOfMonth, OnItemListener onItemListener) {
+    public CalendarioAdapter(ArrayList<String> daysOfMonth, OnItemListener onItemListener) {
         this.daysOfMonth = daysOfMonth;
         this.onItemListener = onItemListener;
     }
 
     @NonNull
     @Override
-    public HorarioViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CalendarioViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.calendar_cell, parent,false);
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
         layoutParams.height = (int) (parent.getHeight() * 0.1666666);
 
-        return new HorarioViewHolder(view, onItemListener);
+        return new CalendarioViewHolder(view, onItemListener);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HorarioViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CalendarioViewHolder holder, int position) {
         holder.dayOfMonth.setText(daysOfMonth.get(position));
     }
 

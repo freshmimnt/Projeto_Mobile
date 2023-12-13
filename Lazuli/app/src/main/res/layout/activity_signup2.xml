@@ -98,7 +98,6 @@
         android:ems="10"
         android:hint="@string/curso_text"
         android:textColor="@color/black"
-        android:textColorHint="#546E7A"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/uni"

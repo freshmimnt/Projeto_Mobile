@@ -32,6 +32,8 @@
     <string name="horatxt">Hora</string>
     <string name="datatxt">Data</string>
     <string name="desctxt">Descrição</string>
+    <string name="nextMonth"><![CDATA[<-]]></string>
+    <string name="previousMonth"><![CDATA[->]]></string>
     <string-array name="Cursos">
         <item>Engenharia Informática</item>
         <item>Informática de Gestão</item>

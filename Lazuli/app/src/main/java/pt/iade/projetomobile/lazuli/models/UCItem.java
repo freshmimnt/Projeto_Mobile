@@ -24,6 +24,18 @@ public class UCItem implements Serializable{
         this.desc = desc;
     }
 
+    public static ArrayList<UCItem> List(){
+        ArrayList<UCItem> items = new ArrayList<UCItem>();
+        items.add(new UCItem(1,"Física","Frito","e","muito bom"));
+        items.add(new UCItem(2,"Base de Dados","tambem","e","muito bom"));
+        items.add(new UCItem(3,"Calculo","e","o","melhor que há"));
+        return items;
+    }
+
+    public static UCItem GetById(int id){
+        return new UCItem(id,"","","","");
+    }
+
     public int getId() {
         return id;
     }

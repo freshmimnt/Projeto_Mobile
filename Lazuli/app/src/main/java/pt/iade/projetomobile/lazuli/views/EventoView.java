@@ -23,7 +23,7 @@ public class EventoView extends LinearLayout {
         this.evento = evento;
 
         titleText = (TextView)view.findViewById(R.id.titleLabel);
-        participantsText = (TextView)view.findViewById(R.id.participantsLabel);
+        participantsText = (TextView)view.findViewById(R.id.partiLabel);
 
         populateView();
     }
@@ -44,7 +44,7 @@ public class EventoView extends LinearLayout {
     }
 
     public void populateView() {
-        titleText.setText(evento.getTitle());
+        titleText.setText(evento.getName());
         participantsText.setText(evento.getParticipants() + " participants");
     }
 }

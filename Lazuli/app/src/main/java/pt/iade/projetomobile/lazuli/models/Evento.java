@@ -4,17 +4,17 @@ import java.io.Serializable;
 
 public class Evento implements Serializable {
     private int id;
-    private String title;
+    private String name;
     private int participants;
 
-    public Evento(int id, String title, int participants) {
+    public Evento(int id, String name, int participants) {
         this.id = id;
-        this.title = title;
+        this.name = name;
         this.participants = participants;
     }
 
-    public Evento(String title, int participants) {
-        this(0, title, participants);
+    public Evento(String name, int participants) {
+        this(0, name, participants);
     }
 
     public int getId() {
@@ -25,12 +25,12 @@ public class Evento implements Serializable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getParticipants() {

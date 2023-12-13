@@ -1,7 +1,5 @@
 Guia de dados:
 
-Aqui está o dicionário de dados para o código de base de dados SQL:
-
 Tabela: Utilizador
 user_id: identificador único do utilizador (int)
 user_name: nome do utilizador (VARCHAR(60))

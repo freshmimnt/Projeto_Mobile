@@ -3,7 +3,7 @@ package pt.iade.projetomobile.lazuli;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "pt.iade.projetomobile.lazuli")
 public class Application {
 
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package pt.iade.projetomobile.lazuli.models;
+package pt.iade.projetomobile.lazuli.models.curso;
 import jakarta.persistence.*;
 
 @Entity

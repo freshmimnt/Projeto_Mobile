@@ -1,4 +1,4 @@
-package pt.iade.projetomobile.lazuli.models.tarefa;
+package pt.iade.projetomobile.lazuli.models.teste;
 
 import jakarta.persistence.*;
 import pt.iade.projetomobile.lazuli.models.agenda.Agenda;
@@ -6,38 +6,42 @@ import pt.iade.projetomobile.lazuli.models.agenda.Agenda;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Tarefa")
-public class Tarefa {
+@Table(name = "Teste")
+public class Teste {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tarefa_id")
+    @Column(name = "test_id")
     private int id;
 
-    @Column(name = "tarefa_name")
+    @Column(name = "test_name")
     private String name;
 
-    @Column(name = "tarefa_date")
+    @Column(name = "test_date")
     private LocalDateTime dateTime;
 
-    @Column(name = "tarefa_nota")
+    @Column(name = "test_nota")
     private String nota;
 
-    @Column(name = "tarefa_desc")
+    @Column(name = "test_desc")
     private String desc;
 
     @Column(name = "is_finished")
     private boolean isFinished;
 
-    @Column(name = "tarefa_agen_id", insertable=false, updatable=false)
+    @Column(name = "test_agend_id")
     private int agendId;
 
     @ManyToOne
-    @JoinColumn(name = "tarefa_agen_id", referencedColumnName = "agen_id")
+    @JoinColumn(name = "test_agen_id", referencedColumnName = "agen_id" )
     private Agenda agenda;
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -82,6 +86,7 @@ public class Tarefa {
 
     public Agenda getAgenda() {
         return agenda;
+
     }
 
     public void setAgenda(Agenda agenda) {

@@ -1,6 +1,5 @@
 package pt.iade.projetomobile.lazuli.models.lembrete;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

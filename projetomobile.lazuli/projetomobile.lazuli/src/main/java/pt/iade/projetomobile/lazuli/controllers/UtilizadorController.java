@@ -3,14 +3,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pt.iade.projetomobile.lazuli.models.user.Utilizador;
 import pt.iade.projetomobile.lazuli.models.user.UtilizadorDao;
+import pt.iade.projetomobile.lazuli.models.user.UtilizadorRepository;
 
 import java.util.List;
-
 
 @RestController
 public class UtilizadorController {
     @Autowired
     private UtilizadorDao utilizadorDao;
+
+    @Autowired
+    private UtilizadorRepository utilizadorRepository;
 
     @GetMapping("/user/get")
     public List<Utilizador> getAllUsers(){
@@ -19,8 +22,13 @@ public class UtilizadorController {
 
     @PostMapping("/user/save")
     public void save(@RequestBody Utilizador utilizador){
+
         utilizadorDao.save(utilizador);
     }
 
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable("id") int id){
+        utilizadorDao.delete(utilizadorRepository.findById(id));
+    }
 
 }

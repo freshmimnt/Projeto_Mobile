@@ -17,4 +17,15 @@ public class CursoDao {
         cursoRepository.save(curso);
     }
 
+    public List<Curso> getAllCursos(){
+        List<Curso> cursos = new ArrayList<>();
+        Streamable.of(cursoRepository.findAll())
+                .forEach(cursos::add);
+        return cursos;
+    }
+
+    public void delete(Curso curso){
+        cursoRepository.delete(curso);
+    }
+
 }

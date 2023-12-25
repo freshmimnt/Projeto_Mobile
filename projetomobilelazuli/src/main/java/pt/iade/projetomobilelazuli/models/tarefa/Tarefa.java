@@ -1,40 +1,40 @@
-package pt.iade.projetomobile.lazuli.models.evento;
+package pt.iade.projetomobilelazuli.models.tarefa;
 
 import jakarta.persistence.*;
-import pt.iade.projetomobile.lazuli.models.user.Utilizador;
+import pt.iade.projetomobilelazuli.models.agenda.Agenda;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Evento")
-public class Evento {
+@Table(name = "Tarefa")
+public class Tarefa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "even_id")
+    @Column(name = "tarefa_id")
     private int id;
 
-    @Column(name = "even_name")
+    @Column(name = "tarefa_name")
     private String name;
 
-    @Column(name = "even_date")
+    @Column(name = "tarefa_date")
     private LocalDateTime dateTime;
 
-    @Column(name = "even_participante")
-    private int parti;
+    @Column(name = "tarefa_nota")
+    private String nota;
 
-    @Column(name = "even_desc")
+    @Column(name = "tarefa_desc")
     private String desc;
 
     @Column(name = "is_finished")
     private boolean isFinished;
 
-    @Column(name = "even_user_id", insertable=false, updatable=false)
-    private int userId;
+    @Column(name = "tarefa_agen_id", insertable=false, updatable=false)
+    private int agendId;
 
     @ManyToOne
-    @JoinColumn(name = "even_user_id", referencedColumnName = "user_id")
-    private Utilizador utilizador;
+    @JoinColumn(name = "tarefa_agen_id", referencedColumnName = "agen_id")
+    private Agenda agenda;
 
     public int getId() {
         return id;
@@ -56,12 +56,12 @@ public class Evento {
         this.dateTime = dateTime;
     }
 
-    public int getParti() {
-        return parti;
+    public String getNota() {
+        return nota;
     }
 
-    public void setParti(int parti) {
-        this.parti = parti;
+    public void setNota(String nota) {
+        this.nota = nota;
     }
 
     public String getDesc() {
@@ -80,12 +80,16 @@ public class Evento {
         isFinished = finished;
     }
 
-    public Utilizador getUtilizador() {
-        return utilizador;
+    public int getAgendId() {
+        return agendId;
     }
 
-    public void setUtilizador(Utilizador utilizador) {
-        this.utilizador = utilizador;
-        this.userId = utilizador.getId();
+    public Agenda getAgenda() {
+        return agenda;
+    }
+
+    public void setAgenda(Agenda agenda) {
+        this.agenda = agenda;
+        this.agendId = agenda.getId();
     }
 }

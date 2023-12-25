@@ -1,4 +1,4 @@
-package pt.iade.projetomobile.lazuli.models.evento;
+package pt.iade.projetomobilelazuli.models.evento;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

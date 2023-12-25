@@ -1,4 +1,4 @@
-package pt.iade.projetomobile.lazuli.models.tarefa;
+package pt.iade.projetomobilelazuli.models.tarefa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -25,7 +25,6 @@ public class UtilizadorDao {
     }
 
     public void delete(Utilizador utilizador){
-
         utilizadorRepository.delete(utilizador);
     }
 

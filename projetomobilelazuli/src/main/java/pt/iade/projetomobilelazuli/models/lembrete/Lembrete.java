@@ -1,4 +1,5 @@
-package pt.iade.projetomobilelazuli.models.tarefa;
+package pt.iade.projetomobilelazuli.models.lembrete;
+
 
 import jakarta.persistence.*;
 import pt.iade.projetomobilelazuli.models.agenda.Agenda;
@@ -6,49 +7,46 @@ import pt.iade.projetomobilelazuli.models.agenda.Agenda;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Tarefa")
-public class Tarefa {
+@Table(name = "Lembrete")
+public class Lembrete {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tarefa_id")
+    @Column(name = "lemb_id", nullable = false)
     private int id;
 
-    @Column(name = "tarefa_name")
+    @Column(name = "lemb_name")
     private String name;
 
-    @Column(name = "tarefa_date")
+    @Column(name = "lemb_date")
     private LocalDateTime dateTime;
 
-    @Column(name = "tarefa_nota")
-    private String nota;
-
-    @Column(name = "tarefa_desc")
+    @Column(name = "lemb_desc")
     private String desc;
 
     @Column(name = "is_finished")
     private boolean isFinished;
 
-    @Column(name = "tarefa_agen_id", insertable=false, updatable=false)
+    @Column(name = "lemb_agen_id", insertable=false, updatable=false)
     private int agendId;
 
     @ManyToOne
-    @JoinColumn(name = "tarefa_agen_id", referencedColumnName = "agen_id")
+    @JoinColumn(name = "lemb_agen_id", referencedColumnName = "agen_id")
     private Agenda agenda;
 
-    public Tarefa(){}
+    public Lembrete(){}
 
-    public Tarefa(int id, String name, LocalDateTime dateTime, String nota,
-                  String desc, boolean isFinished, int agendId, Agenda agenda) {
+    public Lembrete(int id, String name, LocalDateTime dateTime,
+                    String desc, boolean isFinished, int agendId, Agenda agenda) {
         this.id = id;
         this.name = name;
         this.dateTime = dateTime;
-        this.nota = nota;
         this.desc = desc;
         this.isFinished = isFinished;
         this.agendId = agendId;
         this.agenda = agenda;
     }
+
 
     public int getId() {
         return id;
@@ -68,14 +66,6 @@ public class Tarefa {
 
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
-    }
-
-    public String getNota() {
-        return nota;
-    }
-
-    public void setNota(String nota) {
-        this.nota = nota;
     }
 
     public String getDesc() {
@@ -104,6 +94,6 @@ public class Tarefa {
 
     public void setAgenda(Agenda agenda) {
         this.agenda = agenda;
-        this.agendId = agenda.getId();
+        this.agendId = agendId;
     }
 }

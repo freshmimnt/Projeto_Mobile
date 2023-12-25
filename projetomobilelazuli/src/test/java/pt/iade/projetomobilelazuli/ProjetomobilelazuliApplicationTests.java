@@ -6,7 +6,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import pt.iade.projetomobilelazuli.models.agenda.Agenda;
 import pt.iade.projetomobilelazuli.models.agenda.AgendaDao;
 import pt.iade.projetomobilelazuli.models.agenda.AgendaRepository;
+import pt.iade.projetomobilelazuli.models.curso.Curso;
+import pt.iade.projetomobilelazuli.models.curso.CursoDao;
+import pt.iade.projetomobilelazuli.models.curso.CursoRepository;
 import pt.iade.projetomobilelazuli.models.evento.EventoDao;
+import pt.iade.projetomobilelazuli.models.lembrete.Lembrete;
+import pt.iade.projetomobilelazuli.models.lembrete.LembreteDao;
+import pt.iade.projetomobilelazuli.models.tarefa.Tarefa;
 import pt.iade.projetomobilelazuli.models.tarefa.TarefaDao;
 import pt.iade.projetomobilelazuli.models.teste.Teste;
 import pt.iade.projetomobilelazuli.models.teste.TesteDao;
@@ -41,41 +47,57 @@ class ProjetomobilelazuliApplicationTests {
 	@Autowired
 	private EventoDao eventoDao;
 
-	/*@Test
+	@Autowired
+	private LembreteDao lembreteDao;
+
+	@Autowired
+	private CursoDao cursoDao;
+	@Autowired
+	private CursoRepository cursoRepository;
+
+	private Curso curso;
+
+	@Test
 	void addUtilizadorTeste() {
 		Utilizador utilizador = new Utilizador();
 		utilizador.setName("Martim");
 		utilizador.setEmail("martim@gmail.com");
 		utilizador.setPassword("senha6998");
 		utilizador.setTurma("T02");
-		utilizador.setUserSemestre("2º");
+		utilizador.setSemestre("2º");
 		utilizadorDao.save(utilizador);
-	}*/
+	}
 
-	/*@Test
+	@Test
 	void deleteUserTeste(){
 		utilizador = utilizadorRepository.findById(3);
 		utilizadorDao.delete(utilizador);
-	}*/
+	}
+
+	@Test
+	void deleteCursoTeste(){
+		curso = cursoRepository.findById(2);
+		cursoDao.delete(curso);
+	}
 
 
-	/*@Test
+	@Test
 	void addCursoTeste(){
 		Curso curso = new Curso();
-		curso.setName("Informática de Gestão");
+		curso.setName("Engenharia Informática");
 		cursoDao.save(curso);
-	}*/
+	}
 
-	/*@Test
+	@Test
 	void addAgendaTeste(){
 		utilizador = utilizadorRepository.findById(4);
 		Agenda agenda = new Agenda();
 		agenda.setName("Agenda 1");
 		agenda.setUtilizador(utilizador);
 		agendaDao.save(agenda);
-	}*/
+	}
 
-	/*@Test
+	@Test
 	void addLembreteTeste(){
 		agenda = agendaRepository.findById(2);
 		Lembrete lembrete = new Lembrete();
@@ -85,9 +107,9 @@ class ProjetomobilelazuliApplicationTests {
 		lembrete.setFinished(false);
 		lembrete.setAgenda(agenda);
 		lembreteDao.save(lembrete);
-	}*/
+	}
 
-	/*@Test
+	@Test
 	void addTarefaTeste(){
 		agenda = agendaRepository.findById(1);
 		Tarefa tarefa = new Tarefa();
@@ -98,9 +120,9 @@ class ProjetomobilelazuliApplicationTests {
 		tarefa.setFinished(true);
 		tarefa.setAgenda(agenda);
 		tarefaDao.save(tarefa);
-	}*/
+	}
 
-	/*@Test
+	@Test
 	void addTesteTeste(){
 		agenda = agendaRepository.findById(1);
 		Teste teste = new Teste();
@@ -111,9 +133,9 @@ class ProjetomobilelazuliApplicationTests {
 		teste.setFinished(false);
 		teste.setAgenda(agenda);
 		testeDao.save(teste);
-	}*/
+	}
 
-	/*@Test
+	@Test
 	void addEventoTeste(){
 		utilizador = utilizadorRepository.findById(2);
 		Evento evento = new Evento();
@@ -124,7 +146,6 @@ class ProjetomobilelazuliApplicationTests {
 		evento.setFinished(true);
 		evento.setUtilizador(utilizador);
 		eventoDao.save(evento);
+	}
 
-	}*/
-	
 }

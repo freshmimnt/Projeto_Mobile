@@ -9,6 +9,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.content.SharedPreferences;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import pt.iade.projetomobile.lazuli.models.User;
+import pt.iade.projetomobile.lazuli.retrofit.RetrofitService;
+import pt.iade.projetomobile.lazuli.retrofit.UtilizadorApi;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -19,43 +29,51 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        initializeComponents();
+
+    }
+
+    private void initializeComponents(){
         nomeEditText = findViewById(R.id.nome);
         emailEditText = findViewById(R.id.email_signup);
         passEditText = findViewById(R.id.pass_Text);
         repPassEditText = findViewById(R.id.reppassText);
 
+
         Button nextButton = findViewById(R.id.nextButton);
+
+        RetrofitService retrofitService = new RetrofitService();
+        UtilizadorApi utilizadorApi = retrofitService.getRetrofit().create(UtilizadorApi.class);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validateSignup()) {
-                        saveNameToSharedPreferences();
+                    String nome = nomeEditText.getText().toString();
+                    String email = emailEditText.getText().toString();
+                    String password = passEditText.getText().toString();
+                    String repPassword = repPassEditText.getText().toString();
+                    User user = new User();
+                    user.setName(nome);
+                    user.setEmail(email);
+                    user.setPassword(repPassword);
+
+                    utilizadorApi.save(user)
+                            .enqueue(new Callback<User>() {
+                                @Override
+                                public void onResponse(Call<User> call, Response<User> response) {
+                                    Toast.makeText(SignupActivity.this, "Dados guardados com sucesso", Toast.LENGTH_SHORT).show();
+                                }
+
+                                @Override
+                                public void onFailure(Call<User> call, Throwable t) {
+                                    Toast.makeText(SignupActivity.this, "Falha ao guardar os dados", Toast.LENGTH_SHORT).show();
+                                    Logger.getLogger(SignupActivity.class.getName()).log(Level.SEVERE, "Ocorreu um erro", t);
+
+                                }
+                            });
+
                     Intent intent = new Intent(SignupActivity.this, Signup2Activity.class);
                     startActivity(intent);
-                }
-                else if (passEditText != repPassEditText){
-                    Toast.makeText(SignupActivity.this, "Password diferente de Repeat Password", Toast.LENGTH_SHORT).show();
-                }
-
-                else {
-                    Toast.makeText(SignupActivity.this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
-                }
             }
         });
-    }
-
-    private boolean validateSignup() {
-        String nome = nomeEditText.getText().toString().trim();
-        String email = emailEditText.getText().toString().trim();
-        String password = passEditText.getText().toString().trim();
-        String repPassword = repPassEditText.getText().toString().trim();
-        return !nome.isEmpty() && !email.isEmpty() && !password.isEmpty() && password.equals(repPassword);
-    }
-    private void saveNameToSharedPreferences() {
-        String nome = nomeEditText.getText().toString().trim();
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("nome", nome);
-        editor.apply();
     }
 }

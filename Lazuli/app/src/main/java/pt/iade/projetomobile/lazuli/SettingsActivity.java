@@ -28,9 +28,7 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         profileImage = (ImageView) findViewById(R.id.profilePicture);
-        String salvarNome = getSavedName();
         nome = (TextView) findViewById(R.id.nameView);
-        nome.setText(salvarNome);
         alterar = (Button) findViewById(R.id.altButton);
         relatorio = (Button) findViewById(R.id.relatorioButton);
 
@@ -72,9 +70,5 @@ public class SettingsActivity extends AppCompatActivity {
             }
         }
     }
-    private String getSavedName() {
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
-        return sharedPreferences.getString("nome", "");
-    }
 }

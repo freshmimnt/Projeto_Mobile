@@ -59,12 +59,14 @@ class ProjetomobilelazuliApplicationTests {
 
 	@Test
 	void addUtilizadorTeste() {
+		curso = cursoRepository.findById(1);
 		Utilizador utilizador = new Utilizador();
 		utilizador.setName("Martim");
 		utilizador.setEmail("martim@gmail.com");
 		utilizador.setPassword("senha6998");
 		utilizador.setTurma("T02");
 		utilizador.setSemestre("2º");
+		utilizador.setCurso(curso);
 		utilizadorDao.save(utilizador);
 	}
 

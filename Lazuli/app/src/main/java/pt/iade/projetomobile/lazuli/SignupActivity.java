@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.content.SharedPreferences;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -55,7 +54,6 @@ public class SignupActivity extends AppCompatActivity {
                     user.setName(nome);
                     user.setEmail(email);
                     user.setPassword(repPassword);
-
                     utilizadorApi.save(user)
                             .enqueue(new Callback<User>() {
                                 @Override

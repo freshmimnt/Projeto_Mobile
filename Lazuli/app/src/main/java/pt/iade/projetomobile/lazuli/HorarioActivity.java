@@ -1,5 +1,8 @@
 package pt.iade.projetomobile.lazuli;
 
+import static pt.iade.projetomobile.lazuli.utils.HorarioUtils.daysInMonthArray;
+import static pt.iade.projetomobile.lazuli.utils.HorarioUtils.monthOfYear;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,30 +17,32 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Locale;
 
-import pt.iade.projetomobile.lazuli.adapters.CalendarioAdapter;
+import pt.iade.projetomobile.lazuli.adapters.HorarioAdapter;
+import pt.iade.projetomobile.lazuli.utils.HorarioUtils;
 
-public class HorarioActivity extends AppCompatActivity implements CalendarioAdapter.OnItemListener{
+public class HorarioActivity extends AppCompatActivity implements HorarioAdapter.OnItemListener{
     private FloatingActionButton fab;
     private TextView month;
     private RecyclerView horarioRecyclerView;
-    private LocalDate selectDate;
     private Button next;
     private Button previous;
+
+    private Button weekly;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_horario);
         intWidgets();
-        selectDate = LocalDate.now();
+        HorarioUtils.selectDate = LocalDate.now();
         setMonView();
 
         next = findViewById(R.id.nextMonth);
         previous = findViewById(R.id.previousMonth);
+        weekly = findViewById(R.id.weekly);
         fab = (FloatingActionButton) findViewById(R.id.fab);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -60,69 +65,46 @@ public class HorarioActivity extends AppCompatActivity implements CalendarioAdap
                 previousMonthAction();
             }
         });
+
+        weekly.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HorarioActivity.this, HorarioSemanal.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setMonView() {
-        month.setText(monthOfYear(selectDate));
-        ArrayList<String> daysInMonth = daysInMonthArray(selectDate);
+        month.setText(monthOfYear(HorarioUtils.selectDate));
+        ArrayList<LocalDate> daysInMonth = daysInMonthArray(HorarioUtils.selectDate);
 
-        CalendarioAdapter calendarioAdapter = new CalendarioAdapter(daysInMonth, this);
+        HorarioAdapter horarioAdapter = new HorarioAdapter(daysInMonth, this);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
         horarioRecyclerView.setLayoutManager(layoutManager);
-        horarioRecyclerView.setAdapter(calendarioAdapter);
-    }
-
-    private ArrayList<String> daysInMonthArray(LocalDate date) {
-        ArrayList<String> daysInMonthArray = new ArrayList<>();
-        YearMonth yearMonth = YearMonth.from(date);
-
-        int daysInMonth = yearMonth.lengthOfMonth();
-
-        LocalDate firstOfMonth = selectDate.withDayOfMonth(1);
-        int dayOfWeek = firstOfMonth.getDayOfWeek().getValue();
-
-        for(int i = 1; i <= 42; i++)
-        {
-            if(i <= dayOfWeek || i > daysInMonth + dayOfWeek)
-            {
-                daysInMonthArray.add("");
-            }
-            else
-            {
-                daysInMonthArray.add(String.valueOf(i - dayOfWeek));
-            }
-        }
-        return  daysInMonthArray;
-    }
-
-    private String monthOfYear(LocalDate date){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy");
-        return date.format(formatter);
+        horarioRecyclerView.setAdapter(horarioAdapter);
     }
 
     private void intWidgets() {
         horarioRecyclerView = findViewById(R.id.horarioRecyclerView);
-        month = findViewById(R.id.month);
+        month = findViewById(R.id.Week);
     }
     public void previousMonthAction(){
-        selectDate = selectDate.minusMonths(1);
+        HorarioUtils.selectDate = HorarioUtils.selectDate.minusMonths(1);
         setMonView();
     }
     public void nextMonthAction(){
 
-        selectDate = selectDate.plusMonths(1);
+        HorarioUtils.selectDate = HorarioUtils.selectDate.plusMonths(1);
         setMonView();
 
     }
 
     @Override
-    public void onItemClick(int position, String dayText) {
-
-        if(!dayText.equals(""))
-        {
-            String message = "Data escolhida " + dayText + " " + monthOfYear(selectDate);
-            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    public void onItemClick(int position, LocalDate date) {
+        if(date != null){
+            HorarioUtils.selectDate = date;
+            setMonView();
         }
-
     }
 }

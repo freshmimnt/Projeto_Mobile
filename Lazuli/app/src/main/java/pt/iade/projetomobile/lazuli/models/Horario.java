@@ -1,16 +1,29 @@
 package pt.iade.projetomobile.lazuli.models;
 
-import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class Horario {
+
+    public static ArrayList<Horario> horarioArrayList = new ArrayList<>();
+
+    public static ArrayList<Horario> horariosPorDia(LocalDate date){
+        ArrayList<Horario> horarios = new ArrayList<>();
+        for(Horario horario : horarioArrayList){
+            if (horario.getHoraData().equals(date))
+                horarios.add(horario);
+        }
+        return horarios;
+    }
+
     private int id;
-    private Date horaData;
-    private Time horaInicio;
-    private Time horaFim;
+    private LocalDate horaData;
+    private LocalTime horaInicio;
+    private LocalTime horaFim;
     private String desc;
 
-    public Horario(int id, Date horaData, Time horaInicio, Time horaFim, String desc) {
+    public Horario(int id, LocalDate horaData, LocalTime horaInicio, LocalTime horaFim, String desc) {
         this.id = id;
         this.horaData = horaData;
         this.horaInicio = horaInicio;
@@ -22,27 +35,27 @@ public class Horario {
         return id;
     }
 
-    public Date getHoraData() {
+    public LocalDate getHoraData() {
         return horaData;
     }
 
-    public void setHoraData(Date horaData) {
+    public void setHoraData(LocalDate horaData) {
         this.horaData = horaData;
     }
 
-    public Time getHoraInicio() {
+    public LocalTime getHoraInicio() {
         return horaInicio;
     }
 
-    public void setHoraInicio(Time horaInicio) {
+    public void setHoraInicio(LocalTime horaInicio) {
         this.horaInicio = horaInicio;
     }
 
-    public Time getHoraFim() {
+    public LocalTime getHoraFim() {
         return horaFim;
     }
 
-    public void setHoraFim(Time horaFim) {
+    public void setHoraFim(LocalTime horaFim) {
         this.horaFim = horaFim;
     }
 

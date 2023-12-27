@@ -12,15 +12,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 import pt.iade.projetomobile.lazuli.adapters.HorarioAdapter;
+import pt.iade.projetomobile.lazuli.adapters.NovoHorarioAdapter;
+import pt.iade.projetomobile.lazuli.models.Horario;
 import pt.iade.projetomobile.lazuli.utils.HorarioUtils;
 
 public class HorarioActivity extends AppCompatActivity implements HorarioAdapter.OnItemListener{
@@ -30,7 +31,7 @@ public class HorarioActivity extends AppCompatActivity implements HorarioAdapter
     private Button next;
     private Button previous;
 
-    private Button weekly;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,6 @@ public class HorarioActivity extends AppCompatActivity implements HorarioAdapter
 
         next = findViewById(R.id.nextMonth);
         previous = findViewById(R.id.previousMonth);
-        weekly = findViewById(R.id.weekly);
         fab = (FloatingActionButton) findViewById(R.id.fab);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -66,13 +66,6 @@ public class HorarioActivity extends AppCompatActivity implements HorarioAdapter
             }
         });
 
-        weekly.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HorarioActivity.this, HorarioSemanal.class);
-                startActivity(intent);
-            }
-        });
     }
 
     private void setMonView() {
@@ -83,11 +76,14 @@ public class HorarioActivity extends AppCompatActivity implements HorarioAdapter
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
         horarioRecyclerView.setLayoutManager(layoutManager);
         horarioRecyclerView.setAdapter(horarioAdapter);
+
+        setNovoHorarioAdapter();
     }
 
     private void intWidgets() {
         horarioRecyclerView = findViewById(R.id.horarioRecyclerView);
         month = findViewById(R.id.Week);
+        listView = findViewById(R.id.listView);
     }
     public void previousMonthAction(){
         HorarioUtils.selectDate = HorarioUtils.selectDate.minusMonths(1);
@@ -106,5 +102,18 @@ public class HorarioActivity extends AppCompatActivity implements HorarioAdapter
             HorarioUtils.selectDate = date;
             setMonView();
         }
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        setNovoHorarioAdapter();
+    }
+
+    private void setNovoHorarioAdapter() {
+
+        ArrayList<Horario> horarios = Horario.horariosPorDia(HorarioUtils.selectDate);
+        NovoHorarioAdapter novoHorarioAdapter = new NovoHorarioAdapter(getApplicationContext(), horarios);
+        listView.setAdapter(novoHorarioAdapter);
     }
 }

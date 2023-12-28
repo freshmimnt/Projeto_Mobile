@@ -1,4 +1,5 @@
 package pt.iade.projetomobilelazuli.models.user;
+import jakarta.transaction.Transactional;
 import pt.iade.projetomobilelazuli.models.user.UtilizadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Streamable;
@@ -24,9 +25,11 @@ public class UtilizadorDao {
         return utilizadores;
     }
 
-    public void delete(Utilizador utilizador){
-
+    @Transactional
+    public void delete(int id) {
+        Utilizador utilizador = utilizadorRepository.findById(id);
         utilizadorRepository.delete(utilizador);
     }
+
 
 }

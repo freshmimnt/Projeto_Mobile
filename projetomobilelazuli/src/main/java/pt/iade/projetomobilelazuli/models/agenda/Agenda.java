@@ -9,13 +9,13 @@ public class Agenda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "agen_id")
+    @Column(name = "agen_id", nullable = false)
     private int id;
 
-    @Column(name = "agen_name")
+    @Column(name = "agen_name", nullable = false)
     private String name;
 
-    @Column(name = "agen_user_id", insertable=false, updatable=false)
+    @Column(name = "agen_user_id", insertable=false, nullable = false)
     private int userId;
 
     @ManyToOne

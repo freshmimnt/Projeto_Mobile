@@ -2,17 +2,12 @@ package pt.iade.projetomobile.lazuli;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TimePicker;
-
 import pt.iade.projetomobile.lazuli.models.UCItem;
 
 public class AddUcActivity extends AppCompatActivity {
@@ -41,6 +36,14 @@ public class AddUcActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                commitView();
+                item.save();
+
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("item", item);
+                setResult(AppCompatActivity.RESULT_OK, returnIntent);
+
+
                 finish();
             }
         });
@@ -52,6 +55,13 @@ public class AddUcActivity extends AppCompatActivity {
         sala.setText(item.getSala());
         prof.setText(item.getProf());
         desc.setText(item.getDesc());
+    }
+
+    protected void commitView(){
+        item.setNome(nome.getText().toString());
+        item.setSala(sala.getText().toString());
+        item.setProf(prof.getText().toString());
+        item.setDesc(desc.getText().toString());
     }
 
 }

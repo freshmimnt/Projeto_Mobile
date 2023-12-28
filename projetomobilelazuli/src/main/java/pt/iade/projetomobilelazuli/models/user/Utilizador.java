@@ -8,25 +8,25 @@ public class Utilizador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name = "user_id", nullable = false)
     private int id;
 
-    @Column(name = "user_name")
+    @Column(name = "user_name", nullable = false)
     private String name;
 
-    @Column(name = "user_email")
+    @Column(name = "user_email", nullable = false)
     private String email;
 
-    @Column(name = "user_password")
+    @Column(name = "user_password", nullable = false)
     private String password;
 
     @Column(name = "user_tur")
     private String turma;
 
-    @Column(name = "user_semestre")
+    @Column(name = "user_sem")
     private String semestre;
 
-    @Column(name = "user_cour_id", insertable=false, updatable=false)
+    @Column(name = "user_cour_id", insertable=false, nullable = false)
     private int courId;
 
     @ManyToOne

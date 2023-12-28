@@ -36,6 +36,14 @@ public class UCItem implements Serializable{
         return new UCItem(id,"","","","");
     }
 
+    public void save(){
+        if(id == 0){
+            id = new Random().nextInt(1000) + 1;
+        }else{
+
+        }
+    }
+
     public int getId() {
         return id;
     }

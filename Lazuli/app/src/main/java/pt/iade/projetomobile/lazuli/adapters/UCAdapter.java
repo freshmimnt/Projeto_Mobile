@@ -29,6 +29,9 @@ public class UCAdapter extends RecyclerView.Adapter<UCAdapter.ViewHolder> {
     }
 
     public void setOnClickListener(ItemClickListener listener) {
+
+
+
         clickListener = listener;
     }
 

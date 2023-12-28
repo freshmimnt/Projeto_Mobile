@@ -74,8 +74,6 @@ public class AddHorarioActivity extends AppCompatActivity {
 
                 Horario.horarioArrayList.add(novoHorario);
 
-
-
                 finish();
             }
         });

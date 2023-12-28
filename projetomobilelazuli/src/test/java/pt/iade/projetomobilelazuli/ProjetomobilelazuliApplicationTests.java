@@ -110,16 +110,15 @@ class ProjetomobilelazuliApplicationTests {
 	private UERepository ueRepository;
 	private UE ue;
 
-	/*@Test
+	@Test
 	void addUCTeste(){
-		curso = cursoRepository.findById(1);
-		utilizador = utilizadorRepository.findById(1);
+		utilizador = utilizadorRepository.findById(2);
+		curso = utilizador.getCurso();
 		UC uc = new UC();
 		uc.setName("Desenvolvimento de Projeto");
 		uc.setSala("Sala 22");
 		uc.setProf("Professor Carlos");
 		uc.setDesc("");
-		uc.setNota("");
 		uc.setCurso(curso);
 		uc.setUtilizador(utilizador);
 		ucDao.save(uc);
@@ -127,21 +126,16 @@ class ProjetomobilelazuliApplicationTests {
 
 	@Test
 	void addUtilizadorTeste() {
-		curso = cursoRepository.findById(1);
+
 		Utilizador utilizador = new Utilizador();
-		utilizador.setName("Martim");
-		utilizador.setEmail("martim@gmail.com");
-		utilizador.setPassword("senha6998");
-		utilizador.setTurma("T02");
-		utilizador.setSemestre("2º");
+		utilizador.setName("Monica");
+		utilizador.setEmail("monica@gmail.com");
+		utilizador.setPassword("senha698");
+		utilizador.setTurma("D01");
+		utilizador.setSemestre("1º");
+		curso = cursoRepository.findById(3);
 		utilizador.setCurso(curso);
 		utilizadorDao.save(utilizador);
-	}
-
-	@Test
-	void deleteUserTeste(){
-		utilizador = utilizadorRepository.findById(3);
-		utilizadorDao.delete(utilizador);
 	}
 
 	@Test
@@ -154,7 +148,7 @@ class ProjetomobilelazuliApplicationTests {
 	@Test
 	void addCursoTeste(){
 		Curso curso = new Curso();
-		curso.setName("Engenharia Informática");
+		curso.setName("Creative Technologies");
 		cursoDao.save(curso);
 	}
 
@@ -216,6 +210,6 @@ class ProjetomobilelazuliApplicationTests {
 		evento.setFinished(true);
 		evento.setUtilizador(utilizador);
 		eventoDao.save(evento);
-	}*/
+	}
 
 }

@@ -10,4 +10,10 @@ public class UCDao {
     public void save(UC uc){
         ucRepository.save(uc);
     }
+
+    public void delete(int UC_user_id){
+        UC uc = ucRepository.deleteByUserId(UC_user_id);
+        ucRepository.delete(uc);
+    }
+
 }

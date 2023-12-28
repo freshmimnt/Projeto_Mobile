@@ -8,4 +8,6 @@ public interface UtilizadorRepository extends CrudRepository<Utilizador, Integer
 
     Utilizador findById(int id);
 
+    Utilizador deleteUtilizadorById(int id);
+
 }

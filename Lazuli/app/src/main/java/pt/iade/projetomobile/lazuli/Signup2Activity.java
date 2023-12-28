@@ -11,9 +11,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import pt.iade.projetomobile.lazuli.retrofit.RetrofitService;
+import pt.iade.projetomobile.lazuli.retrofit.UtilizadorApi;
+
 public class Signup2Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private EditText semestreEditText, turmaEditText;
+    private int selectedCursoId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +26,9 @@ public class Signup2Activity extends AppCompatActivity implements AdapterView.On
         Spinner spinner = findViewById(R.id.curso);
         semestreEditText = findViewById(R.id.semestre);
         turmaEditText = findViewById(R.id.turma);
+
+        RetrofitService retrofitService = new RetrofitService();
+        UtilizadorApi utilizadorApi = retrofitService.getRetrofit().create(UtilizadorApi.class);
 
         Button nextButton = findViewById(R.id.nextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -63,3 +70,5 @@ public class Signup2Activity extends AppCompatActivity implements AdapterView.On
         return !semestre.isEmpty() && !turma.isEmpty();
     }
 }
+
+

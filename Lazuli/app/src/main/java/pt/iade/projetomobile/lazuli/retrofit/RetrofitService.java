@@ -24,4 +24,8 @@ public class RetrofitService {
         return retrofit;
     }
 
+    public CursoApi getCursoApi() {
+        return retrofit.create(CursoApi.class);
+    }
+
 }

@@ -4,6 +4,8 @@ public class User {
 
     private int id;
 
+    private int courId;
+
     private String name;
 
     private String email;
@@ -60,5 +62,13 @@ public class User {
 
     public void setSemestre(String semestre) {
         this.semestre = semestre;
+    }
+
+    public int getCourId() {
+        return courId;
+    }
+
+    public void setCourId(int courId) {
+        this.courId = courId;
     }
 }

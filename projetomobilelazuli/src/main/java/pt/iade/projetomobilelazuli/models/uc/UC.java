@@ -12,10 +12,10 @@ import java.time.LocalDateTime;
 public class UC {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "UC_id")
+    @Column(name = "UC_id", nullable = false)
     private int id;
 
-    @Column(name = "UC_name")
+    @Column(name = "UC_name", nullable = false)
     private String name;
 
     @Column(name = "UC_sala")
@@ -27,17 +27,14 @@ public class UC {
     @Column(name = "UC_desc")
     private String desc;
 
-    @Column(name = "media_nota")
-    private String nota;
-
-    @Column(name = "UC_cour_id")
+    @Column(name = "UC_cour_id", insertable=false, nullable = false)
     private int courId;
 
     @ManyToOne
     @JoinColumn(name = "UC_cour_id", referencedColumnName = "cour_id" )
     private Curso curso;
 
-    @Column(name = "UC_user_id")
+    @Column(name = "UC_user_id", insertable=false, nullable = false)
     private int userId;
 
     @ManyToOne
@@ -79,12 +76,6 @@ public class UC {
     public void setDesc(String desc) {
         this.desc = desc;
     }
-
-    public String getNota() {
-        return nota;
-    }
-
-    public void setNota(String nota) {this.nota = nota;}
 
     public int getCourId() {return courId;}
 

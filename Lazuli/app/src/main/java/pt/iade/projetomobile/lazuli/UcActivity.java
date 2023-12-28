@@ -41,10 +41,10 @@ public class UcActivity extends AppCompatActivity {
             @Override
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(UcActivity.this, AddUcActivity.class);
-
+                intent.putExtra("position", position);
                 intent.putExtra("item", ucsList.get(position));
 
-                startActivity(intent);
+                startActivityForResult(intent, EDITOR_ACTIVITY_RETURN_ID);
             }
         });
 
@@ -58,7 +58,7 @@ public class UcActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UcActivity.this, AddUcActivity.class);
-
+                intent.putExtra("position",-1);
                 intent.putExtra("item",new UCItem());
 
                 startActivityForResult(intent, EDITOR_ACTIVITY_RETURN_ID);
@@ -73,7 +73,15 @@ public class UcActivity extends AppCompatActivity {
     if(requestCode == EDITOR_ACTIVITY_RETURN_ID)
         if(resultCode == AppCompatActivity.RESULT_OK){
             UCItem updateItem = (UCItem) data.getSerializableExtra("item");
+            int position = data.getIntExtra("position", -1);
 
+            if(position == -1){
+                ucsList.add(updateItem);
+                ucAdapter.notifyItemInserted(ucsList.size()-1);
+            }else{
+                ucsList.set(position, updateItem);
+                ucAdapter.notifyItemChanged(position);
+            }
             ucsList.add(updateItem);
             ucAdapter.notifyItemInserted(ucsList.size()-1);
 

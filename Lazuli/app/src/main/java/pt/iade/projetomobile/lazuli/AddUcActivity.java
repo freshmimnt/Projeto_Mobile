@@ -15,6 +15,8 @@ public class AddUcActivity extends AppCompatActivity {
 
     protected UCItem item;
 
+    protected int ucPosition;
+
     private Button guardar;
 
     @Override
@@ -23,6 +25,9 @@ public class AddUcActivity extends AppCompatActivity {
         setContentView(R.layout.activity_adduc);
 
         Intent intent = getIntent();
+
+        ucPosition = intent.getIntExtra("position", -1);
+
         item = (UCItem) intent.getSerializableExtra("item");
 
         guardar = findViewById(R.id.gButton);
@@ -38,8 +43,8 @@ public class AddUcActivity extends AppCompatActivity {
 
                 commitView();
                 item.save();
-
                 Intent returnIntent = new Intent();
+                returnIntent.putExtra("position", ucPosition);
                 returnIntent.putExtra("item", item);
                 setResult(AppCompatActivity.RESULT_OK, returnIntent);
 

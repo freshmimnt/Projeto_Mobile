@@ -61,7 +61,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
-        android:id="@+id/hourButton"
+        android:id="@+id/hour1Button"
         android:layout_width="274dp"
         android:layout_height="76dp"
         android:layout_marginStart="24dp"
@@ -94,7 +94,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/showHour"
+        android:id="@+id/show2Hour"
         android:layout_width="122dp"
         android:layout_height="30dp"
         android:layout_marginStart="32dp"

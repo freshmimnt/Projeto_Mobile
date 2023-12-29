@@ -38,11 +38,14 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="415dp"
-        android:layout_height="513dp"
-        android:layout_marginBottom="200dp"
+        android:id="@+id/ucView"
+        android:layout_width="408dp"
+        android:layout_height="501dp"
+        android:layout_marginBottom="192dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ucLogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

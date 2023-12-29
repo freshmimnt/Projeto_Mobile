@@ -88,8 +88,8 @@
         app:layout_constraintStart_toStartOf="@+id/semestre"
         app:layout_constraintTop_toBottomOf="@+id/semestre" />
 
-    <EditText
-        android:id="@+id/oldpassword"
+    <Spinner
+        android:id="@+id/curso"
         android:layout_width="273dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -98,7 +98,6 @@
         android:ems="10"
         android:hint="@string/curso_text"
         android:textColor="@color/black"
-        android:textColorHint="#546E7A"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/uni"
@@ -119,9 +118,9 @@
         android:textColorHint="#546E7A"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/oldpassword"
+        app:layout_constraintEnd_toEndOf="@+id/curso"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/oldpassword"
-        app:layout_constraintTop_toBottomOf="@+id/oldpassword" />
+        app:layout_constraintStart_toStartOf="@+id/curso"
+        app:layout_constraintTop_toBottomOf="@+id/curso" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

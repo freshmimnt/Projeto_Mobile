@@ -1,5 +1,7 @@
 CREATE DATABASE BDProjeto;
 
+USE BDProjeto;
+
 create table Utilizador(
 user_id int not null auto_increment,
 user_name VARCHAR(60) not null,
@@ -17,25 +19,25 @@ primary key (cour_id)
 );
 
 create table UC(
-UC_id int not null auto_increment,
-UC_name VARCHAR(60) not null,
-UC_sala varchar(20),
-UC_prof varchar(30),
-UC_desc varchar(100),
+uc_id int not null auto_increment,
+uc_name VARCHAR(60) not null,
+uc_sala varchar(20),
+uc_prof varchar(30),
+uc_desc varchar(100),
 primary key (UC_id)
 );
 
 create table UCC(
-UCC_id int not null auto_increment,
-UCC_UC_id int,
-UCC_cour_id int,
+ucc_id int not null auto_increment,
+ucc_uc_id int,
+ucc_cour_id int,
 primary key (UCC_id)
 );
 
 create table UCCU(
-UCCU_id int not null auto_increment,
-UCCU_UCC_id int,
-UCCU_user_id int,
+uccu_id int not null auto_increment,
+uccu_ucc_id int,
+uccu_user_id int,
 primary key (UCCU_id)
 );
 
@@ -54,7 +56,7 @@ tarefa_nota varchar(20),
 tarefa_desc varchar(500),
 is_checked BOOLEAN not null,
 tarefa_agen_id int,
-tarefa_UCC_id int,
+tarefa_ucc_id int,
 primary key (tarefa_id)
 );
 
@@ -66,7 +68,7 @@ test_nota varchar(20),
 test_desc varchar(500),
 is_checked BOOLEAN not null,
 test_agen_id int,
-test_UCC_id int,
+test_ucc_id int,
 primary key (test_id)
 );
 
@@ -84,7 +86,7 @@ create table Evento(
 even_id int not null auto_increment,
 even_name varchar(30) not null,
 even_date datetime not null,
-even_participante int not null,
+even_parti int not null,
 even_desc varchar(500),
 even_user_id int,
 is_finished BOOLEAN not null,
@@ -92,30 +94,39 @@ primary key (even_id)
 );
 
 create table UE(
-UE_id int not null auto_increment,
-UE_even_id int,
-UE_user_id int,
+ue_id int not null auto_increment,
+ue_event_id int,
+ue_user_id int,
 primary key (UE_id)
 );
 
 create table Horario(
-hor_id INT AUTO_INCREMENT,
-hor_data datetime NOT NULL,
-hor_descricao VARCHAR(255),
-hor_UC_id int,
-primary key (hor_id)
+    hor_id INT AUTO_INCREMENT,
+    hor_data DATE NOT NULL,
+    hor_hora_inicio TIME NOT NULL,
+    hor_hora_fim TIME NOT NULL,
+    hor_descricao VARCHAR(255),
+    hor_uc_id int,
+    primary key (hor_id)
+);
+
+create table Contacto(
+cont_id int not null auto_increment,
+cont_user_id int,
+cont_user2_id int,
+primary key (cont_id)
 );
 
 create table PAmizade(
-PA_id int not null auto_increment,
-PA_user_id int,
-PA_stat_id int,
+pa_id int not null auto_increment,
+pa_cont_id int,
+pa_stat_id int,
 primary key (PA_id)
 );
 
 create table Estado(
 stat_id int not null auto_increment,
-is_accepted BOOLEAN not null,
+stat_name VARCHAR(50) not null,
 primary key (stat_id)
 );
 
@@ -180,9 +191,18 @@ add constraint UE_fk_even
 foreign key (UE_even_id) references Evento(even_id)
 ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+alter table Contacto
+add constraint cont_fk_user
+foreign key (cont_user_id) references Utilizador(user_id)
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+alter table Contacto
+add constraint cont_fk_user2
+foreign key (cont_user2_id) references Utilizador(user_id)
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 alter table PAmizade
-add constraint PA_fk_user
-foreign key (PA_user_id) references Utilizador(user_id)
+add constraint PA_fk_cont
+foreign key (PA_cont_id) references Contacto(cont_id)
 ON DELETE NO ACTION ON UPDATE NO ACTION;
 alter table PAmizade
 add constraint PA_fk_stat

@@ -11,15 +11,13 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.EditText;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import pt.iade.projetomobile.lazuli.adapters.TarefaItemRowAdapter;
-import pt.iade.projetomobile.lazuli.adapters.TesteItemRowAdapter;
+import pt.iade.projetomobile.lazuli.adapters.AgendaAdapter;
 import pt.iade.projetomobile.lazuli.models.TarefaItem;
 import pt.iade.projetomobile.lazuli.models.TesteItem;
 
@@ -27,10 +25,8 @@ public class AgendaActivity extends AppCompatActivity {
 
     protected static final int EDITOR_ACTIVITY_RETURN_ID = 1;
     protected RecyclerView TodoList;
-    protected TarefaItemRowAdapter tarefaRowAdapter;
-    protected TesteItemRowAdapter testeRowAdapter;
-    protected ArrayList<TarefaItem> tarefaList;
-    protected ArrayList<TesteItem> testeList;
+    protected AgendaAdapter agendaAdapter;
+    protected ArrayList<Object> combinedList = new ArrayList<>();
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -46,22 +42,22 @@ public class AgendaActivity extends AppCompatActivity {
                     TarefaItem updateItem = (TarefaItem) itemSerializable;
 
                     if (position == -1) {
-                        tarefaList.add(updateItem);
-                        tarefaRowAdapter.notifyItemInserted(tarefaList.size() - 1);
+                        combinedList.add(updateItem);
+                        agendaAdapter.notifyItemInserted(combinedList.size() - 1);
                     } else {
-                        tarefaList.set(position, updateItem);
-                        tarefaRowAdapter.notifyItemChanged(position);
+                        combinedList.set(position, updateItem);
+                        agendaAdapter.notifyItemChanged(position);
                     }
                 } else if (itemSerializable instanceof TesteItem) {
                     TesteItem updateItem = (TesteItem) itemSerializable;
 
                     if(position == -1){
-                        testeList.add(updateItem);
-                        testeRowAdapter.notifyItemInserted(testeList.size()-1);
+                        combinedList.add(updateItem);
+                        agendaAdapter.notifyItemInserted(combinedList.size()-1);
 
                     }else{
-                        testeList.set(position, updateItem);
-                        testeRowAdapter.notifyItemChanged(position);
+                        combinedList.set(position, updateItem);
+                        agendaAdapter.notifyItemChanged(position);
                     }
 
                 }
@@ -74,40 +70,32 @@ public class AgendaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agenda);
 
-        tarefaList = TarefaItem.List();
-        testeList = TesteItem.List();
+        combinedList.addAll(TarefaItem.List());
+        combinedList.addAll(TesteItem.List());
+        agendaAdapter = new AgendaAdapter(this, combinedList);
 
-        tarefaRowAdapter = new TarefaItemRowAdapter(this, tarefaList);
-        testeRowAdapter = new TesteItemRowAdapter(this, testeList);
-
-        tarefaRowAdapter.setOnClickListener(new TarefaItemRowAdapter.ItemClickListener() {
+        agendaAdapter.setOnClickListener(new AgendaAdapter.ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Intent intent = new Intent(AgendaActivity.this, TarefaActivity.class);
-                intent.putExtra("position", position);
-                intent.putExtra("item", tarefaList.get(position));
-                //startActivity(intent);
-
-                startActivityForResult(intent, EDITOR_ACTIVITY_RETURN_ID);
-            }
-        });
-
-        testeRowAdapter.setOnClickListener(new TesteItemRowAdapter.ItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                Intent intent = new Intent(AgendaActivity.this, TesteActivity.class);
-                intent.putExtra("position", position);
-                intent.putExtra("item", testeList.get(position));
-                //startActivity(intent);
-
-                startActivityForResult(intent, EDITOR_ACTIVITY_RETURN_ID);
+                // Handle the click for both TarefaItem and TesteItem
+                Object clickedItem = combinedList.get(position);
+                if (clickedItem instanceof TarefaItem) {
+                    Intent intent = new Intent(AgendaActivity.this, TarefaActivity.class);
+                    intent.putExtra("position", position);
+                    intent.putExtra("item", (TarefaItem) clickedItem);
+                    startActivityForResult(intent, EDITOR_ACTIVITY_RETURN_ID);
+                } else if (clickedItem instanceof TesteItem) {
+                    Intent intent = new Intent(AgendaActivity.this, TesteActivity.class);
+                    intent.putExtra("position", position);
+                    intent.putExtra("item", (TesteItem) clickedItem);
+                    startActivityForResult(intent, EDITOR_ACTIVITY_RETURN_ID);
+                }
             }
         });
 
         TodoList = (RecyclerView) findViewById(R.id.toDoList);
         TodoList.setLayoutManager(new LinearLayoutManager(this));
-        TodoList.setAdapter(tarefaRowAdapter);
-        TodoList.setAdapter(testeRowAdapter);
+        TodoList.setAdapter(agendaAdapter);
 
 
 

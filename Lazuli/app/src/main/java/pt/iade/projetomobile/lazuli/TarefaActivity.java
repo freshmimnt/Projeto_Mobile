@@ -42,8 +42,8 @@ public class TarefaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tarefa);
         timeText = findViewById(R.id.showTime);
         date = findViewById(R.id.dateButton);
-        hourText = findViewById(R.id.showHour);
-        hour = findViewById(R.id.hourButton);
+        hourText = findViewById(R.id.show2Hour);
+        hour = findViewById(R.id.hour1Button);
         guardar = findViewById(R.id.gButton);
 
         Intent intent = getIntent();

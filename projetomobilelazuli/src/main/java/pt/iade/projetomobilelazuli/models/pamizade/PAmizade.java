@@ -29,17 +29,6 @@ public class PAmizade {
     @JoinColumn(name = "PA_stat_id", referencedColumnName = "stat_id")
     private Estado estado;
 
-    public PAmizade(){}
-
-    public PAmizade(int id, int contId, Contacto contacto) {
-        this.id = id;
-        this.contId = contId;
-        this.contacto = contacto;
-        this.statId = statId;
-        this.estado = estado;
-    }
-
-
     public int getId() {
         return id;
     }

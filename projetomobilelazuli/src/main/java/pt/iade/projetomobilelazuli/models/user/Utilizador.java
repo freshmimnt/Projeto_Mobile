@@ -26,7 +26,7 @@ public class Utilizador {
     @Column(name = "user_sem")
     private String semestre;
 
-    @Column(name = "user_cour_id", insertable=false, nullable = false)
+    @Column(name = "user_cour_id", insertable=false, updatable=false)
     private int courId;
 
     @ManyToOne

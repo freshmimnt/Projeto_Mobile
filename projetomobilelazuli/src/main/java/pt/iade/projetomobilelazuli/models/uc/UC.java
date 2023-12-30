@@ -27,14 +27,17 @@ public class UC {
     @Column(name = "UC_desc")
     private String desc;
 
-    @Column(name = "UC_cour_id", insertable=false, nullable = false)
+    @Column(name = "media_nota")
+    private float media;
+
+    @Column(name = "UC_cour_id", insertable=false, updatable=false, nullable = false)
     private int courId;
 
     @ManyToOne
     @JoinColumn(name = "UC_cour_id", referencedColumnName = "cour_id" )
     private Curso curso;
 
-    @Column(name = "UC_user_id", insertable=false, nullable = false)
+    @Column(name = "UC_user_id", insertable=false, updatable=false, nullable = false)
     private int userId;
 
     @ManyToOne
@@ -75,6 +78,14 @@ public class UC {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    public float getMedia() {
+        return media;
+    }
+
+    public void setMedia(float media) {
+        this.media = media;
     }
 
     public int getCourId() {return courId;}

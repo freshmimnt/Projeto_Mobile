@@ -8,7 +8,7 @@ public class Contacto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "cont_id")
+    @Column (name = "cont_id", nullable = false)
     private int id;
 
     @Column(name = "cont_user_id", insertable=false, updatable=false)

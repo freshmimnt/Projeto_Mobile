@@ -4,7 +4,7 @@ package pt.iade.projetomobilelazuli.models.lembrete;
 import jakarta.persistence.*;
 import pt.iade.projetomobilelazuli.models.agenda.Agenda;
 
-import java.time.LocalDateTime;
+import java.time.*;
 
 @Entity
 @Table(name = "Lembrete")
@@ -15,11 +15,14 @@ public class Lembrete {
     @Column(name = "lemb_id", nullable = false)
     private int id;
 
-    @Column(name = "lemb_name")
+    @Column(name = "lemb_name", nullable = false)
     private String name;
 
-    @Column(name = "lemb_date")
-    private LocalDateTime dateTime;
+    @Column(name = "lemb_data")
+    private LocalDate date;
+
+    @Column(name = "lemb_hora")
+    private LocalTime time;
 
     @Column(name = "lemb_desc")
     private String desc;
@@ -34,19 +37,6 @@ public class Lembrete {
     @JoinColumn(name = "lemb_agen_id", referencedColumnName = "agen_id")
     private Agenda agenda;
 
-    public Lembrete(){}
-
-    public Lembrete(int id, String name, LocalDateTime dateTime,
-                    String desc, boolean isFinished, int agendId, Agenda agenda) {
-        this.id = id;
-        this.name = name;
-        this.dateTime = dateTime;
-        this.desc = desc;
-        this.isFinished = isFinished;
-        this.agendId = agendId;
-        this.agenda = agenda;
-    }
-
 
     public int getId() {
         return id;
@@ -60,12 +50,20 @@ public class Lembrete {
         this.name = name;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public LocalTime getTime() {
+        return time;
+    }
+
+    public void setTime(LocalTime time) {
+        this.time = time;
     }
 
     public String getDesc() {

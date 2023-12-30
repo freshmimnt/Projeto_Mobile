@@ -50,6 +50,7 @@ public class AddUcActivity extends AppCompatActivity {
 
 
                 finish();
+
             }
         });
 

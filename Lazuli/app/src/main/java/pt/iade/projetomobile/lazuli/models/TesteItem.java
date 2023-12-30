@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Random;
+import pt.iade.projetomobile.lazuli.models.Curso;
 
 public class TesteItem implements Serializable {
 
@@ -15,6 +16,7 @@ public class TesteItem implements Serializable {
     private Calendar date;
     private Date time;
     private String description;
+    Curso curso;
 
     public TesteItem(){
 

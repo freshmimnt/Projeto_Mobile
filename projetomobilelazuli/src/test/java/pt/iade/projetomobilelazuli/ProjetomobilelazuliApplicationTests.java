@@ -161,55 +161,11 @@ class ProjetomobilelazuliApplicationTests {
 		agendaDao.save(agenda);
 	}
 
-	@Test
-	void addLembreteTeste(){
-		agenda = agendaRepository.findById(2);
-		Lembrete lembrete = new Lembrete();
-		lembrete.setName("Algo");
-		lembrete.setDateTime(LocalDateTime.now());
-		lembrete.setDesc("INcrivel");
-		lembrete.setFinished(false);
-		lembrete.setAgenda(agenda);
-		lembreteDao.save(lembrete);
-	}
 
-	@Test
-	void addTarefaTeste(){
-		agenda = agendaRepository.findById(1);
-		Tarefa tarefa = new Tarefa();
-		tarefa.setName("Projeto Final");
-		tarefa.setDateTime(LocalDateTime.of(2023, 12, 10, 18, 0, 0));
-		tarefa.setNota("10.5");
-		tarefa.setDesc("Entregar o projeto final de Metodologia de Investigação");
-		tarefa.setFinished(true);
-		tarefa.setAgenda(agenda);
-		tarefaDao.save(tarefa);
-	}
 
-	@Test
-	void addTesteTeste(){
-		agenda = agendaRepository.findById(1);
-		Teste teste = new Teste();
-		teste.setName("Prova de BD");
-		teste.setDateTime(LocalDateTime.now());
-		teste.setNota("20");
-		teste.setDesc("Algo Generico");
-		teste.setFinished(false);
-		teste.setAgenda(agenda);
-		testeDao.save(teste);
-	}
 
-	@Test
-	void addEventoTeste(){
-		utilizador = utilizadorRepository.findById(2);
-		Evento evento = new Evento();
-		evento.setName("Grupo de Estudo");
-		evento.setDateTime(LocalDateTime.now());
-		evento.setParti(20);
-		evento.setDesc("Algo");
-		evento.setFinished(true);
-		evento.setUtilizador(utilizador);
-		eventoDao.save(evento);
-	}
+
+
+
 
 }

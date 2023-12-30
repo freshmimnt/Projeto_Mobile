@@ -3,7 +3,9 @@ package pt.iade.projetomobilelazuli.models.teste;
 import jakarta.persistence.*;
 import pt.iade.projetomobilelazuli.models.agenda.Agenda;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "Teste")
@@ -11,14 +13,17 @@ public class Teste {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "test_id")
+    @Column(name = "test_id", nullable = false)
     private int id;
 
-    @Column(name = "test_name")
+    @Column(name = "test_name", nullable = false)
     private String name;
 
-    @Column(name = "test_date")
-    private LocalDateTime dateTime;
+    @Column(name = "test_data", nullable = false)
+    private LocalDate date;
+
+    @Column(name = "test_hora", nullable = false)
+    private LocalTime time;
 
     @Column(name = "test_nota")
     private String nota;
@@ -26,10 +31,10 @@ public class Teste {
     @Column(name = "test_desc")
     private String desc;
 
-    @Column(name = "is_finished")
+    @Column(name = "is_finished", nullable = false)
     private boolean isFinished;
 
-    @Column(name = "test_agend_id")
+    @Column(name = "test_agend_id", insertable=false, updatable=false)
     private int agendId;
 
     @ManyToOne
@@ -48,12 +53,20 @@ public class Teste {
         this.name = name;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public LocalTime getTime() {
+        return time;
+    }
+
+    public void setTime(LocalTime time) {
+        this.time = time;
     }
 
     public String getNota() {

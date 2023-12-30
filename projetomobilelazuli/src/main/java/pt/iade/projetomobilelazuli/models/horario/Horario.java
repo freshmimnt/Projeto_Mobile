@@ -1,6 +1,8 @@
 package pt.iade.projetomobilelazuli.models.horario;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
@@ -12,11 +14,11 @@ public class Horario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "hor_id")
+    @Column(name = "hor_id", nullable = false)
     private int id;
 
     @Column(name = "hor_date")
-    private Date date;
+    private LocalDate date;
 
     @Column(name = "hor_hora_inicio")
     private LocalTime time1;
@@ -30,34 +32,19 @@ public class Horario {
     @Column(name = "hor_UC_id", insertable=false, updatable=false)
     private int UCId;
 
-
-
     @ManyToOne
     @JoinColumn(name = "hor_UC_id", referencedColumnName = "UC_id")
     private UC uc;
-
-    public Horario(){
-
-    }
-
-    public Horario(int id, Date date, LocalTime time1, LocalTime time2, String desc, int UCId, UC uc) {
-        this.id = id;
-        this.date = date;
-        this.time1 = time1;
-        this.time2 = time2;
-        this.desc = desc;
-        this.uc = uc;
-    }
 
     public int getId() {
         return id;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

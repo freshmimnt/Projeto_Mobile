@@ -1,15 +1,17 @@
 package pt.iade.projetomobilelazuli.models.ue;
 
 import jakarta.persistence.*;
+import jdk.jshell.execution.Util;
 import pt.iade.projetomobilelazuli.models.curso.Curso;
 import pt.iade.projetomobilelazuli.models.evento.Evento;
+import pt.iade.projetomobilelazuli.models.user.Utilizador;
 
 @Entity
 @Table(name = "UE")
 public class UE {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "UE_id")
+    @Column(name = "UE_id", nullable = false)
     private int id;
 
     @Column(name = "UE_even_id", insertable=false, updatable=false)
@@ -19,22 +21,12 @@ public class UE {
     @JoinColumn(name = "UE_even_id", referencedColumnName = "even_id")
     private Evento evento;
 
-    @Column(name = "UE_cour_id", insertable=false, updatable=false)
-    private int courId;
+    @Column(name = "UE_user_id", insertable=false, updatable=false)
+    private int userId;
 
     @ManyToOne
-    @JoinColumn(name = "UE_cour_id", referencedColumnName = "cour_id")
-    private Curso curso;
-
-    public UE(){
-
-    }
-
-    public UE(int id, int evenId, Evento evento, int courId, Curso curso) {
-        this.id = id;
-        this.evento = evento;
-        this.curso = curso;
-    }
+    @JoinColumn(name = "UE_user_id", referencedColumnName = "user_id")
+    private Utilizador utilizador;
 
     public int getId() {
         return id;
@@ -53,16 +45,16 @@ public class UE {
         this.evenId = evento.getId();
     }
 
-    public int getCourId() {
-        return courId;
+    public int getUserId() {
+        return userId;
     }
 
-    public Curso getCurso() {
-        return curso;
+    public Utilizador getUtilizador() {
+        return utilizador;
     }
 
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-        this.courId = curso.getId();
+    public void setUtilizador(Utilizador utilizador) {
+        this.utilizador = utilizador;
+        this.userId = utilizador.getId();
     }
 }

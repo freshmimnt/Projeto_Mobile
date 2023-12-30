@@ -14,14 +14,6 @@ public class Estado {
     @Column(name = "stat_name", nullable = false)
     private String name;
 
-    public Estado() {
-    }
-
-    public Estado(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
     public int getId() {
         return id;
     }

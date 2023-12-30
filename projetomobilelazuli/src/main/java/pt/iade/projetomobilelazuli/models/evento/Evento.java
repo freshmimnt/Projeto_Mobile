@@ -3,7 +3,7 @@ package pt.iade.projetomobilelazuli.models.evento;
 import jakarta.persistence.*;
 import pt.iade.projetomobilelazuli.models.user.Utilizador;
 
-import java.time.LocalDateTime;
+import java.time.*;
 
 @Entity
 @Table(name = "Evento")
@@ -11,22 +11,25 @@ public class Evento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "even_id")
+    @Column(name = "even_id", nullable = false)
     private int id;
 
-    @Column(name = "even_name")
+    @Column(name = "even_name", nullable = false)
     private String name;
 
-    @Column(name = "even_date")
-    private LocalDateTime dateTime;
+    @Column(name = "even_data", nullable = false)
+    private LocalDate date;
 
-    @Column(name = "even_participante")
+    @Column(name = "even_time", nullable = false)
+    private LocalTime time;
+
+    @Column(name = "even_participante", nullable = false)
     private int parti;
 
     @Column(name = "even_desc")
     private String desc;
 
-    @Column(name = "is_finished")
+    @Column(name = "is_finished", nullable = false)
     private boolean isFinished;
 
     @Column(name = "even_user_id", insertable=false, updatable=false)
@@ -35,20 +38,6 @@ public class Evento {
     @ManyToOne
     @JoinColumn(name = "even_user_id", referencedColumnName = "user_id")
     private Utilizador utilizador;
-
-    public Evento(){
-
-    }
-
-    public Evento(int id, String name, LocalDateTime dateTime, int parti, String desc, boolean isFinished, Utilizador utilizador) {
-        this.id = id;
-        this.name = name;
-        this.dateTime = dateTime;
-        this.parti = parti;
-        this.desc = desc;
-        this.isFinished = isFinished;
-        this.utilizador = utilizador;
-    }
 
     public int getId() {
         return id;
@@ -62,12 +51,20 @@ public class Evento {
         this.name = name;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public LocalTime getTime() {
+        return time;
+    }
+
+    public void setTime(LocalTime time) {
+        this.time = time;
     }
 
     public int getParti() {

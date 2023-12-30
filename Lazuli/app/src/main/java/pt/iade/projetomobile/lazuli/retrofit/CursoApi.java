@@ -11,4 +11,7 @@ public interface CursoApi {
     @GET("/curso/get")
     Call<List<Curso>> getAllCursos();
 
+    @POST("/curso/add")
+    Call<Curso> save(@Body Curso curso);
+
 }

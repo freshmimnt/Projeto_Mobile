@@ -15,7 +15,7 @@ public class Agenda {
     @Column(name = "agen_name", nullable = false)
     private String name;
 
-    @Column(name = "agen_user_id", insertable=false, nullable = false)
+    @Column(name = "agen_user_id", insertable=false, updatable=false)
     private int userId;
 
     @ManyToOne

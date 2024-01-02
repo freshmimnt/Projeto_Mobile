@@ -2,6 +2,7 @@ package pt.iade.projetomobilelazuli.models.teste;
 
 import jakarta.persistence.*;
 import pt.iade.projetomobilelazuli.models.agenda.Agenda;
+import pt.iade.projetomobilelazuli.models.uc.UC;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -40,6 +41,13 @@ public class Teste {
     @ManyToOne
     @JoinColumn(name = "test_agen_id", referencedColumnName = "agen_id" )
     private Agenda agenda;
+
+    @Column(name = "test_UC_id", insertable=false, updatable=false)
+    private int ucId;
+
+    @ManyToOne
+    @JoinColumn(name = "test_UC_id", referencedColumnName = "UC_id")
+    private UC uc;
 
     public int getId() {
         return id;
@@ -105,5 +113,13 @@ public class Teste {
     public void setAgenda(Agenda agenda) {
         this.agenda = agenda;
         this.agendId = agenda.getId();
+    }
+
+    public UC getUc() {
+        return uc;
+    }
+
+    public void setUc(UC uc) {
+        this.uc = uc;
     }
 }

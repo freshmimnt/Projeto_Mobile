@@ -47,7 +47,7 @@ public class HorarioController {
         existingHor.setTime2(updatedHor.getTime2());
         existingHor.setDesc(updatedHor.getDesc());
         uc = ucRepository.findById(2);
-        existingHor.setUC(uc);
+        existingHor.setUc(uc);
         horarioRepository.save(existingHor);
     }
 }

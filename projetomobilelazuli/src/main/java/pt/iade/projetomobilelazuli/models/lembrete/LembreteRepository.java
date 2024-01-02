@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LembreteRepository extends CrudRepository<Lembrete, Integer> {
 
+    Lembrete findById(int id);
+
 }

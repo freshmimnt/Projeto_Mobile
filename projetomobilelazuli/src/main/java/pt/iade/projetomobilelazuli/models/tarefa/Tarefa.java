@@ -2,9 +2,7 @@ package pt.iade.projetomobilelazuli.models.tarefa;
 
 import jakarta.persistence.*;
 import pt.iade.projetomobilelazuli.models.agenda.Agenda;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
@@ -40,6 +38,8 @@ public class Tarefa {
     @ManyToOne
     @JoinColumn(name = "tarefa_agen_id", referencedColumnName = "agen_id")
     private Agenda agenda;
+
+    @Column(name = "")
 
     public int getId() {
         return id;

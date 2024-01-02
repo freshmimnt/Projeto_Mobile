@@ -20,6 +20,10 @@ public class CursoDao {
         return cursos;
     }
 
+    public void save(Curso curso){
+        cursoRepository.save(curso);
+    }
+
 }
 
 

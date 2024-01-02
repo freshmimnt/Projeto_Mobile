@@ -13,12 +13,17 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import pt.iade.projetomobile.lazuli.models.Curso;
 import pt.iade.projetomobile.lazuli.models.User;
 import pt.iade.projetomobile.lazuli.retrofit.CursoApi;
 import pt.iade.projetomobile.lazuli.retrofit.RetrofitService;
 import pt.iade.projetomobile.lazuli.retrofit.UtilizadorApi;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Signup2Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -40,25 +45,25 @@ public class Signup2Activity extends AppCompatActivity implements AdapterView.On
         turmaText = findViewById(R.id.turma);
 
         List<Curso> cursos = new ArrayList<>();
-        Curso curso1 = new Curso("Engenharia Informática");
+        Curso curso1 = new Curso(1,"Engenharia Informática");
         cursos.add(curso1);
-        Curso curso2 = new Curso("Informatica de Gestão");
+        Curso curso2 = new Curso(2, "Informatica de Gestão");
         cursos.add(curso2);
-        Curso curso3 = new Curso("Animação e Criação Visual");
+        Curso curso3 = new Curso(3,"Animação e Criação Visual");
         cursos.add(curso3);
-        Curso curso4 = new Curso("Marketing e Publicidade");
+        Curso curso4 = new Curso(4,"Marketing e Publicidade");
         cursos.add(curso4);
-        Curso curso5 = new Curso("Ciências da Comunicação");
+        Curso curso5 = new Curso(5,"Ciências da Comunicação");
         cursos.add(curso5);
-        Curso curso6 = new Curso("Design");
+        Curso curso6 = new Curso(6,"Design");
         cursos.add(curso6);
-        Curso curso7 = new Curso("Dupla EI e IG");
+        Curso curso7 = new Curso(7,"Dupla EI e IG");
         cursos.add(curso7);
-        Curso curso8 = new Curso("Design Global");
+        Curso curso8 = new Curso(8,"Design Global");
         cursos.add(curso8);
-        Curso curso9 = new Curso("Tecnologias Criativas");
+        Curso curso9 = new Curso(9,"Tecnologias Criativas");
         cursos.add(curso9);
-        Curso curso10 = new Curso("Desenvolvimento de Jogos");
+        Curso curso10 = new Curso(10,"Desenvolvimento de Jogos");
         cursos.add(curso10);
 
         RetrofitService retrofitService = new RetrofitService();
@@ -77,6 +82,23 @@ public class Signup2Activity extends AppCompatActivity implements AdapterView.On
                 User user = new User();
                 user.setSemestre(semestre);
                 user.setTurma(turma);
+                utilizadorApi.save(user).enqueue(new Callback<User>() {
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+
+                        Toast.makeText(Signup2Activity.this, "Failed to save data", Toast.LENGTH_SHORT).show();
+                        Logger.getLogger(SignupActivity.class.getName()).log(Level.SEVERE, "An error occurred");
+                    }
+
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                        Toast.makeText(Signup2Activity.this, "Data saved successfully", Toast.LENGTH_SHORT).show();
+
+                        // Start next activity
+                        Intent intent = new Intent(Signup2Activity.this, IntroActivity.class);
+                        startActivity(intent);
+                    }
+                });
 
 
             }

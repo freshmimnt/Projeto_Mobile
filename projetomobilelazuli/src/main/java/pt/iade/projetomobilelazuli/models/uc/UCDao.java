@@ -3,6 +3,8 @@ package pt.iade.projetomobilelazuli.models.uc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UCDao {
     @Autowired
@@ -11,9 +13,7 @@ public class UCDao {
         ucRepository.save(uc);
     }
 
-    public void delete(int UC_user_id){
-        UC uc = ucRepository.deleteByUserId(UC_user_id);
-        ucRepository.delete(uc);
+    public List<UC> getAllUCs() {
+        return null;
     }
-
 }

@@ -3,6 +3,7 @@ package pt.iade.projetomobilelazuli.models.lembrete;
 
 import jakarta.persistence.*;
 import pt.iade.projetomobilelazuli.models.agenda.Agenda;
+import pt.iade.projetomobilelazuli.models.uc.UC;
 
 import java.time.*;
 
@@ -36,6 +37,13 @@ public class Lembrete {
     @ManyToOne
     @JoinColumn(name = "lemb_agen_id", referencedColumnName = "agen_id")
     private Agenda agenda;
+
+    @Column(name ="lemb_UC_id", insertable=false, updatable=false)
+    private int ucId;
+
+    @ManyToOne
+    @JoinColumn(name = "lemb_UC_id")
+    private UC uc;
 
 
     public int getId() {
@@ -93,5 +101,13 @@ public class Lembrete {
     public void setAgenda(Agenda agenda) {
         this.agenda = agenda;
         this.agendId = agendId;
+    }
+
+    public UC getUc() {
+        return uc;
+    }
+
+    public void setUc(UC uc) {
+        this.uc = uc;
     }
 }

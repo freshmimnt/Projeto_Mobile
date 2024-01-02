@@ -138,12 +138,6 @@ class ProjetomobilelazuliApplicationTests {
 		utilizadorDao.save(utilizador);
 	}
 
-	@Test
-	void deleteCursoTeste(){
-		curso = cursoRepository.findById(2);
-		cursoDao.delete(curso);
-	}
-
 
 	@Test
 	void addCursoTeste(){

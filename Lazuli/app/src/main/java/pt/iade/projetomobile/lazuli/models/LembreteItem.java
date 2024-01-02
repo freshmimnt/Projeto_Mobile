@@ -1,56 +1,35 @@
 package pt.iade.projetomobile.lazuli.models;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Random;
 
-public class TarefaItem implements Serializable {
+public class LembreteItem {
+
     private int id;
     private boolean done;
     private String title;
-    private Calendar date;
-    private Date time;
-    private String description;
-    private float nota;
-    private int courId;
-    public TarefaItem(){
 
-        this(0, false, "", new GregorianCalendar(),new Date() ,"");
+    private Calendar date;
+
+    private Date time;
+
+    private String description;
+
+    private int agendId;
+
+    public LembreteItem(){
+
     }
-    public TarefaItem(int id, boolean done, String title, Calendar date, Date time, String description){
+
+    public LembreteItem(int id, boolean done, String title, Calendar date,
+                        Date time, String description, int agendId) {
         this.id = id;
         this.done = done;
         this.title = title;
         this.date = date;
         this.time = time;
         this.description = description;
-    }
-
-    public static ArrayList<TarefaItem> List(){
-        ArrayList<TarefaItem> items = new ArrayList<>();
-        items.add(new TarefaItem(1, true, "First", new GregorianCalendar(), new Date(), "Second"));
-
-        return items;
-    }
-
-    public static TarefaItem GetById(int id){
-
-        return new TarefaItem(id, false, "Fondue", new GregorianCalendar(), new Date(), "Slow");
-    }
-
-    public void save() {
-        // TODO: Send the object's data to our web server and update the database there.
-
-        if (id == 0) {
-
-            id = new Random().nextInt(1000) + 1;
-
-        } else {
-
-        }
+        this.agendId = agendId;
     }
 
     public int getId() {
@@ -95,5 +74,13 @@ public class TarefaItem implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getAgendId() {
+        return agendId;
+    }
+
+    public void setAgendId(int agendId) {
+        this.agendId = agendId;
     }
 }

@@ -76,6 +76,10 @@ public class Horario {
         return uc;
     }
 
+    public void setUc(UC uc) {
+        this.uc = uc;
+    }
+
     public void setUtilizador(UC uc) {
         this.uc = uc;
         this.UCId = uc.getId();

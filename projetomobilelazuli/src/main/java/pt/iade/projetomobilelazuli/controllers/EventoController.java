@@ -43,7 +43,8 @@ public class EventoController {
     public void update(@PathVariable("id") int id, @RequestBody Evento updatedEven) {
         Evento existingEven = eventoRepository.findById(id);
         existingEven.setName(updatedEven.getName());
-        existingEven.setDateTime(updatedEven.getDateTime());
+        existingEven.setDate(updatedEven.getDate());
+        existingEven.setTime(updatedEven.getTime());
         existingEven.setParti(updatedEven.getParti());
         existingEven.setDesc(updatedEven.getDesc());
         existingEven.setUtilizador(updatedEven.getUtilizador());

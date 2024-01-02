@@ -14,16 +14,10 @@ import java.util.List;
 @RestController
 public class UtilizadorController {
     @Autowired
-    private UtilizadorDao utilizadorDao;
-
-    @Autowired
     private UtilizadorRepository utilizadorRepository;
 
     @Autowired
     private CursoRepository cursoRepository;
-
-    @Autowired
-    private UCDao ucDao;
 
     @Autowired
     private UCRepository ucRepository;
@@ -33,13 +27,13 @@ public class UtilizadorController {
     @GetMapping("/user/get")
     public List<Utilizador> getAllUsers(){
 
-        return utilizadorDao.getAllUsers();
+        return (List<Utilizador>) utilizadorRepository.findAll();
     }
 
     @PostMapping("/user/save")
-    public void save(@RequestBody Utilizador utilizador){
+    public void save(@RequestBody Utilizador utilizador) {
 
-        utilizadorDao.save(utilizador);
+        utilizadorRepository.save(utilizador);
     }
 
     @PutMapping("/user/update/{id}")
@@ -54,4 +48,10 @@ public class UtilizadorController {
         existingUser.setCurso(curso);
         utilizadorRepository.save(existingUser);
     }
+
+    @DeleteMapping("/user/delete/{id}")
+    public void delete(@PathVariable int id){
+        utilizadorRepository.deleteById(id);
+    }
+
 }

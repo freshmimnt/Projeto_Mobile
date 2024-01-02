@@ -95,6 +95,10 @@ public class Utilizador {
         return courId;
     }
 
+    public void setCourId(int courId) {
+        this.courId = courId;
+    }
+
     public Curso getCurso() {
         return curso;
     }

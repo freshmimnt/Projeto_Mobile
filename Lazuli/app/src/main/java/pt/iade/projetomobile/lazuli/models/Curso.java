@@ -10,7 +10,7 @@ public class Curso {
 
     }
 
-    public Curso(String name) {
+    public Curso(int id, String name) {
         this.name = name;
     }
 

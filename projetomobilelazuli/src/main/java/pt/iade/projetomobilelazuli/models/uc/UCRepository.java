@@ -7,6 +7,5 @@ import org.springframework.stereotype.Repository;
 public interface UCRepository extends CrudRepository<UC, Integer> {
 
     UC findById(int id);
-    UC deleteByUserId(int UC_user_id);
 
 }

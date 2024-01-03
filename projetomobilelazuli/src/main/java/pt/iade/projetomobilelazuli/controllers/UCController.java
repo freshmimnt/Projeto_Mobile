@@ -32,12 +32,14 @@ public class UCController {
 
     @GetMapping("/uc/get")
     public List<UC> getAllUCs(){
-        return ucDao.getAllUCs();
+
+        return (List<UC>) ucRepository.findAll();
     }
 
     @PostMapping("/uc/save")
     public void save(@RequestBody UC uc){
-        ucDao.save(uc);
+
+        ucRepository.save(uc);
     }
 
     @PutMapping("/uc/update/{id}")
@@ -47,10 +49,12 @@ public class UCController {
         existingUC.setSala(updatedUC.getSala());
         existingUC.setProf(updatedUC.getProf());
         existingUC.setDesc(updatedUC.getDesc());
-        curso = cursoRepository.findById(2);
-        existingUC.setCurso(curso);
-        utilizador = utilizadorRepository.findById(2);
-        existingUC.setUtilizador(utilizador);
         ucRepository.save(existingUC);
     }
+
+    @DeleteMapping("/uc/delete/{id}")
+    public void delete(@PathVariable int id){
+        ucRepository.deleteById(id);
+    }
+
 }

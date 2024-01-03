@@ -23,13 +23,13 @@ public class CursoController {
     @GetMapping("/cour/get-all")
     public List<Curso> getAllCursos() {
 
-        return cursoDao.getAllcursos();
+        return (List<Curso>) cursoRepository.findAll();
     }
 
     @PostMapping("/cour/save")
     public void save(@RequestBody Curso curso){
 
-        cursoDao.save(curso);
+        cursoRepository.save(curso);
 
     }
 

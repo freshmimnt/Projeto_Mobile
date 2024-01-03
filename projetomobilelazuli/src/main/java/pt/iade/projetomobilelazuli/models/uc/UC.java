@@ -88,16 +88,12 @@ public class UC {
         this.media = media;
     }
 
-    public int getCourId() {return courId;}
-
     public Curso getCurso() {return curso;}
 
     public void setCurso(Curso curso) {
         this.curso = curso;
         this.courId = curso.getId();
     }
-
-    public int getUserId() {return userId;}
 
     public Utilizador getUtilizador() {return utilizador;}
 

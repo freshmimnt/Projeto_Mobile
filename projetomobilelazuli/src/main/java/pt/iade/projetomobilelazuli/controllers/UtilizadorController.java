@@ -37,15 +37,14 @@ public class UtilizadorController {
     }
 
     @PutMapping("/user/update/{id}")
-    public void update(@PathVariable("id") int id, @RequestBody Utilizador updatedUser) {
+    public void update(@PathVariable int id, @RequestBody Utilizador updatedUser) {
         Utilizador existingUser = utilizadorRepository.findById(id);
         existingUser.setName(updatedUser.getName());
         existingUser.setEmail(updatedUser.getEmail());
         existingUser.setPassword(updatedUser.getPassword());
         existingUser.setTurma(updatedUser.getTurma());
         existingUser.setSemestre(updatedUser.getSemestre());
-        curso = cursoRepository.findById(2);
-        existingUser.setCurso(curso);
+        existingUser.setCurso(updatedUser.getCurso());
         utilizadorRepository.save(existingUser);
     }
 

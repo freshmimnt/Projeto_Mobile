@@ -14,29 +14,23 @@ import java.util.List;
 @RestController
 public class EventoController {
     @Autowired
-    private EventoDao eventoDao;
-
-    @Autowired
     private EventoRepository eventoRepository;
 
     @Autowired
     private UtilizadorRepository utilizadorRepository;
-
-    @Autowired
-    private UtilizadorDao utilizadorDao;
 
     private Utilizador utilizador;
 
     @GetMapping("/even/get")
     public List<Evento> getAllEventos(){
 
-        return eventoDao.getAllEventos();
+        return (List<Evento>) eventoRepository.findAll();
     }
 
     @PostMapping("/even/save")
     public void save(@RequestBody Evento evento){
 
-        eventoDao.save(evento);
+        eventoRepository.save(evento);
     }
 
     @PutMapping("/even/update/{id}")
@@ -49,5 +43,10 @@ public class EventoController {
         existingEven.setDesc(updatedEven.getDesc());
         existingEven.setUtilizador(updatedEven.getUtilizador());
         eventoRepository.save(existingEven);
+    }
+
+    @DeleteMapping("/even/delete/{id}")
+    public void delete(@PathVariable int id){
+        eventoRepository.deleteById(id);
     }
 }

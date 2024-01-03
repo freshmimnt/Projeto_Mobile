@@ -14,13 +14,7 @@ import java.util.List;
 @RestController
 public class HorarioController {
     @Autowired
-    private HorarioDao horarioDao;
-
-    @Autowired
     private HorarioRepository horarioRepository;
-
-    @Autowired
-    private UCDao ucDao;
 
     @Autowired
     private UCRepository ucRepository;
@@ -30,24 +24,28 @@ public class HorarioController {
     @GetMapping("/hor/get")
     public List<Horario> getAllHorarios(){
 
-        return horarioDao.getAllHorarios();
+        return (List<Horario>) horarioRepository.findAll();
     }
 
     @PostMapping("/hor/save")
     public void save(@RequestBody Horario horario){
 
-        horarioDao.save(horario);
+        horarioRepository.save(horario);
     }
 
     @PutMapping("/hor/update/{id}")
-    public void update(@PathVariable("id") int id, @RequestBody Horario updatedHor) {
+    public void update(@PathVariable int id, @RequestBody Horario updatedHor) {
         Horario existingHor = horarioRepository.findById(id);
         existingHor.setDate(updatedHor.getDate());
         existingHor.setTime1(updatedHor.getTime1());
         existingHor.setTime2(updatedHor.getTime2());
         existingHor.setDesc(updatedHor.getDesc());
-        uc = ucRepository.findById(2);
-        existingHor.setUc(uc);
+        existingHor.setUc(updatedHor.getUC());
         horarioRepository.save(existingHor);
+    }
+
+    @DeleteMapping("hor/delete/{id}")
+    public void delete(@PathVariable int id){
+        horarioRepository.deleteById(id);
     }
 }

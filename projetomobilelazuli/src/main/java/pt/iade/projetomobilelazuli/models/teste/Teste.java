@@ -5,7 +5,6 @@ import pt.iade.projetomobilelazuli.models.agenda.Agenda;
 import pt.iade.projetomobilelazuli.models.uc.UC;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
@@ -105,11 +104,14 @@ public class Teste {
         return agendId;
     }
 
+    public void setAgendId(int agendId) {
+        this.agendId = agendId;
+    }
+
     public Agenda getAgenda() {
         return agenda;
 
     }
-
     public void setAgenda(Agenda agenda) {
         this.agenda = agenda;
         this.agendId = agenda.getId();
@@ -121,5 +123,6 @@ public class Teste {
 
     public void setUc(UC uc) {
         this.uc = uc;
+        this.ucId = uc.getId();
     }
 }

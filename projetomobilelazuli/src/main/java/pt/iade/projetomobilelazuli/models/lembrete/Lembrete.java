@@ -42,7 +42,7 @@ public class Lembrete {
     private int ucId;
 
     @ManyToOne
-    @JoinColumn(name = "lemb_UC_id")
+    @JoinColumn(name = "lemb_UC_id", referencedColumnName = "UC_id")
     private UC uc;
 
 
@@ -94,13 +94,25 @@ public class Lembrete {
         return agendId;
     }
 
+    public void setAgendId(int agendId) {
+        this.agendId = agendId;
+    }
+
     public Agenda getAgenda() {
         return agenda;
     }
 
     public void setAgenda(Agenda agenda) {
         this.agenda = agenda;
-        this.agendId = agendId;
+        this.agendId = agenda.getId();
+    }
+
+    public int getUcId() {
+        return ucId;
+    }
+
+    public void setUcId(int ucId) {
+        this.ucId = ucId;
     }
 
     public UC getUc() {
@@ -108,6 +120,8 @@ public class Lembrete {
     }
 
     public void setUc(UC uc) {
+
         this.uc = uc;
+        this.ucId = uc.getId();
     }
 }

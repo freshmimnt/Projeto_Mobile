@@ -37,7 +37,7 @@ public class Utilizador {
 
     }
 
-    public Utilizador(int id, String name, String email, String password, String turma, String semestre, int courId, Curso curso) {
+    public Utilizador(int id, String name, String email, String password, String turma, String semestre, Curso curso) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -89,14 +89,6 @@ public class Utilizador {
 
     public void setSemestre(String semestre) {
         this.semestre = semestre;
-    }
-
-    public int getCourId() {
-        return courId;
-    }
-
-    public void setCourId(int courId) {
-        this.courId = courId;
     }
 
     public Curso getCurso() {

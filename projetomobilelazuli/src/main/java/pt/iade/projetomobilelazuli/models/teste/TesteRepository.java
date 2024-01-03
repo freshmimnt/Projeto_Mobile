@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TesteRepository extends CrudRepository<Teste, Integer>{
-    Teste findBydId(int id);
+    Teste findById(int id);
 
 }

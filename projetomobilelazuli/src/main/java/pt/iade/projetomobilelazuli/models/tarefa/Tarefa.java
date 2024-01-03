@@ -2,6 +2,8 @@ package pt.iade.projetomobilelazuli.models.tarefa;
 
 import jakarta.persistence.*;
 import pt.iade.projetomobilelazuli.models.agenda.Agenda;
+import pt.iade.projetomobilelazuli.models.uc.UC;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -39,7 +41,12 @@ public class Tarefa {
     @JoinColumn(name = "tarefa_agen_id", referencedColumnName = "agen_id")
     private Agenda agenda;
 
-    @Column(name = "")
+    @Column(name = "tarefa_UC_id", insertable=false, updatable=false)
+    private int ucId;
+
+    @ManyToOne
+    @JoinColumn(name = "tarefa_UC_id", referencedColumnName = "UC_id")
+    private UC uc;
 
     public int getId() {
         return id;
@@ -97,6 +104,10 @@ public class Tarefa {
         return agendId;
     }
 
+    public void setAgendId(int agendId) {
+        this.agendId = agendId;
+    }
+
     public Agenda getAgenda() {
         return agenda;
     }
@@ -104,5 +115,23 @@ public class Tarefa {
     public void setAgenda(Agenda agenda) {
         this.agenda = agenda;
         this.agendId = agenda.getId();
+    }
+
+    public int getUcId() {
+        return ucId;
+    }
+
+    public void setUcId(int ucId) {
+        this.ucId = ucId;
+    }
+
+    public UC getUc() {
+        return uc;
+    }
+
+    public void setUc(UC uc) {
+
+        this.uc = uc;
+        this.ucId = uc.getId();
     }
 }

@@ -30,15 +30,9 @@ public class UC {
     @Column(name = "media_nota")
     private float media;
 
-    @Column(name = "UC_cour_id", insertable=false, updatable=false, nullable = false)
-    private int courId;
-
     @ManyToOne
     @JoinColumn(name = "UC_cour_id", referencedColumnName = "cour_id" )
     private Curso curso;
-
-    @Column(name = "UC_user_id", insertable=false, updatable=false, nullable = false)
-    private int userId;
 
     @ManyToOne
     @JoinColumn(name = "UC_user_id", referencedColumnName = "user_id" )
@@ -92,13 +86,11 @@ public class UC {
 
     public void setCurso(Curso curso) {
         this.curso = curso;
-        this.courId = curso.getId();
     }
 
     public Utilizador getUtilizador() {return utilizador;}
 
     public void setUtilizador(Utilizador utilizador) {
         this.utilizador = utilizador;
-        this.userId = utilizador.getId();
     }
 }

@@ -15,21 +15,21 @@ public class LembreteItem {
 
     private String description;
 
-    private int agendId;
+    private Agenda agenda;
 
     public LembreteItem(){
 
     }
 
     public LembreteItem(int id, boolean done, String title, Calendar date,
-                        Date time, String description, int agendId) {
+                        Date time, String description, Agenda agenda) {
         this.id = id;
         this.done = done;
         this.title = title;
         this.date = date;
         this.time = time;
         this.description = description;
-        this.agendId = agendId;
+        this.agenda = agenda;
     }
 
     public int getId() {
@@ -76,11 +76,12 @@ public class LembreteItem {
         this.description = description;
     }
 
-    public int getAgendId() {
-        return agendId;
+    public Agenda getAgenda() {
+        return agenda;
     }
 
-    public void setAgendId(int agendId) {
-        this.agendId = agendId;
+    public void setAgenda(Agenda agenda) {
+        this.agenda = agenda;
     }
+
 }

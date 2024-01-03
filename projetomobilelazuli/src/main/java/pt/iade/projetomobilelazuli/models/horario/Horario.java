@@ -29,9 +29,6 @@ public class Horario {
     @Column(name = "hor_desc")
     private String desc;
 
-    @Column(name = "hor_UC_id", insertable=false, updatable=false)
-    private int UCId;
-
     @ManyToOne
     @JoinColumn(name = "hor_UC_id", referencedColumnName = "UC_id")
     private UC uc;
@@ -72,21 +69,12 @@ public class Horario {
         this.desc = desc;
     }
 
-    public int getUCId() {
-        return UCId;
-    }
-
-    public void setUCId(int UCId) {
-        this.UCId = UCId;
-    }
-
     public UC getUC() {
         return uc;
     }
 
     public void setUc(UC uc) {
         this.uc = uc;
-        this.UCId = uc.getId();
     }
 
 }

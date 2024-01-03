@@ -31,9 +31,11 @@ public class UtilizadorController {
     }
 
     @PostMapping("/user/save")
-    public void save(@RequestBody Utilizador utilizador) {
+    public Utilizador save(@RequestBody Utilizador utilizador) {
 
         utilizadorRepository.save(utilizador);
+
+        return utilizador;
     }
 
     @PutMapping("/user/update/{id}")

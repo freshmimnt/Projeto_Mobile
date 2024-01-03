@@ -1,6 +1,8 @@
 package pt.iade.projetomobilelazuli.models.curso;
 
 import jakarta.persistence.*;
+import pt.iade.projetomobilelazuli.models.user.Utilizador;
+
 
 @Entity
 @Table(name = "Curso")

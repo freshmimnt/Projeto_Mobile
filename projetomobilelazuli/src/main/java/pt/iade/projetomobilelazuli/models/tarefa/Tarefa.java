@@ -34,15 +34,9 @@ public class Tarefa {
     @Column(name = "is_finished", nullable = false)
     private boolean isFinished;
 
-    @Column(name = "tarefa_agen_id", insertable=false, updatable=false)
-    private int agendId;
-
     @ManyToOne
     @JoinColumn(name = "tarefa_agen_id", referencedColumnName = "agen_id")
     private Agenda agenda;
-
-    @Column(name = "tarefa_UC_id", insertable=false, updatable=false)
-    private int ucId;
 
     @ManyToOne
     @JoinColumn(name = "tarefa_UC_id", referencedColumnName = "UC_id")
@@ -100,29 +94,12 @@ public class Tarefa {
         isFinished = finished;
     }
 
-    public int getAgendId() {
-        return agendId;
-    }
-
-    public void setAgendId(int agendId) {
-        this.agendId = agendId;
-    }
-
     public Agenda getAgenda() {
         return agenda;
     }
 
     public void setAgenda(Agenda agenda) {
         this.agenda = agenda;
-        this.agendId = agenda.getId();
-    }
-
-    public int getUcId() {
-        return ucId;
-    }
-
-    public void setUcId(int ucId) {
-        this.ucId = ucId;
     }
 
     public UC getUc() {
@@ -132,6 +109,5 @@ public class Tarefa {
     public void setUc(UC uc) {
 
         this.uc = uc;
-        this.ucId = uc.getId();
     }
 }

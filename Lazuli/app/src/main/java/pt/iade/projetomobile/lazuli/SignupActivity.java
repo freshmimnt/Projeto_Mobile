@@ -71,18 +71,19 @@ public class SignupActivity extends AppCompatActivity {
                 utilizadorApi.save(user).enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
+                        Toast.makeText(SignupActivity.this, "Data saved successfully", Toast.LENGTH_SHORT).show();
 
-                        Toast.makeText(SignupActivity.this, "Failed to save data", Toast.LENGTH_SHORT).show();
-                        Logger.getLogger(SignupActivity.class.getName()).log(Level.SEVERE, "An error occurred");
+                        Intent intent = new Intent(SignupActivity.this, Signup2Activity.class);
+                        intent.putExtra("user", user);
+                        startActivity(intent);
+
+
                     }
 
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
-                        Toast.makeText(SignupActivity.this, "Data saved successfully", Toast.LENGTH_SHORT).show();
-
-                        // Start next activity
-                        Intent intent = new Intent(SignupActivity.this, Signup2Activity.class);
-                        startActivity(intent);
+                        Toast.makeText(SignupActivity.this, "Failed to save data", Toast.LENGTH_SHORT).show();
+                        Logger.getLogger(SignupActivity.class.getName()).log(Level.SEVERE, "An error occurred");
                     }
                 });
             }

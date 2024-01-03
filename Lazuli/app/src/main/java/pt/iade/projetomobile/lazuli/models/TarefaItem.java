@@ -15,7 +15,9 @@ public class TarefaItem implements Serializable {
     private Date time;
     private String description;
     private float nota;
-    private int courId;
+    Curso curso;
+    Agenda agenda;
+
     public TarefaItem(){
 
         this(0, false, "", new GregorianCalendar(),new Date() ,"");

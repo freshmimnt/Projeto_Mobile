@@ -1,23 +1,21 @@
 package pt.iade.projetomobile.lazuli.models;
 
-import androidx.annotation.NonNull;
+import java.io.Serializable;
 
-public class Curso {
+public class Agenda implements Serializable {
 
     private int id;
 
     private String name;
 
-    public Curso(){
-
-    }
-
-    public Curso(int id, String name) {
-        this.name = name;
-    }
+    private User user;
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -28,9 +26,11 @@ public class Curso {
         this.name = name;
     }
 
-    @NonNull
-    @Override
-    public String toString(){
-        return name;
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

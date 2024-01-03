@@ -26,10 +26,7 @@ public class Utilizador {
     @Column(name = "user_sem")
     private String semestre;
 
-    @Column(name = "user_cour_id", insertable=false, updatable=false)
-    private int courId;
-
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "user_cour_id", referencedColumnName = "cour_id")
     private Curso curso;
 
@@ -97,6 +94,5 @@ public class Utilizador {
 
     public void setCurso(Curso curso) {
         this.curso = curso;
-        this.courId = curso.getId();
     }
 }

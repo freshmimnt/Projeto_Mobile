@@ -31,20 +31,13 @@ public class Lembrete {
     @Column(name = "is_finished")
     private boolean isFinished;
 
-    @Column(name = "lemb_agen_id", insertable=false, updatable=false)
-    private int agendId;
-
     @ManyToOne
     @JoinColumn(name = "lemb_agen_id", referencedColumnName = "agen_id")
     private Agenda agenda;
 
-    @Column(name ="lemb_UC_id", insertable=false, updatable=false)
-    private int ucId;
-
     @ManyToOne
     @JoinColumn(name = "lemb_UC_id", referencedColumnName = "UC_id")
     private UC uc;
-
 
     public int getId() {
         return id;
@@ -90,29 +83,12 @@ public class Lembrete {
         isFinished = finished;
     }
 
-    public int getAgendId() {
-        return agendId;
-    }
-
-    public void setAgendId(int agendId) {
-        this.agendId = agendId;
-    }
-
     public Agenda getAgenda() {
         return agenda;
     }
 
     public void setAgenda(Agenda agenda) {
         this.agenda = agenda;
-        this.agendId = agenda.getId();
-    }
-
-    public int getUcId() {
-        return ucId;
-    }
-
-    public void setUcId(int ucId) {
-        this.ucId = ucId;
     }
 
     public UC getUc() {
@@ -120,8 +96,6 @@ public class Lembrete {
     }
 
     public void setUc(UC uc) {
-
         this.uc = uc;
-        this.ucId = uc.getId();
     }
 }

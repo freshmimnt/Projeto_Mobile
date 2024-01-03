@@ -1,6 +1,8 @@
 package pt.iade.projetomobile.lazuli.models;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private int id;
 

@@ -26,7 +26,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Signup2Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-
+    protected User user;
     private EditText semestreText, turmaText;
     private int cursoId;
 
@@ -34,6 +34,9 @@ public class Signup2Activity extends AppCompatActivity implements AdapterView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup2);
+
+        Intent intent = getIntent();
+        user = (User) intent.getSerializableExtra("user");
 
         initializeComponents();
     }
@@ -79,24 +82,24 @@ public class Signup2Activity extends AppCompatActivity implements AdapterView.On
                 String turma = turmaText.getText().toString();
 
 
-                User user = new User();
                 user.setSemestre(semestre);
                 user.setTurma(turma);
                 utilizadorApi.save(user).enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
 
-                        Toast.makeText(Signup2Activity.this, "Failed to save data", Toast.LENGTH_SHORT).show();
-                        Logger.getLogger(SignupActivity.class.getName()).log(Level.SEVERE, "An error occurred");
+
+                        Toast.makeText(Signup2Activity.this, "Data saved successfully", Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(Signup2Activity.this, IntroActivity.class);
+                        startActivity(intent);
                     }
 
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
-                        Toast.makeText(Signup2Activity.this, "Data saved successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Signup2Activity.this, "Failed to save data", Toast.LENGTH_SHORT).show();
+                        Logger.getLogger(SignupActivity.class.getName()).log(Level.SEVERE, "An error occurred");
 
-                        // Start next activity
-                        Intent intent = new Intent(Signup2Activity.this, IntroActivity.class);
-                        startActivity(intent);
                     }
                 });
 
@@ -114,8 +117,11 @@ public class Signup2Activity extends AppCompatActivity implements AdapterView.On
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Curso curso = (Curso) parent.getItemAtPosition(position);
         String text = parent.getItemAtPosition(position).toString();
-        Toast.makeText(parent.getContext(),text, Toast.LENGTH_SHORT);
+        Toast.makeText(parent.getContext(), curso.getId() + " " + curso.getName(), Toast.LENGTH_SHORT);
+
+        user.setCurso(curso);
     }
 
     @Override

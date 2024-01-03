@@ -16,7 +16,9 @@ public class TesteItem implements Serializable {
     private Calendar date;
     private Date time;
     private String description;
+    private float nota;
     Curso curso;
+    Agenda agenda;
 
     public TesteItem(){
 

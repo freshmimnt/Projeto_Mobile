@@ -100,21 +100,12 @@ public class Teste {
         isFinished = finished;
     }
 
-    public int getAgendId() {
-        return agendId;
-    }
-
-    public void setAgendId(int agendId) {
-        this.agendId = agendId;
-    }
-
     public Agenda getAgenda() {
         return agenda;
 
     }
     public void setAgenda(Agenda agenda) {
         this.agenda = agenda;
-        this.agendId = agenda.getId();
     }
 
     public UC getUc() {
@@ -123,6 +114,5 @@ public class Teste {
 
     public void setUc(UC uc) {
         this.uc = uc;
-        this.ucId = uc.getId();
     }
 }

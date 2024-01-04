@@ -1,5 +1,6 @@
 package pt.iade.projetomobilelazuli.models.tarefa;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import pt.iade.projetomobilelazuli.models.agenda.Agenda;
 import pt.iade.projetomobilelazuli.models.uc.UC;
@@ -20,6 +21,7 @@ public class Tarefa {
     private String name;
 
     @Column(name = "tarefa_data", nullable = false)
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate date;
 
     @Column(name = "tarefa_hora", nullable = false)

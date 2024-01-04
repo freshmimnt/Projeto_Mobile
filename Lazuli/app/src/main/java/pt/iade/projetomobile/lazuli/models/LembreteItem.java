@@ -1,9 +1,10 @@
 package pt.iade.projetomobile.lazuli.models;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
-public class LembreteItem {
+public class LembreteItem implements Serializable {
 
     private int id;
     private boolean done;
@@ -22,14 +23,13 @@ public class LembreteItem {
     }
 
     public LembreteItem(int id, boolean done, String title, Calendar date,
-                        Date time, String description, Agenda agenda) {
+                        Date time, String description) {
         this.id = id;
         this.done = done;
         this.title = title;
         this.date = date;
         this.time = time;
         this.description = description;
-        this.agenda = agenda;
     }
 
     public int getId() {

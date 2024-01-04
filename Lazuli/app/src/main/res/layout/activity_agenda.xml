@@ -8,8 +8,8 @@
     android:background="@color/brand_primary"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tarefaLogo"
+    <EditText
+        android:id="@+id/agendaName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_bold"

@@ -16,8 +16,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import pt.iade.projetomobile.lazuli.adapters.AgendaAdapter;
+import pt.iade.projetomobile.lazuli.models.LembreteItem;
 import pt.iade.projetomobile.lazuli.models.TarefaItem;
 import pt.iade.projetomobile.lazuli.models.TesteItem;
 
@@ -176,10 +179,10 @@ public class AgendaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AgendaActivity.this, LembreteActivity.class);
+                intent.putExtra("item", new LembreteItem());
                 startActivity(intent);
             }
         });
-
     }
 }
 

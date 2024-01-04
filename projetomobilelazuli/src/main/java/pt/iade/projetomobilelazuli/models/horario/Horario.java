@@ -1,5 +1,6 @@
 package pt.iade.projetomobilelazuli.models.horario;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -17,7 +18,8 @@ public class Horario {
     @Column(name = "hor_id", nullable = false)
     private int id;
 
-    @Column(name = "hor_date")
+    @Column(name = "hor_data")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate date;
 
     @Column(name = "hor_hora_inicio")

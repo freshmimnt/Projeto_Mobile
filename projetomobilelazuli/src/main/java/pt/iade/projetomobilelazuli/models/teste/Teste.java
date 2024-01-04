@@ -1,5 +1,6 @@
 package pt.iade.projetomobilelazuli.models.teste;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import pt.iade.projetomobilelazuli.models.agenda.Agenda;
 import pt.iade.projetomobilelazuli.models.uc.UC;
@@ -20,6 +21,7 @@ public class Teste {
     private String name;
 
     @Column(name = "test_data", nullable = false)
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate date;
 
     @Column(name = "test_hora", nullable = false)
@@ -34,7 +36,7 @@ public class Teste {
     @Column(name = "is_finished", nullable = false)
     private boolean isFinished;
 
-    @Column(name = "test_agend_id", insertable=false, updatable=false)
+    @Column(name = "test_agen_id", insertable=false, updatable=false)
     private int agendId;
 
     @ManyToOne

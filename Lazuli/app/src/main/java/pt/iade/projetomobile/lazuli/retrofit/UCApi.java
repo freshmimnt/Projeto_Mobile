@@ -11,4 +11,8 @@ public interface UCApi {
     @POST("/uc/add")
     Call<UCItem> save(@Body UCItem ucItem);
 
+    @PUT("/uc/update/{id}")
+    Call<UCItem> update(@Path("id") int id, @Body UCItem ucItem);
+
+
 }

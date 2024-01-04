@@ -39,7 +39,6 @@ public class AgendaActivity extends AppCompatActivity {
             if (resultCode == AppCompatActivity.RESULT_OK) {
                 int position = data.getIntExtra("position", -1);
 
-
                 Serializable itemSerializable = data.getSerializableExtra("item");
                 if (itemSerializable instanceof TarefaItem) {
                     TarefaItem updateItem = (TarefaItem) itemSerializable;
@@ -63,6 +62,16 @@ public class AgendaActivity extends AppCompatActivity {
                         agendaAdapter.notifyItemChanged(position);
                     }
 
+                }else if(itemSerializable instanceof LembreteItem){
+                    LembreteItem updateItem = (LembreteItem) itemSerializable;
+
+                    if(position == -1){
+                        combinedList.add(updateItem);
+                        agendaAdapter.notifyItemInserted(combinedList.size()-1);
+                    }else{
+                        combinedList.set(position, updateItem);
+                        agendaAdapter.notifyItemChanged(position);
+                    }
                 }
             }
         }
@@ -75,6 +84,7 @@ public class AgendaActivity extends AppCompatActivity {
 
         combinedList.addAll(TarefaItem.List());
         combinedList.addAll(TesteItem.List());
+        combinedList.addAll(LembreteItem.List());
         agendaAdapter = new AgendaAdapter(this, combinedList);
 
         agendaAdapter.setOnClickListener(new AgendaAdapter.ItemClickListener() {
@@ -92,6 +102,11 @@ public class AgendaActivity extends AppCompatActivity {
                     intent.putExtra("position", position);
                     intent.putExtra("item", (TesteItem) clickedItem);
                     startActivityForResult(intent, EDITOR_ACTIVITY_RETURN_ID);
+                }else if (clickedItem instanceof LembreteItem){
+                    Intent intent = new Intent(AgendaActivity.this, LembreteActivity.class);
+                    intent.putExtra("position", position);
+                    intent.putExtra("item", (LembreteItem) clickedItem);
+                    startActivityForResult(intent, EDITOR_ACTIVITY_RETURN_ID);
                 }
             }
         });
@@ -99,8 +114,6 @@ public class AgendaActivity extends AppCompatActivity {
         TodoList = (RecyclerView) findViewById(R.id.toDoList);
         TodoList.setLayoutManager(new LinearLayoutManager(this));
         TodoList.setAdapter(agendaAdapter);
-
-
 
         Animation rotateOpen = AnimationUtils.loadAnimation(this, R.anim.rotate_open_anim);
         Animation rotateClose = AnimationUtils.loadAnimation(this, R.anim.rotate_close_anim);
@@ -179,8 +192,9 @@ public class AgendaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AgendaActivity.this, LembreteActivity.class);
+                intent.putExtra("position", -1);
                 intent.putExtra("item", new LembreteItem());
-                startActivity(intent);
+                startActivityForResult(intent, EDITOR_ACTIVITY_RETURN_ID);
             }
         });
     }

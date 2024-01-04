@@ -28,7 +28,6 @@ import retrofit2.Response;
 public class Signup2Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     protected User user;
     private EditText semestreText, turmaText;
-    private int cursoId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

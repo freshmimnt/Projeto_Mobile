@@ -10,9 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Calendar;
@@ -28,6 +30,7 @@ public class LembreteActivity extends AppCompatActivity {
     private Button guardar, date, time;
     private TextView dateText, timeText, title, description;
     protected CheckBox check;
+    protected int listPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +42,10 @@ public class LembreteActivity extends AppCompatActivity {
         date = findViewById(R.id.dateButton);
         time = findViewById(R.id.timeButton);
         guardar = findViewById(R.id.gButton);
+        Spinner spinner = findViewById(R.id.curso);
 
         Intent intent  = getIntent();
+        listPosition = intent.getIntExtra("position", -1);
         item = (LembreteItem) intent.getSerializableExtra("item");
 
         setUpComponents();
@@ -48,6 +53,12 @@ public class LembreteActivity extends AppCompatActivity {
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                commitView();
+                item.save();
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("position", listPosition);
+                returnIntent.putExtra("item", item);
+                setResult(AppCompatActivity.RESULT_OK, returnIntent);
                 finish();
             }
         });
@@ -113,6 +124,31 @@ public class LembreteActivity extends AppCompatActivity {
 
         if (item.getTime() != null) {
             dateText.setText(timeFormat.format(item.getTime()));
+        }
+    }
+
+    protected void commitView() {
+        item.setTitle(title.getText().toString());
+        item.setDone(check.isChecked());
+        item.setDescription(description.getText().toString());
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+
+        try {
+            Date date = dateFormat.parse(dateText.getText().toString());
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            item.setDate(calendar);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            Date time = timeFormat.parse(dateText.getText().toString());
+            item.setTime(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
     }
 }

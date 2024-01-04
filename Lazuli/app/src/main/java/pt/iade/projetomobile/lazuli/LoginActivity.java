@@ -54,6 +54,4 @@ public class LoginActivity extends AppCompatActivity {
         email.setText(savedInstanceState.getString("username", ""));
         password.setText(savedInstanceState.getString("password", ""));
     }
-
-
 }

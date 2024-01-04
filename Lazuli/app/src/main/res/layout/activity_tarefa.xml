@@ -145,19 +145,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.127" />
 
-    <Spinner
-        android:id="@+id/curso"
-        android:layout_width="273dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/grey_text_background"
-        android:ems="10"
-        android:hint="@string/curso_text"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nomeText" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

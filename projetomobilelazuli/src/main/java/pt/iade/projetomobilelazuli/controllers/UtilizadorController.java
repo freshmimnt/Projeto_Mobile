@@ -1,5 +1,6 @@
 package pt.iade.projetomobilelazuli.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pt.iade.projetomobilelazuli.models.curso.Curso;
 import pt.iade.projetomobilelazuli.models.curso.CursoRepository;
@@ -28,6 +29,17 @@ public class UtilizadorController {
     public List<Utilizador> getAllUsers(){
 
         return (List<Utilizador>) utilizadorRepository.findAll();
+    }
+
+    @GetMapping("/user/get/{id}")
+    public ResponseEntity<Utilizador> getUserById(@PathVariable int id) {
+        Utilizador utilizador = utilizadorRepository.findById(id);
+
+        if (utilizador != null) {
+            return ResponseEntity.ok(utilizador);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping("/user/save")

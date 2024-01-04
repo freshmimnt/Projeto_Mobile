@@ -1,8 +1,11 @@
 package pt.iade.projetomobile.lazuli.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Random;
 
 public class LembreteItem implements Serializable {
 
@@ -30,6 +33,27 @@ public class LembreteItem implements Serializable {
         this.date = date;
         this.time = time;
         this.description = description;
+    }
+
+    public static ArrayList<LembreteItem> List(){
+
+        ArrayList<LembreteItem> items = new ArrayList<>();
+        items.add(new LembreteItem(3, false,"Arroz", new GregorianCalendar(), new Date(), "Algo"));
+
+        return items;
+    }
+
+    public static LembreteItem GetById(int id){
+        return new LembreteItem(id, false, "Alloy", new GregorianCalendar(), new Date(), "Shine");
+
+    }
+
+    public void save(){
+        if(id == 0){
+            id = new Random().nextInt(1000) + 1;
+        }else{
+
+        }
     }
 
     public int getId() {

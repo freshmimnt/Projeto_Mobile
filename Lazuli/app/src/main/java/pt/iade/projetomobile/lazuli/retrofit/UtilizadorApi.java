@@ -12,11 +12,13 @@ public interface UtilizadorApi {
     @GET("/user/get")
     Call<List<User>> getAllUsers();
 
+    @GET("/user/get/{id}")
+    Call<User> getUserById(@Path("id") int id);
+
     @POST("/user/save")
     Call<User> save(@Body User user);
 
     @DELETE("/user/delete/{id}")
     Call<ResponseBody> deleteUser(@Path("id") int id);
-
 
 }

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import pt.iade.projetomobile.lazuli.R;
+import pt.iade.projetomobile.lazuli.models.LembreteItem;
 import pt.iade.projetomobile.lazuli.models.TesteItem;
 import pt.iade.projetomobile.lazuli.models.TarefaItem;
 
@@ -47,6 +48,11 @@ public class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.ViewHolder
             holder.doneCheck.setChecked(item.isDone());
         } else if (obj instanceof TarefaItem) {
             TarefaItem item = (TarefaItem) obj;
+            holder.titleLabel.setText(item.getTitle());
+            holder.notesLabel.setText(item.getDescription());
+            holder.doneCheck.setChecked(item.isDone());
+        }else if(obj instanceof LembreteItem){
+            LembreteItem item = (LembreteItem) obj;
             holder.titleLabel.setText(item.getTitle());
             holder.notesLabel.setText(item.getDescription());
             holder.doneCheck.setChecked(item.isDone());

@@ -1,5 +1,7 @@
 package pt.iade.projetomobile.lazuli.models;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
@@ -11,6 +13,8 @@ public class UCItem implements Serializable{
     private String sala;
     private String prof;
     private String desc;
+    private Curso curso;
+    private User user;
 
     public UCItem(){
         this(0, "","","","");
@@ -45,7 +49,6 @@ public class UCItem implements Serializable{
         return id;
     }
 
-
     public String getNome() {
         return nome;
     }
@@ -77,4 +80,17 @@ public class UCItem implements Serializable{
     public void setDesc(String desc) {
         this.desc = desc;
     }
+
+    public String getUcName() {
+        return nome;
+    }
+
+    @NonNull
+    @Override
+    public String toString(){
+        return nome;
+    }
+
+
+
 }

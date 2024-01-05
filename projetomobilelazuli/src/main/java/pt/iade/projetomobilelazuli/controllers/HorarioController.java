@@ -1,13 +1,12 @@
 package pt.iade.projetomobilelazuli.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pt.iade.projetomobilelazuli.models.horario.Horario;
-import pt.iade.projetomobilelazuli.models.horario.HorarioDao;
-import pt.iade.projetomobilelazuli.models.horario.HorarioRepository;
-import pt.iade.projetomobilelazuli.models.uc.UC;
-import pt.iade.projetomobilelazuli.models.uc.UCDao;
-import pt.iade.projetomobilelazuli.models.uc.UCRepository;
+import pt.iade.projetomobilelazuli.models.Horario;
+import pt.iade.projetomobilelazuli.repositories.HorarioRepository;
+import pt.iade.projetomobilelazuli.models.UC;
+import pt.iade.projetomobilelazuli.repositories.UCRepository;
 
 import java.util.List;
 
@@ -25,6 +24,17 @@ public class HorarioController {
     public List<Horario> getAllHorarios(){
 
         return (List<Horario>) horarioRepository.findAll();
+    }
+
+    @GetMapping("/hor/get/{id}")
+    public ResponseEntity<Horario> getHorarioById(@PathVariable int id){
+        Horario horario = horarioRepository.findById(id);
+
+        if(horario != null){
+            return ResponseEntity.ok(horario);
+        }else{
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping("/hor/save")

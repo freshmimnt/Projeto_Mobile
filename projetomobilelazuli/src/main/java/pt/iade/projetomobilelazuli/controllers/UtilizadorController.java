@@ -2,13 +2,11 @@ package pt.iade.projetomobilelazuli.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pt.iade.projetomobilelazuli.models.curso.Curso;
-import pt.iade.projetomobilelazuli.models.curso.CursoRepository;
-import pt.iade.projetomobilelazuli.models.uc.UCDao;
-import pt.iade.projetomobilelazuli.models.uc.UCRepository;
-import pt.iade.projetomobilelazuli.models.user.Utilizador;
-import pt.iade.projetomobilelazuli.models.user.UtilizadorDao;
-import pt.iade.projetomobilelazuli.models.user.UtilizadorRepository;
+import pt.iade.projetomobilelazuli.models.Curso;
+import pt.iade.projetomobilelazuli.repositories.CursoRepository;
+import pt.iade.projetomobilelazuli.repositories.UCRepository;
+import pt.iade.projetomobilelazuli.models.Utilizador;
+import pt.iade.projetomobilelazuli.repositories.UtilizadorRepository;
 
 import java.util.List;
 
@@ -16,12 +14,6 @@ import java.util.List;
 public class UtilizadorController {
     @Autowired
     private UtilizadorRepository utilizadorRepository;
-
-    @Autowired
-    private CursoRepository cursoRepository;
-
-    @Autowired
-    private UCRepository ucRepository;
 
     private Curso curso;
 

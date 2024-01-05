@@ -1,9 +1,10 @@
 package pt.iade.projetomobilelazuli.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pt.iade.projetomobilelazuli.models.teste.Teste;
-import pt.iade.projetomobilelazuli.models.teste.TesteRepository;
+import pt.iade.projetomobilelazuli.models.Teste;
+import pt.iade.projetomobilelazuli.repositories.TesteRepository;
 
 import java.util.List;
 
@@ -18,6 +19,17 @@ public class TesteController {
         return (List<Teste>) testeRepository.findAll();
     }
 
+    @GetMapping("/teste/get/{id}")
+    public ResponseEntity<Teste> getTesteById(@PathVariable int id){
+        Teste teste = testeRepository.findById(id);
+
+        if(teste != null){
+            return ResponseEntity.ok(teste);
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @PostMapping("/teste/save")
     public void save(@RequestBody Teste teste) {
         testeRepository.save(teste);
@@ -30,10 +42,8 @@ public class TesteController {
         existingTeste.setName(updateTeste.getName());
         existingTeste.setDate(updateTeste.getDate());
         existingTeste.setTime(updateTeste.getTime());
-        existingTeste.setNota(updateTeste.getNota());
         existingTeste.setDesc(updateTeste.getDesc());
         existingTeste.setFinished(updateTeste.isFinished());
-        existingTeste.setUc(updateTeste.getUc());
         existingTeste.setAgenda(updateTeste.getAgenda());
         testeRepository.save(existingTeste);
 

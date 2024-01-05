@@ -10,14 +10,16 @@ import java.util.Random;
 public class LembreteItem implements Serializable {
 
     private int id;
-    private boolean done;
-    private String title;
+
+    private String name;
 
     private Calendar date;
 
     private Date time;
 
-    private String description;
+    private String desc;
+
+    private boolean isFinished;
 
     private Agenda agenda;
 
@@ -25,14 +27,14 @@ public class LembreteItem implements Serializable {
 
     }
 
-    public LembreteItem(int id, boolean done, String title, Calendar date,
-                        Date time, String description) {
+    public LembreteItem(int id, boolean isFinished, String name, Calendar date,
+                        Date time, String desc) {
         this.id = id;
-        this.done = done;
-        this.title = title;
+        this.isFinished = isFinished;
+        this.name = name;
         this.date = date;
         this.time = time;
-        this.description = description;
+        this.desc = desc;
     }
 
     public static ArrayList<LembreteItem> List(){
@@ -50,6 +52,8 @@ public class LembreteItem implements Serializable {
 
     public void save(){
         if(id == 0){
+            
+
             id = new Random().nextInt(1000) + 1;
         }else{
 
@@ -60,20 +64,20 @@ public class LembreteItem implements Serializable {
         return id;
     }
 
-    public boolean isDone() {
-        return done;
+    public boolean isFinished() {
+        return isFinished;
     }
 
-    public void setDone(boolean done) {
-        this.done = done;
+    public void setFinished(boolean finished) {
+        this.isFinished = finished;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Calendar getDate() {
@@ -92,12 +96,12 @@ public class LembreteItem implements Serializable {
         this.time = time;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public Agenda getAgenda() {

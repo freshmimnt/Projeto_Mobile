@@ -1,9 +1,10 @@
 package pt.iade.projetomobilelazuli.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pt.iade.projetomobilelazuli.models.tarefa.Tarefa;
-import pt.iade.projetomobilelazuli.models.tarefa.TarefaRepository;
+import pt.iade.projetomobilelazuli.models.Tarefa;
+import pt.iade.projetomobilelazuli.repositories.TarefaRepository;
 
 import java.util.List;
 
@@ -21,6 +22,17 @@ public class TarefaController {
     return (List<Tarefa>) tarefaRepository.findAll();
     }
 
+    @GetMapping("/tarefa/get/{id}")
+    public ResponseEntity<Tarefa> getTarefaBydId(@PathVariable int id){
+        Tarefa tarefa = tarefaRepository.findById(id);
+
+        if (tarefa != null){
+            return ResponseEntity.ok(tarefa);
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @PostMapping("/tarefa/save")
     public void save(@RequestBody Tarefa tarefa){
 
@@ -35,10 +47,8 @@ public class TarefaController {
         existingTarefa.setName(updateTarefa.getName());
         existingTarefa.setDate(updateTarefa.getDate());
         existingTarefa.setTime(updateTarefa.getTime());
-        existingTarefa.setNota(updateTarefa.getNota());
         existingTarefa.setDesc(updateTarefa.getDesc());
         existingTarefa.setFinished(updateTarefa.isFinished());
-        existingTarefa.setUc(updateTarefa.getUc());
         existingTarefa.setAgenda(updateTarefa.getAgenda());
         tarefaRepository.save(existingTarefa);
 

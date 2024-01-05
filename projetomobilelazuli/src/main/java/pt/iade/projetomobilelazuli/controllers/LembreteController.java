@@ -1,9 +1,10 @@
 package pt.iade.projetomobilelazuli.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pt.iade.projetomobilelazuli.models.lembrete.Lembrete;
-import pt.iade.projetomobilelazuli.models.lembrete.LembreteRepository;
+import pt.iade.projetomobilelazuli.models.Lembrete;
+import pt.iade.projetomobilelazuli.repositories.LembreteRepository;
 
 import java.util.List;
 
@@ -20,6 +21,17 @@ public class LembreteController {
         return (List<Lembrete>) lembreteRepository.findAll();
     }
 
+    @GetMapping("/lembrete/get/{id}")
+    public ResponseEntity<Lembrete> getLembreteById(@PathVariable int id){
+        Lembrete lembrete = lembreteRepository.findById(id);
+
+        if(lembrete != null){
+            return ResponseEntity.ok(lembrete);
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @PostMapping("/lembrete/save")
     public void save(@RequestBody Lembrete lembrete){
         lembreteRepository.save(lembrete);
@@ -34,7 +46,6 @@ public class LembreteController {
         existingLembrete.setTime(updateLembrete.getTime());
         existingLembrete.setDesc(updateLembrete.getDesc());
         existingLembrete.setFinished(updateLembrete.isFinished());
-        existingLembrete.setUc(updateLembrete.getUc());
         existingLembrete.setAgenda(updateLembrete.getAgenda());
         lembreteRepository.save(existingLembrete);
     }

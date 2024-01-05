@@ -10,13 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -42,7 +40,6 @@ public class LembreteActivity extends AppCompatActivity {
         date = findViewById(R.id.dateButton);
         time = findViewById(R.id.timeButton);
         guardar = findViewById(R.id.gButton);
-        Spinner spinner = findViewById(R.id.curso);
 
         Intent intent  = getIntent();
         listPosition = intent.getIntExtra("position", -1);
@@ -111,9 +108,9 @@ public class LembreteActivity extends AppCompatActivity {
     }
 
     protected void populateView(){
-        title.setText(item.getTitle());
-        description.setText(item.getDescription());
-        check.setChecked(item.isDone());
+        title.setText(item.getName());
+        description.setText(item.getDesc());
+        check.setChecked(item.isFinished());
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
@@ -128,9 +125,9 @@ public class LembreteActivity extends AppCompatActivity {
     }
 
     protected void commitView() {
-        item.setTitle(title.getText().toString());
-        item.setDone(check.isChecked());
-        item.setDescription(description.getText().toString());
+        item.setName(title.getText().toString());
+        item.setFinished(check.isChecked());
+        item.setDesc(description.getText().toString());
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());

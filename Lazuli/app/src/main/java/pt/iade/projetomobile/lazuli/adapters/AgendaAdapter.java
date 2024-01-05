@@ -53,9 +53,9 @@ public class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.ViewHolder
             holder.doneCheck.setChecked(item.isDone());
         }else if(obj instanceof LembreteItem){
             LembreteItem item = (LembreteItem) obj;
-            holder.titleLabel.setText(item.getTitle());
-            holder.notesLabel.setText(item.getDescription());
-            holder.doneCheck.setChecked(item.isDone());
+            holder.titleLabel.setText(item.getName());
+            holder.notesLabel.setText(item.getDesc());
+            holder.doneCheck.setChecked(item.isFinished());
         }
     }
 

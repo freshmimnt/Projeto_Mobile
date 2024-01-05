@@ -70,7 +70,6 @@ public class Signup2Activity extends AppCompatActivity implements AdapterView.On
 
         RetrofitService retrofitService = new RetrofitService();
         UtilizadorApi utilizadorApi = retrofitService.getRetrofit().create(UtilizadorApi.class);
-        CursoApi cursoApi = retrofitService.getRetrofit().create(CursoApi.class);
 
         Button nextButton = findViewById(R.id.nextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -83,26 +82,25 @@ public class Signup2Activity extends AppCompatActivity implements AdapterView.On
 
                 user.setSemestre(semestre);
                 user.setTurma(turma);
-                utilizadorApi.save(user).enqueue(new Callback<User>() {
-                    @Override
-                    public void onResponse(Call<User> call, Response<User> response) {
+
+                    utilizadorApi.save(user).enqueue(new Callback<User>() {
+                        @Override
+                        public void onResponse(Call<User> call, Response<User> response) {
 
 
-                        Toast.makeText(Signup2Activity.this, "Data saved successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Signup2Activity.this, "Data saved successfully", Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(Signup2Activity.this, IntroActivity.class);
-                        startActivity(intent);
-                    }
+                            Intent intent = new Intent(Signup2Activity.this, IntroActivity.class);
+                            startActivity(intent);
+                        }
 
-                    @Override
-                    public void onFailure(Call<User> call, Throwable t) {
-                        Toast.makeText(Signup2Activity.this, "Failed to save data", Toast.LENGTH_SHORT).show();
-                        Logger.getLogger(SignupActivity.class.getName()).log(Level.SEVERE, "An error occurred");
+                        @Override
+                        public void onFailure(Call<User> call, Throwable t) {
+                            Toast.makeText(Signup2Activity.this, "Failed to save data", Toast.LENGTH_SHORT).show();
+                            Logger.getLogger(SignupActivity.class.getName()).log(Level.SEVERE, "An error occurred");
 
-                    }
-                });
-
-
+                        }
+                    });
             }
         });
 

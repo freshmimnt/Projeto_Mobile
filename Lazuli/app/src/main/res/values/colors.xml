@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="brand_primary">#FF03f0fc</color>
-    <color name="colorButton">#fc033d</color>
+    <color name="white">#FFFBFB</color>
+    <color name="backgroung_dcolor">#92BBDF</color>
+    <color name="color_button">#fc033d</color>
+    <color name="dark_blue">#3B5C90</color>
+    <color name="brand_primary">#4B9DC5</color>
+    <color name="blue">#FF84B5F0</color>
+    <color name="medium_blue">#59759d</color>
 </resources>

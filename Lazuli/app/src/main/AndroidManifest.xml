@@ -26,9 +26,6 @@
             android:name=".AddHorarioActivity"
             android:exported="false" />
         <activity
-            android:name=".AddNotaActivity"
-            android:exported="false" />
-        <activity
             android:name=".HorarioActivity"
             android:exported="false" />
         <activity

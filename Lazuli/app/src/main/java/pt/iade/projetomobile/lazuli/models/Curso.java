@@ -1,5 +1,7 @@
 package pt.iade.projetomobile.lazuli.models;
 
+import androidx.annotation.NonNull;
+
 public class Curso {
 
     private int id;
@@ -11,7 +13,6 @@ public class Curso {
     }
 
     public Curso(int id, String name) {
-        this.id = id;
         this.name = name;
     }
 
@@ -25,5 +26,11 @@ public class Curso {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @NonNull
+    @Override
+    public String toString(){
+        return name;
     }
 }

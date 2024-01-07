@@ -72,19 +72,16 @@ public class UcActivity extends AppCompatActivity {
 
     if(requestCode == EDITOR_ACTIVITY_RETURN_ID)
         if(resultCode == AppCompatActivity.RESULT_OK){
-            UCItem updateItem = (UCItem) data.getSerializableExtra("item");
             int position = data.getIntExtra("position", -1);
+            UCItem updateItem = (UCItem) data.getSerializableExtra("item");
 
             if(position == -1){
                 ucsList.add(updateItem);
-                ucAdapter.notifyItemInserted(ucsList.size()-1);
+                ucAdapter.notifyItemInserted(ucsList.size() - 1);
             }else{
                 ucsList.set(position, updateItem);
                 ucAdapter.notifyItemChanged(position);
             }
-            ucsList.add(updateItem);
-            ucAdapter.notifyItemInserted(ucsList.size()-1);
-
         }
 
     }

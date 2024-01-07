@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import pt.iade.projetomobile.lazuli.R;
+import pt.iade.projetomobile.lazuli.models.LembreteItem;
 import pt.iade.projetomobile.lazuli.models.TesteItem;
 import pt.iade.projetomobile.lazuli.models.TarefaItem;
 
@@ -50,6 +51,11 @@ public class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.ViewHolder
             holder.titleLabel.setText(item.getTitle());
             holder.notesLabel.setText(item.getDescription());
             holder.doneCheck.setChecked(item.isDone());
+        }else if(obj instanceof LembreteItem){
+            LembreteItem item = (LembreteItem) obj;
+            holder.titleLabel.setText(item.getName());
+            holder.notesLabel.setText(item.getDesc());
+            holder.doneCheck.setChecked(item.isFinished());
         }
     }
 
@@ -85,6 +91,15 @@ public class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.ViewHolder
 
     public interface ItemClickListener {
         void onItemClick(View view, int position);
+    }
+
+    public void removeItem(int position) {
+        if (position >= 0 && position < items.size()) {
+            items.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, items.size());
+        }
+
     }
 }
 

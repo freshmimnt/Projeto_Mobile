@@ -36,7 +36,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/hour1Button"
+        android:id="@+id/hourButton"
         android:layout_width="274dp"
         android:layout_height="76dp"
         android:layout_marginStart="24dp"
@@ -52,12 +52,13 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/showTime"
+        android:id="@+id/showDate"
         android:layout_width="140dp"
         android:layout_height="30dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="568dp"
+        android:fontFamily="@font/ubuntu"
         android:text="@string/datatxt"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -69,12 +70,13 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/show2Hour"
+        android:id="@+id/showHour"
         android:layout_width="122dp"
         android:layout_height="30dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="488dp"
+        android:fontFamily="@font/ubuntu"
         android:text="@string/horatxt"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -116,6 +118,7 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="55dp"
+            android:fontFamily="@font/ubuntu_medium"
             android:text="@string/desctxt"
             android:textAlignment="viewStart"
             android:textColor="@color/black"
@@ -127,6 +130,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:ems="10"
+            android:fontFamily="@font/ubuntu"
             android:gravity="start|top"
             android:hint="Escreva uma descrição aqui ..."
             android:inputType="textMultiLine"
@@ -144,5 +148,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.127" />
+
+    <ImageButton
+        android:id="@+id/deleteButton"
+        android:layout_width="63dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/baseline_delete_24"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

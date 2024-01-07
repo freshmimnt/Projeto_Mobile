@@ -34,7 +34,7 @@ public class NovoHorarioAdapter extends ArrayAdapter<Horario>{
 
         TextView textView = convertView.findViewById(R.id.ucText);
 
-        String title = horario.getDesc() + " " + HorarioUtils.formattedTime(horario.getHoraInicio()) + " até " + HorarioUtils.formattedTime(horario.getHoraFim());
+        String title = horario.getDesc() + " " + HorarioUtils.formattedTime(horario.getTime1()) + " até " + HorarioUtils.formattedTime(horario.getTime2());
 
         textView.setText(title);
 

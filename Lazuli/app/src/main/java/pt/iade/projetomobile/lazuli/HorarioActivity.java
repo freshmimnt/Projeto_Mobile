@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -30,7 +31,6 @@ public class HorarioActivity extends AppCompatActivity implements HorarioAdapter
     private RecyclerView horarioRecyclerView;
     private Button next;
     private Button previous;
-
     private ListView listView;
 
     @Override
@@ -115,5 +115,11 @@ public class HorarioActivity extends AppCompatActivity implements HorarioAdapter
         ArrayList<Horario> horarios = Horario.horariosPorDia(HorarioUtils.selectDate);
         NovoHorarioAdapter novoHorarioAdapter = new NovoHorarioAdapter(getApplicationContext(), horarios);
         listView.setAdapter(novoHorarioAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Horario horario = (Horario) parent.getItemAtPosition(position);
+            }
+        });
     }
 }

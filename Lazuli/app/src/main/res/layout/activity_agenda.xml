@@ -8,19 +8,20 @@
     android:background="@color/brand_primary"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tarefaLogo"
+    <EditText
+        android:id="@+id/agendaName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_bold"
+        android:fontFamily="@font/ubuntu_bold"
         android:text="@string/agendatxt"
         android:textColor="#26619c"
         android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.047"
+        app:layout_constraintVertical_bias="0.04"
         tools:ignore="TextSizeCheck" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -90,5 +91,19 @@
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/saveButton"
+        android:layout_width="59dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/agendaName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_done_24"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

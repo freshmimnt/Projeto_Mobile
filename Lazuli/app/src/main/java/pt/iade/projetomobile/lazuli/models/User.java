@@ -1,10 +1,10 @@
 package pt.iade.projetomobile.lazuli.models;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private int id;
-
-    private int courId;
 
     private String name;
 
@@ -15,6 +15,8 @@ public class User {
     private String turma;
 
     private String semestre;
+
+    private Curso curso;
 
     public int getId() {
         return id;
@@ -64,11 +66,11 @@ public class User {
         this.semestre = semestre;
     }
 
-    public int getCourId() {
-        return courId;
+    public Curso getCurso() {
+        return curso;
     }
 
-    public void setCourId(int courId) {
-        this.courId = courId;
+    public void setCurso(Curso curso) {
+        this.curso = curso;
     }
 }

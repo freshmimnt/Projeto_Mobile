@@ -23,11 +23,28 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
+        android:id="@+id/profText"
+        android:layout_width="318dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/grey_text_background"
+        android:hint="@string/professortxt"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
         android:id="@+id/salaText"
         android:layout_width="318dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginTop="220dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/grey_text_background"
         android:hint="@string/salatxt"
@@ -35,7 +52,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,7 +61,7 @@
         android:layout_width="318dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="88dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/grey_text_background"
         android:hint="@string/nametxt"
@@ -52,24 +69,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.266"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/profText"
-        android:layout_width="318dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="128dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/grey_text_background"
-        android:hint="@string/professortxt"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -88,6 +88,7 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="55dp"
+            android:fontFamily="@font/ubuntu_medium"
             android:text="@string/desctxt"
             android:textAlignment="viewStart"
             android:textColor="@color/black"
@@ -99,6 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:ems="10"
+            android:fontFamily="@font/ubuntu"
             android:gravity="start|top"
             android:hint="Escreva uma descrição aqui ..."
             android:inputType="textMultiLine"

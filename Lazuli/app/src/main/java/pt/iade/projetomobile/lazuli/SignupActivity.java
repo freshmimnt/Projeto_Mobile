@@ -21,9 +21,10 @@ import retrofit2.Response;
 
 public class SignupActivity extends AppCompatActivity {
 
-    private EditText nomeEditText, emailEditText, passEditText, repPassEditText;
+    private EditText nomeText, emailText, passText, repPassText;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
@@ -32,10 +33,10 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void initializeComponents() {
-        nomeEditText = findViewById(R.id.nome);
-        emailEditText = findViewById(R.id.email_signup);
-        passEditText = findViewById(R.id.pass_Text);
-        repPassEditText = findViewById(R.id.reppassText);
+        nomeText = findViewById(R.id.nome);
+        emailText = findViewById(R.id.email_signup);
+        passText = findViewById(R.id.pass_Text);
+        repPassText = findViewById(R.id.reppassText);
 
         Button nextButton = findViewById(R.id.nextButton);
 
@@ -45,10 +46,10 @@ public class SignupActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nome = nomeEditText.getText().toString();
-                String email = emailEditText.getText().toString();
-                String password = passEditText.getText().toString();
-                String repPassword = repPassEditText.getText().toString();
+                String nome = nomeText.getText().toString();
+                String email = emailText.getText().toString();
+                String password = passText.getText().toString();
+                String repPassword = repPassText.getText().toString();
 
 
                 if (nome.isEmpty() || email.isEmpty() || password.isEmpty() || repPassword.isEmpty()) {
@@ -65,24 +66,11 @@ public class SignupActivity extends AppCompatActivity {
                 User user = new User();
                 user.setName(nome);
                 user.setEmail(email);
-                user.setPassword(repPassword);
+                user.setPassword(password);
+                Intent intent = new Intent(SignupActivity.this, Signup2Activity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
 
-                utilizadorApi.save(user).enqueue(new Callback<User>() {
-                    @Override
-                    public void onResponse(Call<User> call, Response<User> response) {
-                        Toast.makeText(SignupActivity.this, "Data saved successfully", Toast.LENGTH_SHORT).show();
-
-                        // Start next activity
-                        Intent intent = new Intent(SignupActivity.this, Signup2Activity.class);
-                        startActivity(intent);
-                    }
-
-                    @Override
-                    public void onFailure(Call<User> call, Throwable t) {
-                        Toast.makeText(SignupActivity.this, "Failed to save data", Toast.LENGTH_SHORT).show();
-                        Logger.getLogger(SignupActivity.class.getName()).log(Level.SEVERE, "An error occurred", t);
-                    }
-                });
             }
         });
     }

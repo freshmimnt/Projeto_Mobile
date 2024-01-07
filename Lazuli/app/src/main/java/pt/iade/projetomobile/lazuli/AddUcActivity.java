@@ -47,8 +47,6 @@ public class AddUcActivity extends AppCompatActivity {
                 returnIntent.putExtra("position", ucPosition);
                 returnIntent.putExtra("item", item);
                 setResult(AppCompatActivity.RESULT_OK, returnIntent);
-
-
                 finish();
             }
         });
@@ -56,14 +54,14 @@ public class AddUcActivity extends AppCompatActivity {
     }
 
     protected void populateView(){
-        nome.setText(item.getNome());
+        nome.setText(item.getName());
         sala.setText(item.getSala());
         prof.setText(item.getProf());
         desc.setText(item.getDesc());
     }
 
     protected void commitView(){
-        item.setNome(nome.getText().toString());
+        item.setName(nome.getText().toString());
         item.setSala(sala.getText().toString());
         item.setProf(prof.getText().toString());
         item.setDesc(desc.getText().toString());

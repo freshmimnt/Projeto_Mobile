@@ -23,55 +23,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".HorarioSemanal"
-            android:exported="false" />
-        <activity
-            android:name=".AddAmigoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AltCursoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AltPasswordActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AltNomeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AlterarDadosActivity"
-            android:exported="false" />
-        <activity
-            android:name=".RelatorioActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SettingsActivity"
-            android:exported="false" />
-        <activity
             android:name=".AddHorarioActivity"
             android:exported="false" />
         <activity
-            android:name=".AddNotaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AddPartiActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ParticipantesActivity"
-            android:exported="false" />
-        <activity
             android:name=".HorarioActivity"
-            android:exported="false" />
-        <activity
-            android:name=".EventSeeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AddEventActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PessoasActivity"
-            android:exported="false" />
-        <activity
-            android:name=".NotaActivity"
             android:exported="false" />
         <activity
             android:name=".TesteActivity"
@@ -102,9 +57,6 @@
             android:exported="false" />
         <activity
             android:name=".AgendaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".EventActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

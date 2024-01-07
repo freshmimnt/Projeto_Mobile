@@ -1,60 +1,99 @@
 package pt.iade.projetomobile.lazuli.models;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import com.google.gson.Gson;
+
 import java.io.Serializable;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.Random;
+
+import pt.iade.projetomobile.lazuli.utilities.WebRequest;
 
 public class UCItem implements Serializable{
 
     private int id;
-    private String nome;
+    private String name;
     private String sala;
     private String prof;
     private String desc;
+    private Curso curso;
+    private User user;
 
     public UCItem(){
         this(0, "","","","");
     }
 
-    public UCItem(int id, String nome, String sala, String prof, String desc){
+    public UCItem(int id, String name, String sala, String prof, String desc){
         this.id = id;
-        this.nome = nome;
+        this.name = name;
         this.sala = sala;
         this.prof = prof;
         this.desc = desc;
     }
 
+
     public static ArrayList<UCItem> List(){
         ArrayList<UCItem> items = new ArrayList<UCItem>();
-        items.add(new UCItem(1,"Física","Frito","e","muito bom"));
-        items.add(new UCItem(2,"Base de Dados","tambem","e","muito bom"));
-        items.add(new UCItem(3,"Calculo","e","o","melhor que há"));
         return items;
     }
 
-    public static UCItem GetById(int id){
-        return new UCItem(id,"","","","");
+    public static void GetById(int id, GetByIdResponse response){
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    WebRequest request = new WebRequest(new URL(WebRequest.LOCALHOST + "/uc/get/" + id));
+                    String rep = request.performGetRequest();
+
+                    UCItem item = new Gson().fromJson(rep, UCItem.class);
+                    response.response(item);
+                }catch (Exception e){
+                    Log.e("UcItem", e.toString());
+                }
+            }
+        });
+
     }
 
     public void save(){
-        if(id == 0){
-            id = new Random().nextInt(1000) + 1;
-        }else{
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    if (id == 0) {
+                        WebRequest request = new WebRequest(new URL(WebRequest.LOCALHOST + "/uc/save"));
+                        String response = request.performPostRequest(UCItem.this);
 
-        }
+                        UCItem responseItem = new Gson().fromJson(response, UCItem.class);
+                        id = responseItem.getId();
+                    } else {
+
+                        WebRequest request = new WebRequest(new URL(WebRequest.LOCALHOST + "/uc/update/" + id));
+                        request.performPostRequest(UCItem.class);
+
+                    }
+                }catch (Exception e){
+                    Log.e("UcItem", e.toString());
+                }
+            }
+        });
+        thread.start();
     }
 
     public int getId() {
         return id;
     }
 
-
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getSala() {
@@ -80,4 +119,20 @@ public class UCItem implements Serializable{
     public void setDesc(String desc) {
         this.desc = desc;
     }
+
+    public String getUcName() {
+        return name;
+    }
+
+    @NonNull
+    @Override
+    public String toString(){
+        return name;
+    }
+
+    public interface GetByIdResponse{
+        public void response(UCItem ucItem);
+    }
+
+
 }

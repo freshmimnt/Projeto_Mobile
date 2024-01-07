@@ -1,5 +1,7 @@
 package pt.iade.projetomobile.lazuli.models;
 
+import com.google.gson.annotations.JsonAdapter;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -7,14 +9,18 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Random;
 
+import pt.iade.projetomobile.lazuli.utilities.CalendarJsonAdapter;
+
 public class TesteItem implements Serializable {
 
     private int id;
     private boolean done;
     private String title;
+    @JsonAdapter(CalendarJsonAdapter.class)
     private Calendar date;
     private Date time;
     private String description;
+    Agenda agenda;
 
     public TesteItem(){
 
@@ -32,7 +38,6 @@ public class TesteItem implements Serializable {
 
     public static ArrayList<TesteItem> List(){
         ArrayList<TesteItem> items = new ArrayList<>();
-        items.add(new TesteItem(1, false, "F", new GregorianCalendar(), new Date(), "S"));
 
         return items;
     }

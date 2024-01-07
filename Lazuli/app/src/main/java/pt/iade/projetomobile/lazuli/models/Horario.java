@@ -11,23 +11,23 @@ public class Horario {
     public static ArrayList<Horario> horariosPorDia(LocalDate date){
         ArrayList<Horario> horarios = new ArrayList<>();
         for(Horario horario : horarioArrayList){
-            if (horario.getHoraData().equals(date))
+            if (horario.getDate().equals(date))
                 horarios.add(horario);
         }
         return horarios;
     }
 
     private int id;
-    private LocalDate horaData;
-    private LocalTime horaInicio;
-    private LocalTime horaFim;
+    private LocalDate date;
+    private LocalTime time1;
+    private LocalTime time2;
     private String desc;
 
-    public Horario(int id, LocalDate horaData, LocalTime horaInicio, LocalTime horaFim, String desc) {
+    public Horario(int id, LocalDate date, LocalTime time1, LocalTime time2, String desc) {
         this.id = id;
-        this.horaData = horaData;
-        this.horaInicio = horaInicio;
-        this.horaFim = horaFim;
+        this.date = date;
+        this.time1 = time1;
+        this.time2 = time2;
         this.desc = desc;
     }
 
@@ -35,28 +35,28 @@ public class Horario {
         return id;
     }
 
-    public LocalDate getHoraData() {
-        return horaData;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setHoraData(LocalDate horaData) {
-        this.horaData = horaData;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
-    public LocalTime getHoraInicio() {
-        return horaInicio;
+    public LocalTime getTime1() {
+        return time1;
     }
 
-    public void setHoraInicio(LocalTime horaInicio) {
-        this.horaInicio = horaInicio;
+    public void setTime1(LocalTime time1) {
+        this.time1 = time1;
     }
 
-    public LocalTime getHoraFim() {
-        return horaFim;
+    public LocalTime getTime2() {
+        return time2;
     }
 
-    public void setHoraFim(LocalTime horaFim) {
-        this.horaFim = horaFim;
+    public void setTime2(LocalTime time2) {
+        this.time2 = time2;
     }
 
     public String getDesc() {

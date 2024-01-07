@@ -5,19 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class IntroActivity extends AppCompatActivity {
-    private Button agenda;
-    private Button evento;
-    private Button uc;
-    private Button contactos;
-    private Button horario;
-    private Button nota;
-
+    private Button agenda, uc, horario;
+    private ImageView imageView;
+    private static final int PICK_IMAGE_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,23 +24,14 @@ public class IntroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_intro);
 
         agenda = (Button)findViewById(R.id.agendaButton);
-        evento = (Button)findViewById(R.id.eventButton);
         uc = (Button)findViewById(R.id.ucButton);
-        contactos = (Button)findViewById(R.id.contButton);
-        nota = (Button)findViewById(R.id.notaButton);
         horario = (Button)findViewById(R.id.horaButton);
-        ImageButton settings = (ImageButton)findViewById(R.id.settingsButton);
+        imageView = findViewById(R.id.imageView);
+
         agenda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(IntroActivity.this, AgendaActivity.class);
-                startActivity(intent);
-            }
-        });
-        evento.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(IntroActivity.this, EventActivity.class);
                 startActivity(intent);
             }
         });
@@ -52,20 +42,6 @@ public class IntroActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        contactos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(IntroActivity.this, PessoasActivity.class);
-                startActivity(intent);
-            }
-        });
-        nota.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(IntroActivity.this, NotaActivity.class);
-                startActivity(intent);
-            }
-        });
         horario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,12 +49,25 @@ public class IntroActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        settings.setOnClickListener(new View.OnClickListener() {
+        imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(IntroActivity.this, SettingsActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Escolha uma foto"), PICK_IMAGE_REQUEST);
             }
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
+            Uri uri = data.getData();
+            imageView.setImageURI(uri);
+        }
+    }
+
 }

@@ -13,19 +13,12 @@ public class AgendaController {
     @Autowired
     private AgendaRepository agendaRepository;
 
-     @GetMapping("/agenda/get")
-    public List<Agenda> getAllAgendas(){
-         return (List<Agenda>) agendaRepository.findAll();
-
-
-     }
-
      @PostMapping("/agenda/save")
     public void save(@RequestBody Agenda agenda){
          agendaRepository.save(agenda);
      }
 
-     @PutMapping("/agenda/update/{id}")
+     @PostMapping("/agenda/update/{id}")
     public void update(@PathVariable int id, @RequestBody Agenda existingAgenda){
          Agenda updateAgenda = agendaRepository.findById(id);
 

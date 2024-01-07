@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -26,6 +27,7 @@ public class LembreteActivity extends AppCompatActivity {
 
     protected LembreteItem item;
     private Button guardar, date, time;
+    private ImageButton delete;
     private TextView dateText, timeText, title, description;
     protected CheckBox check;
     protected int listPosition;
@@ -40,6 +42,7 @@ public class LembreteActivity extends AppCompatActivity {
         date = findViewById(R.id.dateButton);
         time = findViewById(R.id.timeButton);
         guardar = findViewById(R.id.gButton);
+        delete = findViewById(R.id.deleteButton);
 
         Intent intent  = getIntent();
         listPosition = intent.getIntExtra("position", -1);
@@ -55,6 +58,19 @@ public class LembreteActivity extends AppCompatActivity {
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("position", listPosition);
                 returnIntent.putExtra("item", item);
+                setResult(AppCompatActivity.RESULT_OK, returnIntent);
+                finish();
+            }
+        });
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                item.delete();
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("position", listPosition);
+                returnIntent.putExtra("remove", true);
+
                 setResult(AppCompatActivity.RESULT_OK, returnIntent);
                 finish();
             }
@@ -76,6 +92,9 @@ public class LembreteActivity extends AppCompatActivity {
     }
 
     private void showDate() {
+        Calendar currentData = Calendar.getInstance();
+        int currentYear = currentData.get(Calendar.YEAR);
+        int currentMonth = currentData.get(Calendar.MONTH);
         DatePickerDialog dialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
@@ -84,18 +103,22 @@ public class LembreteActivity extends AppCompatActivity {
 
                 dateText.setText(format.format(calendar.getTime()));
             }
-        }, 2023, 0, 01);
+        }, currentYear, currentMonth, 01);
         dialog.show();
     }
 
     private void showHour() {
+        Calendar currentTime = Calendar.getInstance();
+        int currentHour = currentTime.get(Calendar.HOUR_OF_DAY);
+        int currentMinute = currentTime.get(Calendar.MINUTE);
+
         TimePickerDialog dialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hour, int minute) {
                 String timeStr = String.format(Locale.getDefault(), "%02d:%02d", hour, minute);
                 timeText.setText(timeStr);
             }
-        }, 00, 00, false);
+        }, currentHour, currentMinute, false);
         dialog.show();
     }
 
@@ -142,7 +165,7 @@ public class LembreteActivity extends AppCompatActivity {
         }
 
         try {
-            Date time = timeFormat.parse(dateText.getText().toString());
+            Date time = timeFormat.parse(timeText.getText().toString());
             item.setTime(time);
         } catch (ParseException e) {
             e.printStackTrace();

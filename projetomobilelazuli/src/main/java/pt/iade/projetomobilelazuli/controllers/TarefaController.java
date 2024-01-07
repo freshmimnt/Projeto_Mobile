@@ -40,7 +40,7 @@ public class TarefaController {
 
     }
 
-    @PutMapping("/tarefa/update/{id}")
+    @PostMapping("/tarefa/update/{id}")
     public void update(@PathVariable int id, @RequestBody Tarefa updateTarefa){
         Tarefa existingTarefa = tarefaRepository.findById(id);
 

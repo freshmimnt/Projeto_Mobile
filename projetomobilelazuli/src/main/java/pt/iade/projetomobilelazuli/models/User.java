@@ -1,10 +1,9 @@
 package pt.iade.projetomobilelazuli.models;
 import jakarta.persistence.*;
-import pt.iade.projetomobilelazuli.models.Curso;
 
 @Entity
 @Table(name = "Utilizador")
-public class Utilizador {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,11 +29,11 @@ public class Utilizador {
     @JoinColumn(name = "user_cour_id", referencedColumnName = "cour_id")
     private Curso curso;
 
-    public Utilizador(){
+    public User(){
 
     }
 
-    public Utilizador(int id, String name, String email, String password, String turma, String semestre, Curso curso) {
+    public User(int id, String name, String email, String password, String turma, String semestre, Curso curso) {
         this.id = id;
         this.name = name;
         this.email = email;

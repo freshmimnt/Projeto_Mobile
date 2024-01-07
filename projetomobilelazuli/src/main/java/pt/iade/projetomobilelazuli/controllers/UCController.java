@@ -7,7 +7,7 @@ import pt.iade.projetomobilelazuli.repositories.CursoRepository;
 import pt.iade.projetomobilelazuli.models.UC;
 
 import pt.iade.projetomobilelazuli.repositories.UCRepository;
-import pt.iade.projetomobilelazuli.models.Utilizador;
+import pt.iade.projetomobilelazuli.models.User;
 import pt.iade.projetomobilelazuli.repositories.UtilizadorRepository;
 
 import java.util.List;
@@ -27,7 +27,7 @@ public class UCController {
 
     private Curso curso;
 
-    private Utilizador utilizador;
+    private User user;
 
     @GetMapping("/uc/get")
     public List<UC> getAllUCs(){
@@ -41,7 +41,7 @@ public class UCController {
         ucRepository.save(uc);
     }
 
-    @PutMapping("/uc/update/{id}")
+    @PostMapping("/uc/update/{id}")
     public void update(@PathVariable("id") int id, @RequestBody UC updatedUC) {
         UC existingUC = ucRepository.findById(id);
         existingUC.setName(updatedUC.getName());

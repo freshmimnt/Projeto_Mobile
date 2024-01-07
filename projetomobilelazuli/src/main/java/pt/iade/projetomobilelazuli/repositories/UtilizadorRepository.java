@@ -2,11 +2,12 @@ package pt.iade.projetomobilelazuli.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import pt.iade.projetomobilelazuli.models.Utilizador;
+import pt.iade.projetomobilelazuli.models.User;
 
 @Repository
-public interface UtilizadorRepository extends CrudRepository<Utilizador, Integer> {
+public interface UtilizadorRepository extends CrudRepository<User, Integer> {
 
-    Utilizador findById(int id);
+    User findById(int id);
 
+    User findByEmailAndPassword(String email, String password);
 }

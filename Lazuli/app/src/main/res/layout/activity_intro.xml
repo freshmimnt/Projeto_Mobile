@@ -10,26 +10,26 @@
 
 
     <Button
-        android:id="@+id/ucButton"
+        android:id="@+id/agendaButton"
         android:layout_width="275dp"
         android:layout_height="65dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="160dp"
         android:layout_marginEnd="24dp"
-        android:text="@string/uc_text"
+        android:text="@string/agenda_text"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/agendaButton" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
         android:id="@+id/horaButton"
         android:layout_width="275dp"
         android:layout_height="65dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
         android:text="@string/hora_text"
         android:textColor="@color/black"
@@ -40,50 +40,30 @@
         app:layout_constraintTop_toBottomOf="@+id/ucButton" />
 
     <Button
-        android:id="@+id/notaButton"
+        android:id="@+id/ucButton"
         android:layout_width="275dp"
         android:layout_height="65dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
-        android:text="@string/notas_text"
+        android:text="@string/uc_text"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horaButton" />
+        app:layout_constraintTop_toBottomOf="@+id/agendaButton" />
 
-    <Button
-        android:id="@+id/agendaButton"
-        android:layout_width="275dp"
-        android:layout_height="65dp"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="245dp"
+        android:layout_height="223dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        android:text="@string/agenda_text"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settingsButton" />
-
-    <ImageButton
-        android:id="@+id/settingsButton"
-        android:layout_width="168dp"
-        android:layout_height="162dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:contentDescription="@string/nametxt"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.047"
         app:srcCompat="@drawable/blank_profile_picture_973460_1280" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

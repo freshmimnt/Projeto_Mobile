@@ -11,18 +11,26 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 import pt.iade.projetomobile.lazuli.adapters.AgendaAdapter;
+import pt.iade.projetomobile.lazuli.models.Agenda;
 import pt.iade.projetomobile.lazuli.models.LembreteItem;
 import pt.iade.projetomobile.lazuli.models.TarefaItem;
 import pt.iade.projetomobile.lazuli.models.TesteItem;
+import pt.iade.projetomobile.lazuli.models.User;
+import pt.iade.projetomobile.lazuli.retrofit.AgendaApi;
+import pt.iade.projetomobile.lazuli.retrofit.RetrofitService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AgendaActivity extends AppCompatActivity {
 
@@ -30,6 +38,9 @@ public class AgendaActivity extends AppCompatActivity {
     protected RecyclerView TodoList;
     protected AgendaAdapter agendaAdapter;
     protected ArrayList<Object> combinedList = new ArrayList<>();
+    protected User user;
+    private EditText name;
+    private ImageButton save;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -49,6 +60,10 @@ public class AgendaActivity extends AppCompatActivity {
                     } else {
                         combinedList.set(position, updateItem);
                         agendaAdapter.notifyItemChanged(position);
+                        boolean removeNote = data.getBooleanExtra("remove", false);
+                        if (removeNote) {
+                            agendaAdapter.removeItem(position);
+                        }
                     }
                 } else if (itemSerializable instanceof TesteItem) {
                     TesteItem updateItem = (TesteItem) itemSerializable;
@@ -60,6 +75,10 @@ public class AgendaActivity extends AppCompatActivity {
                     }else{
                         combinedList.set(position, updateItem);
                         agendaAdapter.notifyItemChanged(position);
+                        boolean removeNote = data.getBooleanExtra("remove", false);
+                        if (removeNote) {
+                            agendaAdapter.removeItem(position);
+                        }
                     }
 
                 }else if(itemSerializable instanceof LembreteItem){
@@ -71,6 +90,10 @@ public class AgendaActivity extends AppCompatActivity {
                     }else{
                         combinedList.set(position, updateItem);
                         agendaAdapter.notifyItemChanged(position);
+                        boolean removeNote = data.getBooleanExtra("remove", false);
+                        if (removeNote) {
+                            agendaAdapter.removeItem(position);
+                        }
                     }
                 }
             }
@@ -125,10 +148,35 @@ public class AgendaActivity extends AppCompatActivity {
         Button teste = findViewById(R.id.testeButton);
         Button tarefa = findViewById(R.id.tarefaButton);
         Button lemb = findViewById(R.id.lembreteButton);
+        name = (EditText)findViewById(R.id.agendaName);
+
+        RetrofitService retrofitService = new RetrofitService();
+        AgendaApi agendaApi = retrofitService.getRetrofit().create(AgendaApi.class);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = getIntent();
+                user = (User) intent.getSerializableExtra("user");
+                String nome = name.getText().toString();
                 onfloatButtonclicked();
+
+                Agenda agenda = new Agenda();
+                agenda.setName(nome);
+                agenda.setUser(user);
+
+                agendaApi.save(agenda).enqueue(new Callback<Agenda>() {
+                    @Override
+                    public void onResponse(Call<Agenda> call, Response<Agenda> response) {
+                        Toast.makeText(AgendaActivity.this, "Nome da Agenda Alterado", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Agenda> call, Throwable t) {
+
+                    }
+                });
+
             }
             private void onfloatButtonclicked(){
                 setClicked(clicked[0]);

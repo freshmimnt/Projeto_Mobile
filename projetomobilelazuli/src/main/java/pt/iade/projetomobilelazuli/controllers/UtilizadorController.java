@@ -1,14 +1,14 @@
 package pt.iade.projetomobilelazuli.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pt.iade.projetomobilelazuli.models.Curso;
-import pt.iade.projetomobilelazuli.repositories.CursoRepository;
-import pt.iade.projetomobilelazuli.repositories.UCRepository;
-import pt.iade.projetomobilelazuli.models.Utilizador;
+import pt.iade.projetomobilelazuli.models.User;
 import pt.iade.projetomobilelazuli.repositories.UtilizadorRepository;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class UtilizadorController {
@@ -18,33 +18,51 @@ public class UtilizadorController {
     private Curso curso;
 
     @GetMapping("/user/get")
-    public List<Utilizador> getAllUsers(){
+    public List<User> getAllUsers(){
 
-        return (List<Utilizador>) utilizadorRepository.findAll();
+        return (List<User>) utilizadorRepository.findAll();
     }
 
     @GetMapping("/user/get/{id}")
-    public ResponseEntity<Utilizador> getUserById(@PathVariable int id) {
-        Utilizador utilizador = utilizadorRepository.findById(id);
+    public ResponseEntity<User> getUserById(@PathVariable int id) {
+        User user = utilizadorRepository.findById(id);
 
-        if (utilizador != null) {
-            return ResponseEntity.ok(utilizador);
+        if (user != null) {
+            return ResponseEntity.ok(user);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
     @PostMapping("/user/save")
-    public Utilizador save(@RequestBody Utilizador utilizador) {
+    public User save(@RequestBody User user) {
 
-        utilizadorRepository.save(utilizador);
+        utilizadorRepository.save(user);
 
-        return utilizador;
+        return user;
     }
 
-    @PutMapping("/user/update/{id}")
-    public void update(@PathVariable int id, @RequestBody Utilizador updatedUser) {
-        Utilizador existingUser = utilizadorRepository.findById(id);
+    @PostMapping("/user/authenticate")
+    public ResponseEntity<User> authenticateUser(@RequestBody Map<String, String> credentials) {
+        String email = credentials.get("email");
+        String password = credentials.get("password");
+
+        System.out.println("Received email: " + email);
+        System.out.println("Received password: " + password);
+
+        User user = utilizadorRepository.findByEmailAndPassword(email, password);
+
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+    }
+
+    @PostMapping("/user/update/{id}")
+    public void update(@PathVariable int id, @RequestBody User updatedUser) {
+        User existingUser = utilizadorRepository.findById(id);
         existingUser.setName(updatedUser.getName());
         existingUser.setEmail(updatedUser.getEmail());
         existingUser.setPassword(updatedUser.getPassword());

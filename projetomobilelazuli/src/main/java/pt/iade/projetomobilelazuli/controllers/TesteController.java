@@ -35,7 +35,7 @@ public class TesteController {
         testeRepository.save(teste);
     }
 
-    @PutMapping("/teste/update/{id}")
+    @PostMapping("/teste/update/{id}")
     public void update(@PathVariable int id, @RequestBody Teste updateTeste) {
         Teste existingTeste = testeRepository.findById(id);
 

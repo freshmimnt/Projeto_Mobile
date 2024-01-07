@@ -83,12 +83,17 @@ public class Signup2Activity extends AppCompatActivity implements AdapterView.On
                 user.setSemestre(semestre);
                 user.setTurma(turma);
 
+                int selectedPosition = spinner.getSelectedItemPosition();
+                if (selectedPosition >= 0 && selectedPosition < cursos.size()) {
+                    Curso selectedCurso = cursos.get(selectedPosition);
+                    user.setCurso(selectedCurso);
+
                     utilizadorApi.save(user).enqueue(new Callback<User>() {
                         @Override
                         public void onResponse(Call<User> call, Response<User> response) {
 
 
-                            Toast.makeText(Signup2Activity.this, "Data saved successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Signup2Activity.this, "Dados guardados com sucesso", Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(Signup2Activity.this, IntroActivity.class);
                             startActivity(intent);
@@ -96,11 +101,13 @@ public class Signup2Activity extends AppCompatActivity implements AdapterView.On
 
                         @Override
                         public void onFailure(Call<User> call, Throwable t) {
-                            Toast.makeText(Signup2Activity.this, "Failed to save data", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Signup2Activity.this, "Falha ao guardar os dados", Toast.LENGTH_SHORT).show();
                             Logger.getLogger(SignupActivity.class.getName()).log(Level.SEVERE, "An error occurred");
-
                         }
                     });
+                } else {
+                    Toast.makeText(Signup2Activity.this, "Curso Invalido", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -108,10 +115,7 @@ public class Signup2Activity extends AppCompatActivity implements AdapterView.On
         adapter.setDropDownViewResource(R.layout.dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-
     }
-
-
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Curso curso = (Curso) parent.getItemAtPosition(position);

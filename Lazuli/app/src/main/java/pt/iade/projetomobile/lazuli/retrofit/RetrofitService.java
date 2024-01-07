@@ -2,7 +2,6 @@ package pt.iade.projetomobile.lazuli.retrofit;
 
 import com.google.gson.Gson;
 
-import pt.iade.projetomobile.lazuli.models.UCItem;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -18,11 +17,10 @@ public class RetrofitService {
 
     private void initializeRetrofit(){
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.33:8080")
+                .baseUrl("http://192.168.50.133:8080")
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))
                 .build();
     }
-
 
     private void initializeUCApi() {
         ucApi = retrofit.create(UCApi.class);

@@ -81,6 +81,9 @@ public class TarefaActivity extends AppCompatActivity {
     }
 
     private void showDate() {
+        Calendar currentData = Calendar.getInstance();
+        int currentYear = currentData.get(Calendar.YEAR);
+        int currentMonth = currentData.get(Calendar.MONTH);
         DatePickerDialog dialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
@@ -89,18 +92,22 @@ public class TarefaActivity extends AppCompatActivity {
 
                 dateText.setText(format.format(calendar.getTime()));
             }
-        }, 2023, 0, 01);
+        }, currentYear, currentMonth, 01);
         dialog.show();
     }
 
     private void showHour() {
+        Calendar currentTime = Calendar.getInstance();
+        int currentHour = currentTime.get(Calendar.HOUR_OF_DAY);
+        int currentMinute = currentTime.get(Calendar.MINUTE);
+
         TimePickerDialog dialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hour, int minute) {
                 String timeStr = String.format(Locale.getDefault(), "%02d:%02d", hour, minute);
-                dateText.setText(timeStr);
+                timeText.setText(timeStr);
             }
-        }, 00, 00, false);
+        }, currentHour, currentMinute, false);
         dialog.show();
     }
 

@@ -43,7 +43,7 @@ public class HorarioController {
         horarioRepository.save(horario);
     }
 
-    @PutMapping("/hor/update/{id}")
+    @PostMapping("/hor/update/{id}")
     public void update(@PathVariable int id, @RequestBody Horario updatedHor) {
         Horario existingHor = horarioRepository.findById(id);
         existingHor.setDate(updatedHor.getDate());

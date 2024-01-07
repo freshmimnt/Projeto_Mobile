@@ -5,17 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class IntroActivity extends AppCompatActivity {
-    private Button agenda;
-    private Button uc;
-    private Button horario;
-    private Button nota;
-
+    private Button agenda, uc, horario;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +24,8 @@ public class IntroActivity extends AppCompatActivity {
 
         agenda = (Button)findViewById(R.id.agendaButton);
         uc = (Button)findViewById(R.id.ucButton);
-        nota = (Button)findViewById(R.id.notaButton);
         horario = (Button)findViewById(R.id.horaButton);
-        ImageButton settings = (ImageButton)findViewById(R.id.settingsButton);
+
         agenda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,24 +40,10 @@ public class IntroActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        nota.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(IntroActivity.this, NotaActivity.class);
-                startActivity(intent);
-            }
-        });
         horario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(IntroActivity.this, HorarioActivity.class);
-                startActivity(intent);
-            }
-        });
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(IntroActivity.this, SettingsActivity.class);
                 startActivity(intent);
             }
         });

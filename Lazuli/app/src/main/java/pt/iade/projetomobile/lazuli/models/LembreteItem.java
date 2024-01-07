@@ -1,11 +1,19 @@
 package pt.iade.projetomobile.lazuli.models;
 
+import android.util.Log;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+
 import java.io.Serializable;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Random;
+
+import pt.iade.projetomobile.lazuli.utilities.WebRequest;
 
 public class LembreteItem implements Serializable {
 
@@ -40,7 +48,7 @@ public class LembreteItem implements Serializable {
     public static ArrayList<LembreteItem> List(){
 
         ArrayList<LembreteItem> items = new ArrayList<>();
-        items.add(new LembreteItem(3, false,"Arroz", new GregorianCalendar(), new Date(), "Algo"));
+        items.add(new LembreteItem(6, false,"Arroz", new GregorianCalendar(), new Date(), "Algo"));
 
         return items;
     }
@@ -51,14 +59,33 @@ public class LembreteItem implements Serializable {
     }
 
     public void save(){
-        if(id == 0){
-            
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
 
-            id = new Random().nextInt(1000) + 1;
-        }else{
+                    if (id == 0) {
+                        WebRequest request = new WebRequest(new URL(WebRequest.LOCALHOST + "/lembrete/save"));
+                        String response = request.performPostRequest(LembreteItem.this);
 
-        }
+                        LembreteItem responseItem = new Gson().fromJson(response, LembreteItem.class);
+                        id = responseItem.getId();
+                    } else {
+                        WebRequest request = new WebRequest(new URL(WebRequest.LOCALHOST + "/lembrete/update/" + id));
+                        request.performPostRequest(LembreteItem.this);
+                    }
+                } catch (Exception e) {
+                    Log.e("LembreteItem", e.toString());
+                }
+            }
+        });
+        thread.start();
     }
+
+    public void delete(){
+
+    }
+
 
     public int getId() {
         return id;

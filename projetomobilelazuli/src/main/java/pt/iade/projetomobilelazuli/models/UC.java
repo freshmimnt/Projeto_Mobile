@@ -31,7 +31,7 @@ public class UC {
 
     @ManyToOne
     @JoinColumn(name = "UC_user_id", referencedColumnName = "user_id" )
-    private Utilizador utilizador;
+    private User user;
 
     public int getId() {
         return id;
@@ -83,9 +83,9 @@ public class UC {
         this.curso = curso;
     }
 
-    public Utilizador getUtilizador() {return utilizador;}
+    public User getUtilizador() {return user;}
 
-    public void setUtilizador(Utilizador utilizador) {
-        this.utilizador = utilizador;
+    public void setUtilizador(User user) {
+        this.user = user;
     }
 }

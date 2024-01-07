@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.time.*;
+import java.util.Calendar;
+import java.util.Date;
 
 @Entity
 @Table(name = "Lembrete")
@@ -20,10 +22,10 @@ public class Lembrete {
 
     @Column(name = "lemb_data")
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate date;
+    private Calendar date;
 
     @Column(name = "lemb_hora")
-    private LocalTime time;
+    private Date time;
 
     @Column(name = "lemb_desc")
     private String desc;
@@ -47,19 +49,19 @@ public class Lembrete {
         this.name = name;
     }
 
-    public LocalDate getDate() {
+    public Calendar getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Calendar date) {
         this.date = date;
     }
 
-    public LocalTime getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(LocalTime time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 

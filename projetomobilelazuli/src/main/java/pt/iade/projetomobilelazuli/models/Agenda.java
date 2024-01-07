@@ -16,15 +16,15 @@ public class Agenda {
 
     @ManyToOne
     @JoinColumn(name = "agen_user_id", referencedColumnName = "user_id")
-    private Utilizador utilizador;
+    private User user;
 
     public Agenda(){
     }
 
-    public Agenda(int id, String name, Utilizador utilizador) {
+    public Agenda(int id, String name, User user) {
         this.id = id;
         this.name = name;
-        this.utilizador = utilizador;
+        this.user = user;
     }
 
     public int getId() {
@@ -39,11 +39,11 @@ public class Agenda {
         this.name = name;
     }
 
-    public Utilizador getUtilizador() {
-        return utilizador;
+    public User getUtilizador() {
+        return user;
     }
 
-    public void setUtilizador(Utilizador utilizador) {
-        this.utilizador = utilizador;
+    public void setUtilizador(User user) {
+        this.user = user;
     }
 }

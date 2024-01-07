@@ -25,7 +25,6 @@ UC_name VARCHAR(60) not null,
 UC_sala varchar(20),
 UC_prof varchar(30),
 UC_desc varchar(100),
-media_nota float,
 UC_cour_id int ,
 UC_user_id int,
 primary key (UC_id)
@@ -77,10 +76,9 @@ hor_data DATE DEFAULT NULL,
 hor_hora_inicio TIME NOT NULL,
 hor_hora_fim TIME NOT NULL,
 hor_desc VARCHAR(255),
-hor_UC_id int,
+hor_user_id int,
 primary key (hor_id)
 );
-
 
 -- Foreign Keys
 alter table Utilizador

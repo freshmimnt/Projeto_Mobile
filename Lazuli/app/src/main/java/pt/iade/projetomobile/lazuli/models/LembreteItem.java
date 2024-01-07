@@ -1,19 +1,15 @@
 package pt.iade.projetomobile.lazuli.models;
 
-import android.util.Log;
-import android.widget.Toast;
-
-import com.google.gson.Gson;
 import com.google.gson.annotations.JsonAdapter;
 
 import java.io.Serializable;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import pt.iade.projetomobile.lazuli.adapters.CalendarJsonAdapter;
-import pt.iade.projetomobile.lazuli.utilities.WebRequest;
+import java.util.Random;
+
+import pt.iade.projetomobile.lazuli.utilities.CalendarJsonAdapter;
 
 public class LembreteItem implements Serializable {
 
@@ -57,28 +53,16 @@ public class LembreteItem implements Serializable {
         return new LembreteItem(id, false, "Alloy", new GregorianCalendar(), new Date(), "Shine");
     }
 
-    public void save(){
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
+    public void save() {
+        // TODO: Send the object's data to our web server and update the database there.
 
-                    if (id == 0) {
-                        WebRequest request = new WebRequest(new URL(WebRequest.LOCALHOST + "/lembrete/save"));
-                        String response = request.performPostRequest(LembreteItem.this);
+        if (id == 0) {
 
-                        LembreteItem responseItem = new Gson().fromJson(response, LembreteItem.class);
-                        id = responseItem.getId();
-                    } else {
-                        WebRequest request = new WebRequest(new URL(WebRequest.LOCALHOST + "/lembrete/update/" + id));
-                        request.performPostRequest(LembreteItem.this);
-                    }
-                } catch (Exception e) {
-                    Log.e("LembreteItem", e.toString());
-                }
-            }
-        });
-        thread.start();
+            id = new Random().nextInt(1000) + 1;
+
+        } else {
+
+        }
     }
 
     public void delete(){

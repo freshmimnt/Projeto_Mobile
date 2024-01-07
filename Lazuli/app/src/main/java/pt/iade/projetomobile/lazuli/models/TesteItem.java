@@ -9,8 +9,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Random;
 
-import pt.iade.projetomobile.lazuli.adapters.CalendarJsonAdapter;
-import pt.iade.projetomobile.lazuli.models.Curso;
+import pt.iade.projetomobile.lazuli.utilities.CalendarJsonAdapter;
 
 public class TesteItem implements Serializable {
 

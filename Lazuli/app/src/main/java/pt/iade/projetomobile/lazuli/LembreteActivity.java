@@ -31,6 +31,8 @@ public class LembreteActivity extends AppCompatActivity {
     private TextView dateText, timeText, title, description;
     protected CheckBox check;
     protected int listPosition;
+    int adapterPosition = getIntent().getIntExtra("adapterPosition", -1);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

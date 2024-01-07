@@ -77,8 +77,6 @@ public class AddHorarioActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 
     private void showHourInicio() {

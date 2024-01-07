@@ -47,10 +47,7 @@ public class AddUcActivity extends AppCompatActivity {
                 returnIntent.putExtra("position", ucPosition);
                 returnIntent.putExtra("item", item);
                 setResult(AppCompatActivity.RESULT_OK, returnIntent);
-
-
                 finish();
-
             }
         });
 

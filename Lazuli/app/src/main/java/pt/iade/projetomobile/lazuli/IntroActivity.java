@@ -16,6 +16,7 @@ import android.widget.ImageView;
 public class IntroActivity extends AppCompatActivity {
     private Button agenda, uc, horario;
     private ImageView imageView;
+    private static final int PICK_IMAGE_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class IntroActivity extends AppCompatActivity {
         agenda = (Button)findViewById(R.id.agendaButton);
         uc = (Button)findViewById(R.id.ucButton);
         horario = (Button)findViewById(R.id.horaButton);
+        imageView = findViewById(R.id.imageView);
 
         agenda.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,5 +49,25 @@ public class IntroActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Escolha uma foto"), PICK_IMAGE_REQUEST);
+            }
+        });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
+            Uri uri = data.getData();
+            imageView.setImageURI(uri);
+        }
+    }
+
 }

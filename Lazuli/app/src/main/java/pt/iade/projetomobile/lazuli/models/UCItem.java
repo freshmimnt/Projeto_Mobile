@@ -34,13 +34,29 @@ public class UCItem implements Serializable{
         this.desc = desc;
     }
 
+
     public static ArrayList<UCItem> List(){
         ArrayList<UCItem> items = new ArrayList<UCItem>();
         return items;
     }
 
-    public static UCItem GetById(int id){
-        return new UCItem(id,"","","","");
+    public static void GetById(int id, GetByIdResponse response){
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    WebRequest request = new WebRequest(new URL(WebRequest.LOCALHOST + "/uc/get/" + id));
+                    String rep = request.performGetRequest();
+
+                    UCItem item = new Gson().fromJson(rep, UCItem.class);
+                    response.response(item);
+                }catch (Exception e){
+                    Log.e("UcItem", e.toString());
+                }
+            }
+        });
+
     }
 
     public void save(){
@@ -114,6 +130,9 @@ public class UCItem implements Serializable{
         return name;
     }
 
+    public interface GetByIdResponse{
+        public void response(UCItem ucItem);
+    }
 
 
 }

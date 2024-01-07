@@ -52,38 +52,32 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void authenticateUser(String email, String password) {
-        // Create a Retrofit instance
         RetrofitService retrofitService = new RetrofitService();
         UtilizadorApi utilizadorApi = retrofitService.getRetrofit().create(UtilizadorApi.class);
 
-        // Prepare the credentials
         Map<String, String> credentials = new HashMap<>();
         credentials.put("email", email);
         credentials.put("password", password);
 
-        // Make the authentication request
         Call<User> call = utilizadorApi.authenticateUser(credentials);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()) {
-                    // Authentication successful, handle the user object
                     User authenticatedUser = response.body();
                     Toast.makeText(LoginActivity.this, "Bem-Vindo, " + authenticatedUser.getName() + "!", Toast.LENGTH_SHORT).show();
 
-                    // Start the next activity or perform other actions
+
                     Intent intent = new Intent(LoginActivity.this, IntroActivity.class);
                     startActivity(intent);
                     finish();
                 } else {
-                    // Authentication failed, handle the error
                     Toast.makeText(LoginActivity.this, "Falha na autenticação", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                // Network or other errors
                 Toast.makeText(LoginActivity.this, "Erro: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

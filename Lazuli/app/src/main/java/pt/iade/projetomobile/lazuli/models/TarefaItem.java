@@ -1,20 +1,15 @@
 package pt.iade.projetomobile.lazuli.models;
 
-import android.util.Log;
-
-import com.google.gson.Gson;
 import com.google.gson.annotations.JsonAdapter;
 
 import java.io.Serializable;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Random;
 
-import pt.iade.projetomobile.lazuli.adapters.CalendarJsonAdapter;
-import pt.iade.projetomobile.lazuli.utilities.WebRequest;
+import pt.iade.projetomobile.lazuli.utilities.CalendarJsonAdapter;
 
 public class TarefaItem implements Serializable {
     private int id;
@@ -53,27 +48,13 @@ public class TarefaItem implements Serializable {
     public void save() {
         // TODO: Send the object's data to our web server and update the database there.
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
+        if (id == 0) {
 
-                    if (id == 0) {
-                        WebRequest request = new WebRequest(new URL(WebRequest.LOCALHOST + "/tarefa/save"));
-                        String response = request.performPostRequest(TarefaItem.this);
+            id = new Random().nextInt(1000) + 1;
 
-                        TarefaItem responseItem = new Gson().fromJson(response, TarefaItem.class);
-                        id = responseItem.getId();
-                    } else {
-                        WebRequest request = new WebRequest(new URL(WebRequest.LOCALHOST + "/tarefa/update/" + id));
-                        request.performPostRequest(TarefaItem.this);
-                    }
-                } catch (Exception e) {
-                    Log.e("TarefaItem", e.toString());
-                }
-            }
-        });
-        thread.start();
+        } else {
+
+        }
     }
 
     public int getId() {

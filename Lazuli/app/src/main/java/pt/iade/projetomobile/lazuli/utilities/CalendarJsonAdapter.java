@@ -1,4 +1,4 @@
-package pt.iade.projetomobile.lazuli.adapters;
+package pt.iade.projetomobile.lazuli.utilities;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonDeserializationContext;

@@ -31,7 +31,6 @@ public class HorarioActivity extends AppCompatActivity implements HorarioAdapter
     private RecyclerView horarioRecyclerView;
     private Button next;
     private Button previous;
-
     private ListView listView;
 
     @Override

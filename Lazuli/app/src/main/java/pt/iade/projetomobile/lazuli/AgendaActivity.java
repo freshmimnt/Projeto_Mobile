@@ -134,6 +134,7 @@ public class AgendaActivity extends AppCompatActivity {
             }
         });
 
+        save = findViewById(R.id.saveButton);
         TodoList = (RecyclerView) findViewById(R.id.toDoList);
         TodoList.setLayoutManager(new LinearLayoutManager(this));
         TodoList.setAdapter(agendaAdapter);
@@ -153,13 +154,12 @@ public class AgendaActivity extends AppCompatActivity {
         RetrofitService retrofitService = new RetrofitService();
         AgendaApi agendaApi = retrofitService.getRetrofit().create(AgendaApi.class);
 
-        fab.setOnClickListener(new View.OnClickListener() {
+        save.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 Intent intent = getIntent();
                 user = (User) intent.getSerializableExtra("user");
                 String nome = name.getText().toString();
-                onfloatButtonclicked();
 
                 Agenda agenda = new Agenda();
                 agenda.setName(nome);
@@ -176,6 +176,13 @@ public class AgendaActivity extends AppCompatActivity {
 
                     }
                 });
+            }
+        });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onfloatButtonclicked();
 
             }
             private void onfloatButtonclicked(){

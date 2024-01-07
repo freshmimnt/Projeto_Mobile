@@ -28,11 +28,8 @@ public class TarefaActivity extends AppCompatActivity {
     protected TarefaItem item;
     protected EditText title;
     protected EditText description;
-    private Button guardar;
-    private TextView dateText;
-    private TextView timeText;
-    private Button date;
-    private Button time;
+    private Button guardar, date, time;
+    private TextView dateText, timeText;
     protected CheckBox check;
     protected int listPosition;
 
@@ -40,10 +37,10 @@ public class TarefaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tarefa);
-        dateText = findViewById(R.id.showTime);
+        dateText = findViewById(R.id.showDate);
         date = findViewById(R.id.dateButton);
-        dateText = findViewById(R.id.show2Hour);
-        time = findViewById(R.id.hour1Button);
+        timeText = findViewById(R.id.showHour);
+        time = findViewById(R.id.hourButton);
         guardar = findViewById(R.id.gButton);
 
         Intent intent = getIntent();
@@ -154,7 +151,7 @@ public class TarefaActivity extends AppCompatActivity {
         }
 
         try {
-            Date time = timeFormat.parse(dateText.getText().toString());
+            Date time = timeFormat.parse(timeText.getText().toString());
             item.setTime(time);
         } catch (ParseException e) {
             e.printStackTrace();

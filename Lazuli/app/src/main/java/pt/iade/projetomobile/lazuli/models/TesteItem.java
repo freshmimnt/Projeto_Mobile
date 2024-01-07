@@ -1,11 +1,15 @@
 package pt.iade.projetomobile.lazuli.models;
 
+import com.google.gson.annotations.JsonAdapter;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Random;
+
+import pt.iade.projetomobile.lazuli.adapters.CalendarJsonAdapter;
 import pt.iade.projetomobile.lazuli.models.Curso;
 
 public class TesteItem implements Serializable {
@@ -13,6 +17,7 @@ public class TesteItem implements Serializable {
     private int id;
     private boolean done;
     private String title;
+    @JsonAdapter(CalendarJsonAdapter.class)
     private Calendar date;
     private Date time;
     private String description;

@@ -4,6 +4,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.annotations.JsonAdapter;
 
 import java.io.Serializable;
 import java.net.URL;
@@ -11,8 +12,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Random;
-
+import pt.iade.projetomobile.lazuli.adapters.CalendarJsonAdapter;
 import pt.iade.projetomobile.lazuli.utilities.WebRequest;
 
 public class LembreteItem implements Serializable {
@@ -20,7 +20,7 @@ public class LembreteItem implements Serializable {
     private int id;
 
     private String name;
-
+    @JsonAdapter(CalendarJsonAdapter.class)
     private Calendar date;
 
     private Date time;
@@ -32,7 +32,7 @@ public class LembreteItem implements Serializable {
     private Agenda agenda;
 
     public LembreteItem(){
-
+        this(0, false, "", new GregorianCalendar(),new Date() ,"");
     }
 
     public LembreteItem(int id, boolean isFinished, String name, Calendar date,
@@ -43,19 +43,18 @@ public class LembreteItem implements Serializable {
         this.date = date;
         this.time = time;
         this.desc = desc;
+
     }
 
     public static ArrayList<LembreteItem> List(){
 
-        ArrayList<LembreteItem> items = new ArrayList<>();
-        items.add(new LembreteItem(6, false,"Arroz", new GregorianCalendar(), new Date(), "Algo"));
+        ArrayList<LembreteItem> items = new ArrayList<LembreteItem>();
 
         return items;
     }
 
     public static LembreteItem GetById(int id){
         return new LembreteItem(id, false, "Alloy", new GregorianCalendar(), new Date(), "Shine");
-
     }
 
     public void save(){
@@ -85,7 +84,6 @@ public class LembreteItem implements Serializable {
     public void delete(){
 
     }
-
 
     public int getId() {
         return id;

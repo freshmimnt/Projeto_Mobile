@@ -10,6 +10,4 @@ public interface AgendaApi {
     @POST("/agenda/save")
     Call<Agenda> save(@Body Agenda agenda);
 
-
-
 }

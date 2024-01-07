@@ -26,13 +26,9 @@ import pt.iade.projetomobile.lazuli.models.TesteItem;
 public class TesteActivity extends AppCompatActivity {
 
     protected TesteItem item;
-    protected EditText title;
-    protected EditText description;
-    Button guardar;
-    private TextView timeText;
-    private TextView hourText;
-    private Button date;
-    private Button hour;
+    protected EditText title, description;
+    private Button guardar, date, time;
+    private TextView dateText, timeText;
     protected CheckBox check;
     protected int listPosition;
 
@@ -40,10 +36,10 @@ public class TesteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teste);
-        timeText = findViewById(R.id.showTime);
+        dateText = findViewById(R.id.showDate);
         date = findViewById(R.id.dateButton);
-        hourText = findViewById(R.id.show2Hour);
-        hour = findViewById(R.id.hour1Button);
+        timeText = findViewById(R.id.showHour);
+        time = findViewById(R.id.hourButton);
         guardar = findViewById(R.id.gButton);
 
         Intent intent = getIntent();
@@ -65,7 +61,7 @@ public class TesteActivity extends AppCompatActivity {
             }
         });
 
-        hour.setOnClickListener(new View.OnClickListener() {
+        time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showHour();
@@ -90,7 +86,7 @@ public class TesteActivity extends AppCompatActivity {
                 Calendar calendar = new GregorianCalendar(year, month, day);
                 SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
-                timeText.setText(format.format(calendar.getTime()));
+                dateText.setText(format.format(calendar.getTime()));
             }
         }, currentYear, currentMonth, 01);
         dialog.show();
@@ -105,7 +101,7 @@ public class TesteActivity extends AppCompatActivity {
             @Override
             public void onTimeSet(TimePicker view, int hour, int minute) {
                 String timeStr = String.format(Locale.getDefault(), "%02d:%02d", hour, minute);
-                hourText.setText(timeStr);
+                timeText.setText(timeStr);
             }
         }, currentHour, currentMinute, false);
         dialog.show();
@@ -128,11 +124,11 @@ public class TesteActivity extends AppCompatActivity {
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
 
         if (item.getDate() != null) {
-            timeText.setText(dateFormat.format(item.getDate().getTime()));
+            dateText.setText(dateFormat.format(item.getDate().getTime()));
         }
 
         if (item.getTime() != null) {
-            hourText.setText(timeFormat.format(item.getTime()));
+            timeText.setText(timeFormat.format(item.getTime()));
         }
     }
 
@@ -145,7 +141,7 @@ public class TesteActivity extends AppCompatActivity {
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
 
         try {
-            Date date = dateFormat.parse(timeText.getText().toString());
+            Date date = dateFormat.parse(dateText.getText().toString());
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
             item.setDate(calendar);
@@ -154,7 +150,7 @@ public class TesteActivity extends AppCompatActivity {
         }
 
         try {
-            Date time = timeFormat.parse(hourText.getText().toString());
+            Date time = timeFormat.parse(timeText.getText().toString());
             item.setTime(time);
         } catch (ParseException e) {
             e.printStackTrace();

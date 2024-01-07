@@ -1,15 +1,21 @@
 package pt.iade.projetomobile.lazuli.models;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
+import com.google.gson.Gson;
+
 import java.io.Serializable;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.Random;
+
+import pt.iade.projetomobile.lazuli.utilities.WebRequest;
 
 public class UCItem implements Serializable{
 
     private int id;
-    private String nome;
+    private String name;
     private String sala;
     private String prof;
     private String desc;
@@ -20,9 +26,9 @@ public class UCItem implements Serializable{
         this(0, "","","","");
     }
 
-    public UCItem(int id, String nome, String sala, String prof, String desc){
+    public UCItem(int id, String name, String sala, String prof, String desc){
         this.id = id;
-        this.nome = nome;
+        this.name = name;
         this.sala = sala;
         this.prof = prof;
         this.desc = desc;
@@ -38,23 +44,40 @@ public class UCItem implements Serializable{
     }
 
     public void save(){
-        if(id == 0){
-            id = new Random().nextInt(1000) + 1;
-        }else{
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    if (id == 0) {
+                        WebRequest request = new WebRequest(new URL(WebRequest.LOCALHOST + "/uc/save"));
+                        String response = request.performPostRequest(UCItem.this);
 
-        }
+                        UCItem responseItem = new Gson().fromJson(response, UCItem.class);
+                        id = responseItem.getId();
+                    } else {
+
+                        WebRequest request = new WebRequest(new URL(WebRequest.LOCALHOST + "/uc/update/" + id));
+                        request.performPostRequest(UCItem.class);
+
+                    }
+                }catch (Exception e){
+                    Log.e("UcItem", e.toString());
+                }
+            }
+        });
+        thread.start();
     }
 
     public int getId() {
         return id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getSala() {
@@ -82,13 +105,13 @@ public class UCItem implements Serializable{
     }
 
     public String getUcName() {
-        return nome;
+        return name;
     }
 
     @NonNull
     @Override
     public String toString(){
-        return nome;
+        return name;
     }
 
 

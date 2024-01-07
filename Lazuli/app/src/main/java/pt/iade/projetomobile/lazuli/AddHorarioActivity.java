@@ -18,7 +18,7 @@ import pt.iade.projetomobile.lazuli.utils.HorarioUtils;
 
 public class AddHorarioActivity extends AppCompatActivity {
 
-    private EditText desc;
+    private EditText name;
 
     private Button timeInicio;
 
@@ -39,7 +39,7 @@ public class AddHorarioActivity extends AppCompatActivity {
         inicio = findViewById(R.id.show1Hour);
         fim = findViewById(R.id.show2Hour);
         date = findViewById(R.id.dayView);
-        desc = findViewById(R.id.descText);
+        name = findViewById(R.id.nome);
         date.setText("Dia: " + HorarioUtils.formattedDate(HorarioUtils.selectDate));
 
 
@@ -61,7 +61,7 @@ public class AddHorarioActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String descricao = desc.getText().toString();
+                String nome = name.getText().toString();
 
 
                 String inicioText = inicio.getText().toString();
@@ -70,7 +70,7 @@ public class AddHorarioActivity extends AppCompatActivity {
                 LocalTime horaInicio = LocalTime.parse(inicioText);
                 LocalTime horaFim = LocalTime.parse(fimText);
 
-                Horario novoHorario = new Horario(1, HorarioUtils.selectDate, horaInicio, horaFim, descricao);
+                Horario novoHorario = new Horario(1, HorarioUtils.selectDate, horaInicio, horaFim, nome);
 
                 Horario.horarioArrayList.add(novoHorario);
 

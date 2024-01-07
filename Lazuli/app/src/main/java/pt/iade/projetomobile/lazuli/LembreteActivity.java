@@ -143,7 +143,7 @@ public class LembreteActivity extends AppCompatActivity {
         }
 
         if (item.getTime() != null) {
-            dateText.setText(timeFormat.format(item.getTime()));
+            timeText.setText(timeFormat.format(item.getTime()));
         }
     }
 
